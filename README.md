@@ -1,59 +1,18 @@
-# API5SEM
-Repositório da API do 5º Semestre do curso de Banco de Dados na FATEC
-## 📝Projeto:
+## 💻 Sprint 1
 
-## 💡 Tecnologias
+### Proposta:
 
-As seguintes tecnologias foram utilizadas no desenvolvimento do projeto:
+</p></br><h1></h1>
 
 
-## Integrantes:
+### Detalhes da Sprint:
 
-<a href="https://www.linkedin.com/in/maxx-barcelos-aaa106b2"> <img src= "https://img.shields.io/badge/Maximiles%20Barcelos%20--%20Scrum%20Master-Linkedin-blue"></a> <br>
-<a href="https://www.linkedin.com/in/bahij-noureddine-941b681b7/"> <img src= "https://img.shields.io/badge/Bahij%20Noureddine%20--%20Product%20Owner-Linkedin-blue"></a> <br>
-<a href="https://www.linkedin.com/in/jeferson-tadeu-das-neves-a98343190/"> <img src= "https://img.shields.io/badge/Jeferson%20Neves-Linkedin-blue"></a> <br>
-<a href="https://www.linkedin.com/in/leonardo-gabriel-silva-11b8b8178/"> <img src= "https://img.shields.io/badge/Leonardo%20Gabriel-Linkedin-blue"></a> <br>
-<a href="https://www.linkedin.com/mwlite/in/henrique-zucareli-santiago/"> <img src= "https://img.shields.io/badge/Henrique%20Zucareli-Linkedin-blue"></a> <br>
+Resumo de modificações:
 
- ## Cliente:
+### APRESENTAÇÃO
 
- ## Problema:
- 
- ## Solução:
+</p></br><h1></h1>
 
- ## Documentação:
- 
- 
-<h2>Sprints</h2>
-       <table>
-              <thead>
-                     <th width=150px>Entregas</th>
-                     <th width=100%>Descrições</th>
-                     <th width=100px>Links</th>
-              </thead>
-              <tbody>
-                     <tr>
-                            <td align=center>Sprint 1<br></td>
-                            <td > <p align=center>   
-                            </td>
-                            <td><p><a href="">Ver mais...</a></p></td>
-                     </tr>
-                     <tr>
-                            <td align=center>Sprint 2<br></td>
-                            <td> <p align=center>                  
-                            <p align=center>                          
-                            </p>
-                            </td>
-                            <td><p><a href="">Ver mais...</a></p></td>
-                     </tr>
-                     <tr>
-                            <td align=center>Sprint 3<br></td>
-                            <td> <p align=center>                          
-                      <p align=center>                          
-                      </p>
-                      </td>
-                            <td><p><a href="">Ver mais...</a></p></td>
-                     </tr>
-                     </tr>
-              </tbody>
-       </table>
+### Screenshoots:
+
+#### Proposta para próxima sprint:
