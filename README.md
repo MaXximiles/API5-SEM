@@ -44,7 +44,7 @@ As seguintes tecnologias foram utilizadas no desenvolvimento do projeto:
                             <p align=center>                          
                             </p>
                             </td>
-                            <td><p><a href="">Ver mais...</a></p></td>
+                            <td><p><a href="https://github.com/MaXximiles/API5-SEM/blob/sprint-2/README.md">Ver mais...</a></p></td>
                      </tr>
                      <tr>
                             <td align=center>Sprint 3<br></td>
@@ -52,7 +52,7 @@ As seguintes tecnologias foram utilizadas no desenvolvimento do projeto:
                       <p align=center>                          
                       </p>
                       </td>
-                            <td><p><a href="">Ver mais...</a></p></td>
+                            <td><p><a href="https://github.com/MaXximiles/API5-SEM/blob/sprint-3/README.md">Ver mais...</a></p></td>
                      </tr>
                      </tr>
               </tbody>
