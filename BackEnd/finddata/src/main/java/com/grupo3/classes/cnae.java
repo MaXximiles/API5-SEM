@@ -9,7 +9,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name="cnae")
-public class cnae 
+public class Cnae 
 {
 	
 	 @Id
@@ -47,11 +47,5 @@ public class cnae
 		this.cnae_descricao = cnae_descricao;
 	}
 
-	public cnae(Long cnae_id, String cnae_codigo, String cnae_descricao) {
-		super();
-		this.cnae_id = cnae_id;
-		this.cnae_codigo = cnae_codigo;
-		this.cnae_descricao = cnae_descricao;
-	}
-	 
+
 }

@@ -9,7 +9,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name="cidade")
-public class cidade 
+public class Cidade 
 {
 	
 	@Id
@@ -58,13 +58,7 @@ public class cidade
 		this.cid_regiaoibge = cid_regiaoibge;
 	}
 
-	public cidade(Long cid_id, String cid_cidade, String cid_estado, String cid_regiaoibge) {
-		super();
-		this.cid_id = cid_id;
-		this.cid_cidade = cid_cidade;
-		this.cid_estado = cid_estado;
-		this.cid_regiaoibge = cid_regiaoibge;
-	}
+
 
 	
 	

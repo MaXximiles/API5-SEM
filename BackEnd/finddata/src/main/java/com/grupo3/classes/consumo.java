@@ -9,7 +9,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name="consumo")
-public class consumo {
+public class Consumo {
 	
 	
 	@Id
@@ -58,12 +58,4 @@ public class consumo {
 		this.emp_id = emp_id;
 	}
 
-	public consumo(Long cons_id, String cons_mes, Long cons_qtdconsumo, Long emp_id) {
-		super();
-		this.cons_id = cons_id;
-		this.cons_mes = cons_mes;
-		this.cons_qtdconsumo = cons_qtdconsumo;
-		this.emp_id = emp_id;
-	}
-	
 }
