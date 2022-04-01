@@ -15,10 +15,18 @@ As seguintes tecnologias foram utilizadas no desenvolvimento do projeto:
 <a href="https://www.linkedin.com/mwlite/in/henrique-zucareli-santiago/"> <img src= "https://img.shields.io/badge/Henrique%20Zucareli-Linkedin-blue"></a> <br>
 
  ## Cliente:
+Uma das instituições mais antigas do setor varejista de bens e serviços,
+conhecida popularmente como SPC, o Serviço de Proteção ao Crédito. Dono do maior banco de
+informações sobre pessoas físicas e jurídicas da América Latina, o SPC Brasil,
+como viria a ser chamado a partir de 2000, tem acesso a dados de 26 milhões
+de empresas de todos os segmentos da economia e de 150 milhões de
+consumidores residentes de todos os estados brasileiros.
 
  ## Problema:
- 
+Contendo mais de 500 produtos em seu catálogo,  a SPC mantém relações comerciais com diversas empresas. Por conta da alta quantidade de potenciais clientes e produtos a serem vendidos a SPC precisa de um sistema que integre e filtre os melhores candidatos a adquirirem seus produtos.
  ## Solução:
+ 
+O sistema Find Data gerencia potenciais clientes para vendedores da SPC, facilitando a conexão entre vendedor e potencial cliente. Filtrando uma base de dados disponibilizada pela SPC a Find Data recolhe e processa esses dados para filtrar potenciais empresas com base em consumo mensal.
 
  ## Documentação:
  
