@@ -3,12 +3,12 @@
   "version": "8.0.37",
   "private": true,
   "scripts": {
-	"start": "ng serve --port $PORT --host 0.0.0.0 --disable-host-check",
+    "postinstall": "npm run build",
+    "start": "node server.js"
     "build": "vue-cli-service build",
     "lint": "vue-cli-service lint",
     "rtl": "webpack --config webpack-rtl.config.js",
     "serve": "vue-cli-service serve",
-	"heroku-postbuild": "ng build --configuration=production"
   },
   "dependencies": {
     "@fortawesome/fontawesome-free": "^5.15.4",
