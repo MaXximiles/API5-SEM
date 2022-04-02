@@ -2,7 +2,8 @@
   "name": "demo1",
   "version": "8.0.37",
   "scripts": {
-    "build": "vue-cli-service build",
+    "start": "ng serve --port $PORT --host 0.0.0.0 --disable-host-check",
+    "build": "ng build --prod",
     "lint": "vue-cli-service lint",
     "rtl": "webpack --config webpack-rtl.config.js",
     "serve": "vue-cli-service serve"
