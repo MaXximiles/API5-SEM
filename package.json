@@ -8,7 +8,7 @@
     "build": "vue-cli-service build",
     "lint": "vue-cli-service lint",
     "rtl": "webpack --config webpack-rtl.config.js",
-    "serve": "vue-cli-service serve",
+    "serve": "vue-cli-service serve"
   },
   "dependencies": {
     "@fortawesome/fontawesome-free": "^5.15.4",
