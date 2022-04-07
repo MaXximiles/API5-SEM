@@ -9,52 +9,11 @@ const routes: Array<RouteRecordRaw> = [
     redirect: "/dashboard",
     component: () => import("@/layout/Layout.vue"),
     children: [
-      //FIND DATA
       {
         path: "/dashboard",
         name: "dashboard",
         component: () => import("@/views/Dashboard.vue"),
       },
-      {
-        path: "/crafted/pages/cadastros/empresa",
-        name: "empresas",
-        component: () => import("@/views/crafted/pages/cadastros/Empresa.vue"),
-      },
-      {
-        path: "/crafted/pages/cadastros/vendedor",
-        name: "vendedor",
-        component: () => import("@/views/crafted/pages/cadastros/Vendedor.vue"),
-      },
-      {
-        path: "/crafted/pages/cadastros/int-vendas",
-        name: "int-vendas",
-        component: () =>
-          import("@/views/crafted/pages/cadastros/Inteligencia.vue"),
-      },
-      {
-        path: "/crafted/pages/carteira/minhas-empresas",
-        name: "Minhas Empresas",
-        component: () => import("@/views/crafted/pages/carteira/Empresas.vue"),
-      },
-      {
-        path: "/crafted/pages/carteira/prospeccao",
-        name: "Prospecção de Empresas",
-        component: () =>
-          import("@/views/crafted/pages/carteira/Prospeccao.vue"),
-      },
-      {
-        path: "/crafted/pages/prospeccao/busca-cliente",
-        name: "Prospecção de Empresas",
-        component: () =>
-          import("@/views/crafted/pages/prospeccao/BuscaClientes.vue"),
-      },
-      {
-        path: "/crafted/pages/prospeccao/gerenciar-empresas",
-        name: "Gerenciar Empresas/Vendedor",
-        component: () =>
-          import("@/views/crafted/pages/prospeccao/GerenciarEmpresas.vue"),
-      },
-      //TEMPLATE
       {
         path: "/builder",
         name: "builder",
@@ -130,7 +89,6 @@ const routes: Array<RouteRecordRaw> = [
           },
         ],
       },
-      //ROUTES do template
       {
         path: "/apps/customers/getting-started",
         name: "apps-customers-getting-started",
@@ -283,7 +241,6 @@ const routes: Array<RouteRecordRaw> = [
       },
     ],
   },
-  //LOGIN
   {
     path: "/",
     component: () => import("@/components/page-layouts/Auth.vue"),
@@ -334,8 +291,7 @@ router.beforeEach(() => {
   // reset config to initial state
   store.commit(Mutations.RESET_LAYOUT_CONFIG);
 
-  // Token de segurança para login
-  //store.dispatch(Actions.VERIFY_AUTH, { api_token: JwtService.getToken() });
+  store.dispatch(Actions.VERIFY_AUTH, { api_token: JwtService.getToken() });
 
   // Scroll page to top on every route change
   setTimeout(() => {

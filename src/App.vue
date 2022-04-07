@@ -8,7 +8,6 @@ import { useStore } from "vuex";
 import { Mutations } from "@/store/enums/StoreEnums";
 import { initializeComponents } from "@/core/plugins/keenthemes";
 
-
 export default defineComponent({
   name: "app",
   setup() {

@@ -15,22 +15,23 @@ class ApiService {
 
   /**
    * @description initialize vue axios
-   */
-  public static init(app: App<Element>) {
+   */ 
+  public static init(app: App<Element>)
+   {
     ApiService.vueInstance = app;
     ApiService.vueInstance.use(VueAxios, axios);
     ApiService.vueInstance.axios.defaults.baseURL = process.env.VUE_APP_API_URL;
+    //ApiService.vueInstance.axios.defaults.baseURL = process.env+'https://localhost:8081/';
   }
+
 
   /**
    * @description set the default HTTP request headers
    */
-  public static setHeader(): void {
-    ApiService.vueInstance.axios.defaults.headers.common[
-      "Authorization"
-    ] = `Token ${JwtService.getToken()}`;
-    ApiService.vueInstance.axios.defaults.headers.common["Accept"] =
-      "application/json";
+  public static setHeader(): void 
+  {
+    //ApiService.vueInstance.axios.defaults.headers.common["Authorization"] = `Token ${JwtService.getToken()}`;
+    ApiService.vueInstance.axios.defaults.headers.common["Accept"] = "application/json";
   }
 
   /**

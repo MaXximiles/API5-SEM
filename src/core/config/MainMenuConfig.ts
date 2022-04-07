@@ -15,6 +15,8 @@ const DocMenuConfig = [
       },*/
     ],
   },
+
+  //FIND DATA
   {
     heading: "",
     route: "/crafted",
@@ -27,31 +29,31 @@ const DocMenuConfig = [
         sub: [
           {
             heading: "Empresa",
-            route: "#",//Adicionar pagina
+            route: "/crafted/pages/cadastros/empresa", //Adicionar pagina
           },
           {
             heading: "Vendedores",
-            route: "#",//Adicionar pagina
+            route: "/crafted/pages/cadastros/vendedor", //Adicionar pagina
           },
           {
             heading: "Inteligência de Vendas",
-            route: "#",//Adicionar pagina
+            route: "/crafted/pages/cadastros/int-vendas", //Adicionar pagina
           },
         ],
       },
       {
         sectionTitle: "Carteira Empresa/Vendedor",
-        route: "/account",
+        route: "/pages",
         svgIcon: "media/icons/duotune/communication/com006.svg",
         fontIcon: "bi-person",
         sub: [
           {
             heading: "Minhas Empresas",
-            route: "#",//Adicionar pagina
+            route: "/crafted/pages/carteira/minhas-empresas", //Adicionar pagina
           },
           {
             heading: "Prospecção Empresas",
-            route: "#",//Adicionar pagina
+            route: "/crafted/pages/carteira/prospeccao", //Adicionar pagina
           },
         ],
       },
@@ -61,16 +63,25 @@ const DocMenuConfig = [
         fontIcon: "bi-sticky",
         sub: [
           {
-              heading: "Busca de Clientes",
-              route: "#",//Adicionar pagina
+            heading: "Busca de Clientes",
+            route: "/crafted/pages/prospeccao/busca-cliente", //Adicionar pagina
           },
           {
             heading: "Gerenciar Empresas/Vendedor",
-            route: "#",//Adicionar pagina
+            route: "/crafted/pages/prospeccao/gerenciar-empresas", //Adicionar pagina
           },
         ],
       },
-      /*{
+    ],
+  },
+  //
+  //TEMPLATE
+  /*
+  {
+    heading: "",
+    route: "/crafted",
+    pages: [
+      {
         sectionTitle: "modals",
         route: "/modals",
         svgIcon: "media/icons/duotune/art/art009.svg",
@@ -171,10 +182,9 @@ const DocMenuConfig = [
             route: "/crafted/widgets/feeds",
           },
         ],
-      },*/
+      },
     ],
-  },
- 
+  },*/
 ];
 
 export default DocMenuConfig;

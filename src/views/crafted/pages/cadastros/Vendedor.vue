@@ -1,5 +1,5 @@
 <template>
-  <!--begin::Dashboard-->
+  <!--begin::Vendedor-->
   <div class="row gy-5 g-xl-8">
     <div class="col-xxl-4">
       <MixedWidget2
@@ -90,7 +90,7 @@ import MixedWidget10 from "@/components/widgets/mixed/Widget10.vue";
 import { setCurrentPageTitle } from "@/core/helpers/breadcrumb";
 
 export default defineComponent({
-  name: "dashboard",
+  name: "vendedor",
   components: {
     TableWidget9,
     TableWidget5,
@@ -106,7 +106,7 @@ export default defineComponent({
   },
   setup() {
     onMounted(() => {
-      setCurrentPageTitle("Dashboard");
+      setCurrentPageTitle("Vendedor");
     });
   },
 });

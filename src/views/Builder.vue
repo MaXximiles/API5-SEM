@@ -139,7 +139,10 @@
               <label class="col-lg-3 col-form-label text-lg-end">Loader:</label>
               <div class="col-lg-9 col-xl-4">
                 <div
-                  class="form-check form-check-custom form-check-solid form-switch mb-2"
+                  class="
+                    form-check form-check-custom form-check-solid form-switch
+                    mb-2
+                  "
                 >
                   <input
                     class="form-check-input"
@@ -176,12 +179,24 @@
                 <div class="row g-9 mb-3">
                   <div class="col-6">
                     <label
-                      class="btn btn-outline btn-outline-dashed btn-outline-default d-flex flex-column text-start p-6"
+                      class="
+                        btn btn-outline btn-outline-dashed btn-outline-default
+                        d-flex
+                        flex-column
+                        text-start
+                        p-6
+                      "
                       for="sketchy-1"
                     >
                       <span class="d-flex mb-2">
                         <span
-                          class="form-check form-check-custom form-check-solid form-check-sm me-5"
+                          class="
+                            form-check
+                            form-check-custom
+                            form-check-solid
+                            form-check-sm
+                            me-5
+                          "
                         >
                           <input
                             class="form-check-input"
@@ -198,18 +213,35 @@
                         style="
                           background-image: url('media/illustrations/sketchy-1/1.png');
                         "
-                        class="d-block h-200px w-100 bgi-no-repeat bgi-size-contain bgi-position-center"
+                        class="
+                          d-block
+                          h-200px
+                          w-100
+                          bgi-no-repeat bgi-size-contain bgi-position-center
+                        "
                       ></span>
                     </label>
                   </div>
                   <div class="col-6">
                     <label
-                      class="btn btn-outline btn-outline-dashed btn-outline-default d-flex flex-column text-start p-6"
+                      class="
+                        btn btn-outline btn-outline-dashed btn-outline-default
+                        d-flex
+                        flex-column
+                        text-start
+                        p-6
+                      "
                       for="sigma-1"
                     >
                       <span class="d-flex mb-2">
                         <span
-                          class="form-check form-check-custom form-check-solid form-check-sm me-5"
+                          class="
+                            form-check
+                            form-check-custom
+                            form-check-solid
+                            form-check-sm
+                            me-5
+                          "
                         >
                           <input
                             class="form-check-input"
@@ -226,18 +258,35 @@
                         style="
                           background-image: url('media/illustrations/sigma-1/1.png');
                         "
-                        class="d-block h-200px w-100 bgi-no-repeat bgi-size-contain bgi-position-center"
+                        class="
+                          d-block
+                          h-200px
+                          w-100
+                          bgi-no-repeat bgi-size-contain bgi-position-center
+                        "
                       ></span>
                     </label>
                   </div>
                   <div class="col-6">
                     <label
-                      class="btn btn-outline btn-outline-dashed btn-outline-default d-flex flex-column text-start p-6"
+                      class="
+                        btn btn-outline btn-outline-dashed btn-outline-default
+                        d-flex
+                        flex-column
+                        text-start
+                        p-6
+                      "
                       for="dozzy-1"
                     >
                       <span class="d-flex mb-2">
                         <span
-                          class="form-check form-check-custom form-check-solid form-check-sm me-5"
+                          class="
+                            form-check
+                            form-check-custom
+                            form-check-solid
+                            form-check-sm
+                            me-5
+                          "
                         >
                           <input
                             class="form-check-input"
@@ -254,18 +303,35 @@
                         style="
                           background-image: url('media/illustrations/dozzy-1/1.png');
                         "
-                        class="d-block h-200px w-100 bgi-no-repeat bgi-size-contain bgi-position-center"
+                        class="
+                          d-block
+                          h-200px
+                          w-100
+                          bgi-no-repeat bgi-size-contain bgi-position-center
+                        "
                       ></span>
                     </label>
                   </div>
                   <div class="col-6">
                     <label
-                      class="btn btn-outline btn-outline-dashed btn-outline-default d-flex flex-column text-start p-6"
+                      class="
+                        btn btn-outline btn-outline-dashed btn-outline-default
+                        d-flex
+                        flex-column
+                        text-start
+                        p-6
+                      "
                       for="unitedpalms-1"
                     >
                       <span class="d-flex mb-2">
                         <span
-                          class="form-check form-check-custom form-check-solid form-check-sm me-5"
+                          class="
+                            form-check
+                            form-check-custom
+                            form-check-solid
+                            form-check-sm
+                            me-5
+                          "
                         >
                           <input
                             class="form-check-input"
@@ -282,7 +348,12 @@
                         style="
                           background-image: url('media/illustrations/unitedpalms-1/1.png');
                         "
-                        class="d-block h-200px w-100 bgi-no-repeat bgi-size-contain bgi-position-center"
+                        class="
+                          d-block
+                          h-200px
+                          w-100
+                          bgi-no-repeat bgi-size-contain bgi-position-center
+                        "
                       ></span>
                     </label>
                   </div>
@@ -312,7 +383,10 @@
                 />
 
                 <label
-                  class="form-check form-check-custom form-check-solid form-switch mb-5"
+                  class="
+                    form-check form-check-custom form-check-solid form-switch
+                    mb-5
+                  "
                 >
                   <input
                     class="form-check-input"
@@ -323,7 +397,10 @@
                 </label>
 
                 <label
-                  class="form-check form-check-custom form-check-solid form-switch mb-5"
+                  class="
+                    form-check form-check-custom form-check-solid form-switch
+                    mb-5
+                  "
                 >
                   <input
                     class="form-check-input"
@@ -382,7 +459,10 @@
               <div class="col-lg-9 col-xl-4">
                 <input type="hidden" v-model="config.toolbar.display" />
                 <div
-                  class="form-check form-check-custom form-check-solid form-switch mb-2"
+                  class="
+                    form-check form-check-custom form-check-solid form-switch
+                    mb-2
+                  "
                 >
                   <input
                     class="form-check-input"
@@ -452,7 +532,10 @@
                 <span class="switch switch-icon">
                   <input type="hidden" v-model="config.aside.display" />
                   <div
-                    class="form-check form-check-custom form-check-solid form-switch mb-2"
+                    class="
+                      form-check form-check-custom form-check-solid form-switch
+                      mb-2
+                    "
                   >
                     <input
                       class="form-check-input"
@@ -472,7 +555,10 @@
                 <span class="switch switch-icon">
                   <input type="hidden" v-model="config.aside.minimized" />
                   <div
-                    class="form-check form-check-custom form-check-solid form-switch mb-2"
+                    class="
+                      form-check form-check-custom form-check-solid form-switch
+                      mb-2
+                    "
                   >
                     <input
                       class="form-check-input"

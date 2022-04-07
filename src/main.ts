@@ -1,5 +1,8 @@
 import { createApp } from "vue";
 import App from "./App.vue";
+import axios from 'axios';
+
+//axios.defaults.baseURL = 'http://localhost:8081/' 
 
 /*
 TIP: To get started with clean router change path to @/router/clean.ts.
@@ -16,9 +19,9 @@ import { initInlineSvg } from "@/core/plugins/inline-svg";
 import { initVeeValidate } from "@/core/plugins/vee-validate";
 
 import "@/core/plugins/prismjs";
-import "bootstrap";
+import "bootstrap"; 
 
-const app = createApp(App);
+const app = createApp(App).use(store);
 
 app.use(store);
 app.use(router);

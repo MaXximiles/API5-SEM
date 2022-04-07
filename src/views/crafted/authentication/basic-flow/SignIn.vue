@@ -13,7 +13,7 @@
 
       <div class="fv-row mb-10">
         <label class="form-label fs-6 fw-bolder text-dark">Email</label>
-        <Field class="form-control form-control-lg form-control-solid" type="text" name="email" placeholder="Email" autocomplete="off"/>
+        <Field class="form-control form-control-lg form-control-solid" type="text" name="email" placeholder="Email" />
 
         <div class="fv-plugins-message-container">
           <div class="fv-help-block">
@@ -95,8 +95,11 @@ export default defineComponent({
         submitButton.value.setAttribute("data-kt-indicator", "on");
       }
 
+
+
       // Send login request
-      await store.dispatch(Actions.LOGIN, values);
+      await store.dispatch(Actions.LOGIN, values); 
+      console.log(values);
       const [errorName] = Object.keys(store.getters.getErrors);
       const error = store.getters.getErrors[errorName];
 
@@ -110,11 +113,9 @@ export default defineComponent({
           customClass: {
             confirmButton: "btn fw-bold btn-light-primary",
           },
-        }).then(function () {
-          // Go to page after successfully login
-          router.push({ name: "dashboard" });
-        });
-      } else {
+        }).then(function () {router.push({ name: "dashboard" }); });
+      } 
+      else {
         Swal.fire({
           text: error[0],
           icon: "error",
