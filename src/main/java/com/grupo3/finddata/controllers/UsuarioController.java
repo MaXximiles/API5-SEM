@@ -60,10 +60,10 @@ public class UsuarioController
 	{
 	    var usu = new Usuario();
 
-	    usu.setUsu_nome(usuario.getUsu_nome());
-	    usu.setUsu_email(usuario.getUsu_email());
-	    usu.setUsu_senha(usuario.getUsu_senha());
-	    usu.setUsu_nivel(usuario.getUsu_nivel());
+	    usu.setUsunome(usuario.getUsunome());
+	    usu.setUsuemail(usuario.getUsuemail());
+	    usu.setUsusenha(usuario.getUsusenha());
+	    usu.setUsunivel(usuario.getUsunivel());
 	    usuarioRepository.save(usu);
 
 	 }
@@ -79,10 +79,10 @@ public class UsuarioController
 	    {     
 		      var usu2 = usu.get();
 
-		      usu2.setUsu_nome(usuario.getUsu_nome());
-			  usu2.setUsu_email(usuario.getUsu_email());
-			  usu2.setUsu_senha(usuario.getUsu_senha());
-			  usu2.setUsu_nivel(usuario.getUsu_nivel());
+		      usu2.setUsunome(usuario.getUsunome());
+			  usu2.setUsuemail(usuario.getUsuemail());
+			  usu2.setUsusenha(usuario.getUsusenha());
+			  usu2.setUsunivel(usuario.getUsunivel());
 			  usuarioRepository.save(usu2);
 
 		} else { throw new Exception("Cidade não encontrada"); }
@@ -114,15 +114,15 @@ public class UsuarioController
 	@PostMapping("/login")
 	public UsuarioRs Logar(@RequestBody Usuario usuario) throws Exception
 	{
-	    var user = usuarioRepository.SelectUsuarioEmail(usuario.getUsu_email(), usuario.getUsu_senha());
+	    var user = usuarioRepository.SelectUsuarioEmail(usuario.getUsuemail(), usuario.getUsusenha());
 
 	    try 
 	    {
-	      Long UserId = user.get(0).getUsu_id();
-	      String UserSenha = user.get(0).getUsu_senha();
-	      String UserEmail = user.get(0).getUsu_email();
-	      String UserNome = user.get(0).getUsu_nome();
-	      String UserNivel = user.get(0).getUsu_nivel();
+	      Long UserId = user.get(0).getUsuid();
+	      String UserSenha = user.get(0).getUsusenha();
+	      String UserEmail = user.get(0).getUsuemail();
+	      String UserNome = user.get(0).getUsunome();
+	      String UserNivel = user.get(0).getUsunivel();
 	      
 	      if (user.isEmpty() == false) 
 	      {

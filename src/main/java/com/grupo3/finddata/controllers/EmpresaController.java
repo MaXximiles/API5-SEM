@@ -2,6 +2,7 @@ package com.grupo3.finddata.controllers;
 
 import java.util.List;
 import java.util.stream.Collectors;
+import java.util.Collections;
 
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -42,14 +43,15 @@ public class EmpresaController
 	  return EmpresaRs.converter(emp);
 	}
 	  
-    // SELECT por cnpj
-	@GetMapping("/filtrocnpj") 
-	public List<EmpresaRs> findEmpresaByempcnpj(@RequestParam("cnpj") String cnpj)
+    // SELECT por nome
+	@GetMapping("/filtronome") 
+	public List<EmpresaRs> findEmpresaByempnome(@RequestParam(value = "nome", required = false) String nome)
 	{
-	    return this.empresaRepository.findEmpresaByempcnpjContains(cnpj).stream().map(EmpresaRs::converter).collect(Collectors.toList());
+		var empresa = empresaRepository.SelectEmpNome(nome);
+		return empresa.stream().map(EmpresaRs::converter).collect(Collectors.toList());
+	    //return this.empresaRepository.findEmpresaByempnomeContains(nome).stream().map(EmpresaRs::converter).collect(Collectors.toList());
 	}
-	
-	
+		
 	// FIM DOS SELECT's **********************************************************************
 	
 	

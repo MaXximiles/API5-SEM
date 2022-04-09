@@ -5,51 +5,71 @@ import com.grupo3.finddata.classes.Usuario;
 
 public class UsuarioRs {
 	
-	private Long usu_id;
-	private String usu_nome;
-	private String usu_email;
-	private String usu_senha;
-	private String usu_nivel;
+	private Long usuid;
+	private String usunome;
+	private String usuemail;
+	private String ususenha;
+	private String usunivel;
 	
-	public Long getUsu_id() {
-		return usu_id;
-	}
-	public void setUsu_id(Long usu_id) {
-		this.usu_id = usu_id;
-	}
-	public String getUsu_nome() {
-		return usu_nome;
-	}
-	public void setUsu_nome(String usu_nome) {
-		this.usu_nome = usu_nome;
-	}
-	public String getUsu_email() {
-		return usu_email;
-	}
-	public void setUsu_email(String usu_email) {
-		this.usu_email = usu_email;
-	}
-	public String getUsu_senha() {
-		return usu_senha;
-	}
-	public void setUsu_senha(String usu_senha) {
-		this.usu_senha = usu_senha;
-	}
-	public String getUsu_nivel() {
-		return usu_nivel;
-	}
-	public void setUsu_nivel(String usu_nivel) {
-		this.usu_nivel = usu_nivel;
-	}
 	
+	public Long getUsuid() {
+		return usuid;
+	}
+
+
+	public void setUsuid(Long usuid) {
+		this.usuid = usuid;
+	}
+
+
+	public String getUsunome() {
+		return usunome;
+	}
+
+
+	public void setUsunome(String usunome) {
+		this.usunome = usunome;
+	}
+
+
+	public String getUsuemail() {
+		return usuemail;
+	}
+
+
+	public void setUsuemail(String usuemail) {
+		this.usuemail = usuemail;
+	}
+
+
+	public String getUsusenha() {
+		return ususenha;
+	}
+
+
+	public void setUsusenha(String ususenha) {
+		this.ususenha = ususenha;
+	}
+
+
+	public String getUsunivel() {
+		return usunivel;
+	}
+
+
+	public void setUsunivel(String usunivel) {
+		this.usunivel = usunivel;
+	}
+
+
 	public static UsuarioRs converter(Usuario usuario) 
 	{
 			var usu = new UsuarioRs();
-			usu.setUsu_id(usuario.getUsu_id());
-			usu.setUsu_nome(usuario.getUsu_nome());
-			usu.setUsu_email(usuario.getUsu_email());
-			usu.setUsu_senha(usuario.getUsu_senha());
-			usu.setUsu_nivel(usuario.getUsu_nivel());
+			usu.setUsuid(usuario.getUsuid());
+			usu.setUsunome(usuario.getUsunome());
+			usu.setUsuemail(usuario.getUsuemail());
+			usu.setUsusenha(usuario.getUsusenha());
+			usu.setUsunivel(usuario.getUsunivel());
 			return usu;
 	}
 	
