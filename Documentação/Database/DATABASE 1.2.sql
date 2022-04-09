@@ -1,17 +1,18 @@
 ###################  BASE DE DADOS DO PROJETO FIND DATA  #################
-####  ULTIMA MODIFICAÇÃO FEITA EM 28/03/2022 AS 20:40 POR MAXIMILES  #####
+####  ULTIMA MODIFICAÇÃO FEITA EM 06/04/2022 AS 15:40 POR MAXIMILES  #####
 ##########################################################################
 
 USE find_data;
 
 CREATE TABLE empresas 
 (
-	emp_id LONG,
+	emp_id INT AUTO_INCREMENT,
     emp_nome VARCHAR(80),
     emp_cnpj VARCHAR(20),
-	cid_id LONG,
-    cnae_id LONG,
-    emp_origem VARCHAR(40)
+	cid_id VARCHAR(20),
+    cnae_id VARCHAR(20),
+    emp_origem VARCHAR(40),
+    PRIMARY KEY(emp_id)
  );
 
 CREATE TABLE consumo
@@ -37,13 +38,13 @@ CREATE TABLE cnae
     cnae_descricao VARCHAR(255)
 );
 
-CREATE TABLE vendedor
+CREATE TABLE usuarios
 (
-	ven_id LONG,
-    ven_nome VARCHAR(80),
-    ven_cpf VARCHAR(20),
-    ven_email VARCHAR(80),
-    ven_senha VARCHAR(255)
+	usu_id LONG,
+    usu_nome VARCHAR(80),
+    usu_email VARCHAR(80),
+    usu_senha VARCHAR(255),
+    usu_nivel VARCHAR(40)
 );
 
 ############# FIM DA CRIAÇÃO DE TABELAS ################
