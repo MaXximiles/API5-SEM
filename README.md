@@ -5,6 +5,19 @@ Repositório da API do 5º Semestre do curso de Banco de Dados na FATEC
 ## 💡 Tecnologias
 
 As seguintes tecnologias foram utilizadas no desenvolvimento do projeto:
+ - VUE
+ - SCSS
+ - JAVA
+ - JavaScript
+ - HTML
+ - TypeScript
+ - SpringBoot
+ - Visual Studio Code
+ - MySQL
+ - Firebase
+ - Heroku
+ <!-- - MySQL Cloud --> 
+
 
 
 ## Integrantes:
@@ -29,8 +42,12 @@ Contendo mais de 500 produtos em seu catálogo,  a SPC mantém relações comerc
 O sistema Find Data gerencia potenciais clientes para vendedores da SPC, facilitando a conexão entre vendedor e potencial cliente. Filtrando uma base de dados disponibilizada pela SPC a Find Data recolhe e processa esses dados para filtrar potenciais empresas com base em consumo mensal.
 
  ## Documentação:
- 
- 
+ <!-- - Manual de intalação.
+  - Modelos dos Bancos de Dados.
+  - Backlog.
+  - User Stories. -->
+   <!-- - Wireframes. (NÃO TEMOS)--> 
+  
 <h2>Sprints</h2>
        <table>
               <thead>
@@ -40,13 +57,13 @@ O sistema Find Data gerencia potenciais clientes para vendedores da SPC, facilit
               </thead>
               <tbody>
                      <tr>
-                            <td align=center>Sprint 1<br></td>
-                            <td > <p align=center>   
+                            <td align=center>Sprint 1<br> 25/03 a 14/04  </td>
+                            <td ><p align=center> Tela de Login; &nbsp Modulo de cadastro; Relatório de Empresas; &nbsp Relatório de Vendedores; &nbsp Banco de Dados SYS; &nbsp Banco de Dados DW; &nbsp <p align=center>   
                             </td>
                             <td><p><a href="https://github.com/MaXximiles/API5-SEM/blob/sprint-1/README.md">Ver mais...</a></p></td>
                      </tr>
                      <tr>
-                            <td align=center>Sprint 2<br></td>
+                            <td align=center>Sprint 2<br> 25/04 a 15/05</td>
                             <td> <p align=center>                  
                             <p align=center>                          
                             </p>
@@ -54,7 +71,7 @@ O sistema Find Data gerencia potenciais clientes para vendedores da SPC, facilit
                             <td><p><a href="https://github.com/MaXximiles/API5-SEM/blob/sprint-2/README.md">Ver mais...</a></p></td>
                      </tr>
                      <tr>
-                            <td align=center>Sprint 3<br></td>
+                            <td align=center>Sprint 3<br> 16/05 a 05/06</td>
                             <td> <p align=center>                          
                       <p align=center>                          
                       </p>
