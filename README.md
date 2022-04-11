@@ -14,15 +14,18 @@ Resumo de modificações:
   - Adição do Modulo de Cadastro;
   - Tela de cadastro de empresas;
   - Tela de cadastro de vendedores;
-  - Tela de carteira/vendedor;
+  - Tela de carteira/vendedor.
 - Back-end:
   - Adição do Modulo de Cadastro;
   - CRUD de empresas;
-  - CRUD de vendedores;
-- Banco de Dados:
+  - CRUD de vendedores.
+- Banco de Dados SYS:
   - Criação do modelo base de Banco de Dados;
-  - Criação do modelo Conceitual do Banco de Dados;
-
+  - Criação do modelo Conceitual do Banco de Dados.
+- Banco de Dados DW:
+  - Extração das Bases;  
+  - Criação do modelo base de Banco de Dados DW;
+  - Criação do modelo Conceitual do Banco de Dados DW.
 
 ### APRESENTAÇÃO
 
