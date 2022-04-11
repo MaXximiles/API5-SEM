@@ -8,7 +8,7 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="usuario")
+@Table(name="usuarios")
 public class Usuario {
 	
 	@Id
@@ -68,10 +68,4 @@ public class Usuario {
 		this.usunivel = usunivel;
 	}
 	
-
-	
-	
-	
-	
-
 }

@@ -15,7 +15,7 @@
     <path d="M11 19C6.55556 19 3 15.4444 3 11C3 6.55556 6.55556 3 11 3C15.4444 3 19 6.55556 19 11C19 15.4444 15.4444 19 11 19ZM11 5C7.53333 5 5 7.53333 5 11C5 14.4667 7.53333 17 11 17C14.4667 17 17 14.4667 17 11C17 7.53333 14.4667 5 11 5Z" fill="currentColor"></path>
     </svg>
     </span>
-    <input type="text" v-on:keyup="pesquisarUsuarios" v-model="pesquser" data-kt-user-table-filter="search"  class="form-control form-control-solid w-250px ps-14" placeholder="Pesquisar Usuarios">
+    <input type="text" v-on:keyup="pesquisarUsuarios" v-model="pesqusu" data-kt-user-table-filter="search"  class="form-control form-control-solid w-250px ps-14" placeholder="Pesquisar Usuarios">
     </div>
   </div>  
 
@@ -71,10 +71,39 @@
 
     <div class="fv-row mb-7 fv-plugins-icon-container">
       <label class="required fw-bold fs-6 mb-2">Nome: </label>
-      <input type="text" id="emp_nome" name="emp_nome" v-model="empnome" class="form-control form-control-solid mb-3 mb-lg-0" placeholder="Nome da Empresa">
+      <input type="text" id="usunome" name="usunome" v-model="usunome" class="form-control form-control-solid mb-3 mb-lg-0" placeholder="Nome do usuário">
       <div class="fv-plugins-message-container invalid-feedback"></div>
     </div>
 
+    <div class="fv-row mb-7 fv-plugins-icon-container">
+      <label class="required fw-bold fs-6 mb-2">Email: </label>
+      <input type="text" id="usuemail" name="usuemail" v-model="usuemail" class="form-control form-control-solid mb-3 mb-lg-0" placeholder="Email do usuário">
+      <div class="fv-plugins-message-container invalid-feedback"></div>
+    </div>
+     
+
+    <div class="fv-row mb-7 fv-plugins-icon-container">
+      <label class="required fw-bold fs-6 mb-2">Senha: </label>
+      <input type="password" id="ususenha" name="ususenha" v-model="ususenha" class="form-control form-control-solid mb-3 mb-lg-0" placeholder="Digite a senha">
+      <div class="fv-plugins-message-container invalid-feedback"></div>
+    </div>
+
+    <div class="fv-row mb-7 fv-plugins-icon-container">
+      <label class="required fw-bold fs-6 mb-2">Confirme a senha: </label>
+      <input type="password" id="ususenha2" name="ususenha2" v-model="ususenha2" class="form-control form-control-solid mb-3 mb-lg-0" placeholder="Confirme a senha">
+      <div class="fv-plugins-message-container invalid-feedback"></div>
+    </div>
+
+
+    <div class="fv-row mb-7 fv-plugins-icon-container">
+      <label class="required fw-bold fs-6 mb-2">Nível: </label>
+      <select id="usunivel" name="usunivel" v-model="usunivel" class="form-control form-control-solid mb-3 mb-lg-0">
+        <option >Administrador</option>
+        <option >Vendedor</option>
+        <option >Inteligência de Vendas</option>
+      </select>
+      <div class="fv-plugins-message-container invalid-feedback"></div>
+    </div>
     
     </div>
 
@@ -152,7 +181,7 @@
   <!-- Colocar link do menu de EDITAR empresa-->
   <div class="menu-item px-3">
   <!--<a data-bs-target="#kt_modal_add_user"  class="menu-link px-3">Editar</a>-->
-  <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#kt_modal_add_user" @click="formEditarUsuario(usuario)">Editar</button>
+  <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#kt_modal_add_user" @click="formEditarUsuarios(usuario)">Editar</button>
   </div>
 
   <!-- Colocar link do menu de DELETAR empresa-->
@@ -187,6 +216,7 @@ import { defineComponent, onMounted } from "vue";
 import { setCurrentPageTitle } from "@/core/helpers/breadcrumb";
 import { mapMutations, mapState } from 'vuex';
 import axios from "axios";
+import * as Yup from "yup";
 
 export default {
   name: 'usuario',
@@ -196,6 +226,7 @@ export default {
       usunome: '',
       usuemail: '',
       ususenha: '',
+      ususenha2: '',
       usunivel: '',
 	    pesqusu: '',
       ArrayUsuarios: []
@@ -203,26 +234,35 @@ export default {
   },
   methods:
   {
+    
+
     addUsuario() //Cadastro de usuarios
-	{
-      axios.post('usuario/', 
-	   { 
-		    
-          usunome: this.usunome, 
-          usuemail: this.usuemail,
-          ususenha: this.ususenha,
-          usunivel: this.usunivel
-		 })
-     .then(res => {
-			console.log(res);
-			// Limpando campos do formulario
-			  this.usunome = '';
-        this.usuemail = '';
-        this.ususenha = '';
-        this.usunivel = '';
-			this.carregarUsuarios();
-			})
-        .catch(error => {console.log(error);})
+	  {
+      if(this.ususenha == this.ususenha2) // Confirmando se senha e confirmação de senha coincidem
+      {
+          axios.post('usuario/', 
+          {  
+                usunome: this.usunome, 
+                usuemail: this.usuemail,
+                ususenha: this.ususenha,
+                usunivel: this.usunivel
+          })
+          .then(res => {
+            console.log(res);
+            // Limpando campos do formulario
+              this.usunome = '';
+              this.usuemail = '';
+              this.ususenha = '';
+              this.ususenha2 = '';
+              this.usunivel = '';
+            this.carregarUsuarios();
+            })
+              .catch(error => {console.log(error);})
+      }
+      else
+      {
+        alert("Senhas não conferem !");
+      }
     },
 	carregarUsuarios() // Lista usuarios na tabela
 	{
@@ -246,59 +286,63 @@ export default {
 	},
 	atualizarUsuarios(usuid,usuario) // Editar Usuario
 	{
-	   axios.put('usuario/'+this.usuid,
-	   { headers: { Accept: 'application/json' }},
-	   { 
-            usunome: usuario.usunome, 
-            usuemail: empresa.usuemail,
-            ususenha: empresa.ususenha,
-            usunivel: empresa.usunivel
-		})
-      .then(res => 
-		{
-			console.log(res);
-			this.carregarUsuarios();
-			
-		})
-        .catch(error => {console.log(error);})
+    if(this.ususenha == this.ususenha2) // Confirmando se senha e confirmação de senha coincidem
+    {
+      axios.put('usuario/'+this.usuid,
+      { headers: { Accept: 'application/json' }},
+      { 
+              usunome: usuario.usunome, 
+              usuemail: empresa.usuemail,
+              ususenha: empresa.ususenha,
+              usunivel: empresa.usunivel
+      })
+        .then(res => 
+      {
+        console.log(res);
+        this.carregarUsuarios();
+        
+      })
+          .catch(error => {console.log(error);})
+    }
+    else
+    {
+      alert("Senhas não conferem !");
+    }
+	  
 	},
-	formEditarUsuarios(usuario) // Parei aqui ********************************************** Arrumar no backend tbm
+	formEditarUsuarios(usuario)
 	{
-		this.usuid = empresa.empid;
-		this.usunome = empresa.empnome;
-		this.usuemail = empresa.empcnpj;
-		this.ususenha = empresa.emporigem;
-		this.usunivel = empresa.cidid;
+		this.usuid = usuario.usuid;
+		this.usunome = usuario.usunome;
+		this.usuemail = usuario.usuemail;
+		this.ususenha = usuario.ususenha;
+		this.usunivel = usuario.usunivel;
 
-		atualizarEmpresa(this.empid, empresa);
+		this.atualizarUsuarios(this.usuid, usuario);
 	},
-	deletarEmpresa(empresa)
+	deletarUsuario(usuario)
 	{
 		if(confirm("Deseja realmente excluir registro? ") == true)
 		{
-			this.empid = empresa.empid;
-			axios.delete('empresas/'+this.empid)
+			this.usuid = usuario.usuid;
+			axios.delete('usuario/'+this.usuid)
 			.then(res => 
 			{
 				console.log(res);
-				this.carregarEmpresas();
+				this.carregarUsuarios();
 			})
         	.catch(error => {console.log(error);})
 		}
-		else{ this.carregarEmpresas();}
-
-		
+		else{ this.carregarUsuarios();}
 	}
-
-	
-
-  },
-  created () { this.carregarEmpresas(); }, // Carregando lista de empresas na tabela ao abrir pagina
+},
+  created () { this.carregarUsuarios(); }, // Carregando lista de usuarios na tabela ao abrir pagina
   mutations: {  },
-  setup() {
-    onMounted(() => {
-      setCurrentPageTitle("Empresa");
-    });
+  setup() 
+  {
+    
+
+    onMounted(() => { setCurrentPageTitle("Usuários"); });
   },
 };
 </script>
