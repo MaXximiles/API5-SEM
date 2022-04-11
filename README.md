@@ -14,7 +14,6 @@ Resumo de modificações:
   - Adição do Modulo de Cadastro;
   - Tela de cadastro de empresas;
   - Tela de cadastro de vendedores;
-  - Tela de carteira/vendedor.
 - Back-end:
   - Adição do Modulo de Cadastro;
   - CRUD de empresas;
