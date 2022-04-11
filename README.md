@@ -3,8 +3,7 @@
 ### Proposta:
 **Adição do Modulo de cadastro para melhor gerenciamento de vendedores e empresas.**
 <p align=center>
- <img src="https://github.com/MaXximiles/API5-SEM/blob/main/Documenta%C3%A7%C3%A3o/User%20Story%20Cards/USC02.png" width="350">
- <img src="https://github.com/MaXximiles/API5-SEM/blob/main/Documenta%C3%A7%C3%A3o/User%20Story%20Cards/USC01.png" width="350"></br>
+<img src="https://github.com/MaXximiles/API5-SEM/blob/main/Documenta%C3%A7%C3%A3o/User%20Story%20Cards/USC01.png" width="350"></br>
 
 </p></br><h1></h1>
 
@@ -20,7 +19,6 @@ Resumo de modificações:
   - Adição do Modulo de Cadastro;
   - CRUD de empresas;
   - CRUD de vendedores;
-  - CRUD de carteira/vendedor;
 - Banco de Dados:
   - Criação do modelo base de Banco de Dados;
   - Criação do modelo Conceitual do Banco de Dados;
