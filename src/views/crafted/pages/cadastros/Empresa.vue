@@ -17,7 +17,7 @@
 					<path d="M11 19C6.55556 19 3 15.4444 3 11C3 6.55556 6.55556 3 11 3C15.4444 3 19 6.55556 19 11C19 15.4444 15.4444 19 11 19ZM11 5C7.53333 5 5 7.53333 5 11C5 14.4667 7.53333 17 11 17C14.4667 17 17 14.4667 17 11C17 7.53333 14.4667 5 11 5Z" fill="currentColor"></path>
 					</svg>
 					</span>
-					<input type="text" v-on:keyup.enter="pesquisarEmpresas" data-kt-user-table-filter="search"  class="form-control form-control-solid w-250px ps-14" placeholder="Pesquisar Empresas">
+					<input type="text" v-on:keyup="pesquisarEmpresas" v-model="pesqemp" data-kt-user-table-filter="search"  class="form-control form-control-solid w-250px ps-14" placeholder="Pesquisar Empresas">
 				</div>
       </div>  
 
@@ -42,6 +42,7 @@
 					<button type="button" class="btn btn-danger" data-kt-user-table-select="delete_selected">Delete Selected</button>
 					</div>
 				<!--end::Group actions-->
+
 
 											<!--begin::Modal - Add task-->
 											<div class="modal fade" id="kt_modal_add_user" tabindex="-1" aria-hidden="true">
@@ -168,25 +169,27 @@
 						    </td>
 													
 							<td class="text-end">
-								<a href="#" class="btn btn-light btn-active-light-primary btn-sm" data-kt-menu-trigger="click" data-kt-menu-placement="bottom-end">AÇÕES 
+								<a href="#" class="btn btn-light btn-active-light-primary btn-sm" data-kt-menu-trigger="click" data-kt-menu-placement="bottom-end"> AÇÕES
 								<span class="svg-icon svg-icon-5 m-0">
-									<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+									<svg xmlns="http://www.w3.org/2000/svg" width="24" viewBox="0 0 24 24" fill="none">
 									<path d="M11.4343 12.7344L7.25 8.55005C6.83579 8.13583 6.16421 8.13584 5.75 8.55005C5.33579 8.96426 5.33579 9.63583 5.75 10.05L11.2929 15.5929C11.6834 15.9835 12.3166 15.9835 12.7071 15.5929L18.25 10.05C18.6642 9.63584 18.6642 8.96426 18.25 8.55005C17.8358 8.13584 17.1642 8.13584 16.75 8.55005L12.5657 12.7344C12.2533 13.0468 11.7467 13.0468 11.4343 12.7344Z" fill="currentColor"></path>
 									</svg>
 								</span>
+								
 								</a>
 
-								<div class="menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-600 menu-state-bg-light-primary fw-bold fs-7 w-125px py-4" data-kt-menu="true">
-															
-                                <!-- Colocar link do menu de EDITAR empresa-->
-                                <div class="menu-item px-3">
-								<a href="#" class="menu-link px-3">Editar</a>
-								</div>
+								<div class="menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-600 menu-state-bg-light-primary fw-bold fs-7 w-125px py-4" data-kt-menu="true">				
+									<!-- Colocar link do menu de EDITAR empresa-->
+									<div class="menu-item px-3">
+									<!--<a data-bs-target="#kt_modal_add_user"  class="menu-link px-3">Editar</a>-->
+									<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#kt_modal_add_user" @click="formEditarEmpresa(empresa)">Editar</button>
+									</div>
 
-                                <!-- Colocar link do menu de DELETAR empresa-->
-								<div class="menu-item px-3">
-								<a href="#" class="menu-link px-3" data-kt-users-table-filter="delete_row">Excluir</a>
-								</div>
+									<!-- Colocar link do menu de DELETAR empresa-->
+									<div class="menu-item px-3">
+									<!-- <a href="#" class="menu-link px-3" data-kt-users-table-filter="delete_row">Excluir</a> -->
+									<button type="button" class="btn btn-primary" @click="deletarEmpresa(empresa)">Excluir</button>
+									</div>
 								</div>
 							</td>
 						</tr>
@@ -219,20 +222,23 @@ export default {
   name: 'empresa',
   data() {
     return {
+	  empid: '',
       empnome: '',
       empcnpj: '',
       cidid: '',
       cnaeid: '',
       emporigem: '',
+	  pesqemp: '',
       ArrayEmpresas: []
     }
   },
   methods:
   {
-    addEmpresa() 
+    addEmpresa() //Cadastro de empresas
 	{
       axios.post('empresas/', 
 	   { 
+		    
             empnome: this.empnome, 
             empcnpj: this.empcnpj,
             emporigem: this.emporigem,
@@ -241,11 +247,17 @@ export default {
 		})
         .then(res => {
 			console.log(res);
+			// Limpando campos do formulario
+			this.empnome = '';
+            this.empcnpj = '';
+            this.emporigem = '';
+            this.cidid = '';
+            this.cnaeid = '';
 			this.carregarEmpresas();
 			})
         .catch(error => {console.log(error);})
     },
-	carregarEmpresas()
+	carregarEmpresas() // Lista empresas na tabela
 	{
 		axios.get('empresas/', 
         { headers: { Accept: 'application/json' } })
@@ -255,18 +267,68 @@ export default {
         })
         .catch(error => console.log(error))
 	},
-	pesquisarEmpresas()
+	pesquisarEmpresas() // Pesquisa de empresas por nome
 	{
-		axios.get('empresas/filtrocnpj'+this.emp_cnpj, 
+		axios.get('empresas/filtronome?nome='+this.pesqemp, 
         { headers: { Accept: 'application/json' } })
         .then(res => {
           console.log(res)
           this.ArrayEmpresas = res.data
         })
         .catch(error => console.log(error))
+	},
+	atualizarEmpresa(empid,empresa) // Editar Empresa
+	{
+	   axios.put('empresas/'+this.empid,
+	   { headers: { Accept: 'application/json' }},
+	   { 
+            empnome: empresa.empnome, 
+            empcnpj: empresa.empcnpj,
+            emporigem:empresa.emporigem,
+            cidid: empresa.cidid,
+            cnaeid: empresa.cnaeid
+		})
+        .then(res => 
+		{
+			console.log(res);
+			this.carregarEmpresas();
+			
+		})
+        .catch(error => {console.log(error);})
+	},
+	formEditarEmpresa(empresa) 
+	{
+		this.empid = empresa.empid;
+		this.empnome = empresa.empnome;
+		this.empcnpj = empresa.empcnpj;
+		this.emporigem = empresa.emporigem;
+		this.cidid = empresa.cidid;
+		this.cnaeid = empresa.cnaeid;
+
+		atualizarEmpresa(this.empid, empresa);
+	},
+	deletarEmpresa(empresa)
+	{
+		if(confirm("Deseja realmente excluir registro? ") == true)
+		{
+			this.empid = empresa.empid;
+			axios.delete('empresas/'+this.empid)
+			.then(res => 
+			{
+				console.log(res);
+				this.carregarEmpresas();
+			})
+        	.catch(error => {console.log(error);})
+		}
+		else{ this.carregarEmpresas();}
+
+		
 	}
+
+	
+
   },
-  created () { this.carregarEmpresas(); },
+  created () { this.carregarEmpresas(); }, // Carregando lista de empresas na tabela ao abrir pagina
   mutations: {  },
   setup() {
     onMounted(() => {

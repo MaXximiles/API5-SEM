@@ -21,15 +21,9 @@ const routes: Array<RouteRecordRaw> = [
         component: () => import("@/views/crafted/pages/cadastros/Empresa.vue"),
       },
       {
-        path: "/crafted/pages/cadastros/vendedor",
-        name: "vendedor",
-        component: () => import("@/views/crafted/pages/cadastros/Vendedor.vue"),
-      },
-      {
-        path: "/crafted/pages/cadastros/int-vendas",
-        name: "int-vendas",
-        component: () =>
-          import("@/views/crafted/pages/cadastros/Inteligencia.vue"),
+        path: "/crafted/pages/cadastros/usuarios",
+        name: "Usuários",
+        component: () => import("@/views/crafted/pages/cadastros/Usuarios.vue"),
       },
       {
         path: "/crafted/pages/carteira/minhas-empresas",
@@ -44,7 +38,7 @@ const routes: Array<RouteRecordRaw> = [
       },
       {
         path: "/crafted/pages/prospeccao/busca-cliente",
-        name: "Prospecção de Empresas",
+        name: "Busca de Clientes",
         component: () =>
           import("@/views/crafted/pages/prospeccao/BuscaClientes.vue"),
       },

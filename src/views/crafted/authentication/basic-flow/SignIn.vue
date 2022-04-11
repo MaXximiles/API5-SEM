@@ -8,7 +8,7 @@
       <div class="mb-10 bg-light-info p-8 rounded">
         <div class="text-info">
           Utilize o email: <strong>admin@demo.com</strong> e a senha: <strong>demo</strong> para acessar.
-        </div>
+        </div> 
       </div>
 
       <div class="fv-row mb-10">

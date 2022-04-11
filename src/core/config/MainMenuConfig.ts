@@ -32,13 +32,10 @@ const DocMenuConfig = [
             route: "/crafted/pages/cadastros/empresa", //Adicionar pagina
           },
           {
-            heading: "Vendedores",
-            route: "/crafted/pages/cadastros/vendedor", //Adicionar pagina
+            heading: "Usuários",
+            route: "/crafted/pages/cadastros/usuarios", //Adicionar pagina
           },
-          {
-            heading: "Inteligência de Vendas",
-            route: "/crafted/pages/cadastros/int-vendas", //Adicionar pagina
-          },
+          
         ],
       },
       {
