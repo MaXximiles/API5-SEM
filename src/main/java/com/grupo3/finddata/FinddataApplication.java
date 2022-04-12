@@ -22,7 +22,7 @@ public class FinddataApplication {
 		UrlBasedCorsConfigurationSource urlBasedCorsConfigurationSource = new UrlBasedCorsConfigurationSource();
 		CorsConfiguration corsConfiguration = new CorsConfiguration();
 		corsConfiguration.setAllowCredentials(true);
-		corsConfiguration.setAllowedOrigins(asList("http://localhost:8080, https://finddata-frontend.web.app/"));
+		corsConfiguration.setAllowedOrigins(asList("http://localhost:8080", "https://finddata-frontend.web.app"));
 		corsConfiguration.setAllowedHeaders(asList("Origin", "Access-Control-Allow-Origin", "Content-Type",
 				"Accept", "Jwt-Token", "Authorization", "Origin, Accept", "X-Requested-With",
 				"Access-Control-Request-Method", "Access-Control-Request-Headers"));
