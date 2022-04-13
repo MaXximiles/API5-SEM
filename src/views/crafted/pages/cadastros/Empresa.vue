@@ -236,7 +236,7 @@ export default {
   {
     addEmpresa() //Cadastro de empresas
 	{
-      axios.post('empresas/', 
+       axios.post('empresas/', 
 	   { 
 		    
             empnome: this.empnome, 

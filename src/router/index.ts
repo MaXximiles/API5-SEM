@@ -4,7 +4,7 @@ import { Mutations, Actions } from "@/store/enums/StoreEnums";
 import JwtService from "@/core/services/JwtService";
 
 const routes: Array<RouteRecordRaw> = [
-  {
+  { 
     path: "/",
     redirect: "/dashboard",
     component: () => import("@/layout/Layout.vue"),

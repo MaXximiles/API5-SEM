@@ -13,7 +13,7 @@
 
       <div class="fv-row mb-10">
         <label class="form-label fs-6 fw-bolder text-dark">Email</label>
-        <Field class="form-control form-control-lg form-control-solid" type="text" name="email" placeholder="Email" />
+        <Field class="form-control form-control-lg form-control-solid" type="text" name="usuemail" placeholder="Email" />
 
         <div class="fv-plugins-message-container">
           <div class="fv-help-block">
@@ -28,7 +28,7 @@
           <router-link to="/password-reset" class="link-primary fs-6 fw-bolder">Esqueceu sua senha?</router-link>
         </div>
 
-        <Field class="form-control form-control-lg form-control-solid" type="password" name="password" placeholder="Senha" autocomplete="off" />
+        <Field class="form-control form-control-lg form-control-solid" type="password" name="ususenha" placeholder="Senha" autocomplete="off" />
 
         <div class="fv-plugins-message-container">
           <div class="fv-help-block">
@@ -61,6 +61,7 @@ import { useStore } from "vuex";
 import { useRouter } from "vue-router";
 import Swal from "sweetalert2/dist/sweetalert2.min.js";
 import * as Yup from "yup";
+import axios from "axios";
 
 export default defineComponent({
   name: "sign-in",
@@ -69,7 +70,8 @@ export default defineComponent({
     Form,
     ErrorMessage,
   },
-  setup() {
+  setup()
+  {
     const store = useStore();
     const router = useRouter();
 
@@ -77,8 +79,8 @@ export default defineComponent({
 
     //Create form validation object
     const login = Yup.object().shape({
-      email: Yup.string().email().required().label("Email"),
-      password: Yup.string().min(4).required().label("Password"),
+      usuemail: Yup.string().email().required().label("Email"),
+      ususenha: Yup.string().min(4).required().label("Password"),
     });
 
     //Form submit function
@@ -95,43 +97,39 @@ export default defineComponent({
         submitButton.value.setAttribute("data-kt-indicator", "on");
       }
 
-
-
       // Send login request
-      await store.dispatch(Actions.LOGIN, values); 
-      console.log(values);
+      await store.dispatch(Actions.LOGIN, values)
+       
       const [errorName] = Object.keys(store.getters.getErrors);
       const error = store.getters.getErrors[errorName];
 
-      if (!error) 
+
+      if (store.getters.currentUser.usuemail)
       {
         Swal.fire({
           text: "Login realizado com sucesso!",
           icon: "success",
           buttonsStyling: false,
           confirmButtonText: "Ok, Vamos lá!",
-          customClass: {
-            confirmButton: "btn fw-bold btn-light-primary",
-          },
+          customClass: { confirmButton: "btn fw-bold btn-light-primary", },
         }).then(function () {router.push({ name: "dashboard" }); });
       } 
-      else {
+      else 
+      {
         Swal.fire({
-          text: error[0],
+          text: "Erro no login, verifique email e senha !",
           icon: "error",
           buttonsStyling: false,
-          confirmButtonText: "Try again!",
-          customClass: {
-            confirmButton: "btn fw-bold btn-light-danger",
-          },
-        });
-      }
+          confirmButtonText: "Tente de novo!",
+          customClass: { confirmButton: "btn fw-bold btn-light-danger", },
+        });    
 
-      //Deactivate indicator
-      submitButton.value?.removeAttribute("data-kt-indicator");
-      // eslint-disable-next-line
+        //Deactivate indicator
+        submitButton.value?.removeAttribute("data-kt-indicator");
+        // eslint-disable-next-line
         submitButton.value!.disabled = false;
-    };
+      };
+    }
 
     return {
       onSubmitLogin,
@@ -141,3 +139,5 @@ export default defineComponent({
   },
 });
 </script>
+
+
