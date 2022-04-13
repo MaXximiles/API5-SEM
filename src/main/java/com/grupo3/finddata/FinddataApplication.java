@@ -15,8 +15,7 @@ public class FinddataApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(FinddataApplication.class, args);
 	}
-	
-	
+		
 	/*@Bean
 	public CorsFilter corsFilter() {
 		UrlBasedCorsConfigurationSource urlBasedCorsConfigurationSource = new UrlBasedCorsConfigurationSource();

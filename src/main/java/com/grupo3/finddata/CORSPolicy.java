@@ -1,9 +1,6 @@
 package com.grupo3.finddata;
 
-import static java.util.Arrays.asList;
-
 import java.util.Arrays;
-import java.util.Collections;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

@@ -16,15 +16,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.grupo3.finddata.classes.Cidade;
 import com.grupo3.finddata.classes.Usuario;
-import com.grupo3.finddata.classes.dto.CidadeRq;
-import com.grupo3.finddata.classes.dto.CidadeRs;
-import com.grupo3.finddata.classes.dto.EmpresaRs;
 import com.grupo3.finddata.classes.dto.UsuarioRq;
 import com.grupo3.finddata.classes.dto.UsuarioRs;
-import com.grupo3.finddata.repositorys.CidadeRepository;
 import com.grupo3.finddata.repositorys.UsuarioRepository;
+
+
 
 @RestController
 @RequestMapping(value = "/usuario")
@@ -156,7 +153,7 @@ public class UsuarioController
 	        } 
 	        else 
 	        {
-	          System.out.println("Senha nÃ£o confere");
+	          System.out.println("Senha não confere");
 	          return null;
 	        }
 	      } 
