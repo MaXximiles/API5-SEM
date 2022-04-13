@@ -20,6 +20,7 @@ import com.grupo3.finddata.classes.Cidade;
 import com.grupo3.finddata.classes.Usuario;
 import com.grupo3.finddata.classes.dto.CidadeRq;
 import com.grupo3.finddata.classes.dto.CidadeRs;
+import com.grupo3.finddata.classes.dto.EmpresaRs;
 import com.grupo3.finddata.classes.dto.UsuarioRq;
 import com.grupo3.finddata.classes.dto.UsuarioRs;
 import com.grupo3.finddata.repositorys.CidadeRepository;
@@ -48,6 +49,15 @@ public class UsuarioController
 	{
 	  var usu = usuarioRepository.getOne(id);
 	  return UsuarioRs.converter(usu);
+	}
+	
+	// SELECT por nome
+	@GetMapping("/filtronome") 
+	public List<UsuarioRs> findUsuarioByusunome(@RequestParam(value = "nome", required = false) String nome)
+	{
+		var usuario = usuarioRepository.SelectUsuarioNome(nome);
+		return usuario.stream().map(UsuarioRs::converter).collect(Collectors.toList());
+	    
 	}
 		  
 		
