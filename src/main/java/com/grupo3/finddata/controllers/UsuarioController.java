@@ -119,46 +119,15 @@ public class UsuarioController
 	
 	
 	@PostMapping("/login")
-	public UsuarioRs Logar(@RequestBody Usuario usuario) throws Exception
+	public Usuario Logar(@RequestBody Usuario usuario) throws Exception
 	{
-	    var user = usuarioRepository.SelectUsuarioEmail(usuario.getUsuemail(), usuario.getUsusenha());
-
-	    try 
-	    {
-	      Long UserId = user.get(0).getUsuid();
-	      String UserSenha = user.get(0).getUsusenha();
-	      String UserEmail = user.get(0).getUsuemail();
-	      String UserNome = user.get(0).getUsunome();
-	      String UserNivel = user.get(0).getUsunivel();
-	      
-	      if (user.isEmpty() == false) 
-	      {
-	        //String SenhaCripto = md5(senha);
-
-	        //if (!senha.equals(SenhaCripto)) 
-	        //{
-	          System.out.println("Login realizado com sucesso");
-
-	          /*
-	           * String Json = "{\"UserID\":\'"+UserId+"\'," +
-	           * "\"UserSenha\":\'"+UserSenha+"'," + "\"UserEmail\":\'"+UserEmail+"'," +
-	           * "\"UserNome\":\'"+UserNome+"'," + "\"UserNivel\":\'"+UserNivel+"'," +
-	           * "\"UserLogin\":\'"+UserLogin+"'"; JSONObject jsonObject = new
-	           * JSONObject(Json);
-	           */
-
-	          //var user1 = usuarioRepository.getOne(UserId);
-	          //return UsuarioRs.converter(user1);
-
-	        } 
-	        else 
-	        {
-	          System.out.println("Senha não confere");
-	          return null;
-	        }
-	      } 
-	    catch (Exception e) { return null;}
-		return null;
-	    } 
+		String email = usuario.getUsuemail();
+		String senha = usuario.getUsusenha();
+			
+	    Usuario user = usuarioRepository.SelectUsuarioEmail(email, senha);
+			    
+	    if(user == null) {return null;}
+	    else{return user;}
+	} 
 	    
 }
