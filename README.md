@@ -23,17 +23,15 @@
       - Cadastro de usuário "Inteligência";
       - Cadastro de usuário "Vendedor".
 
-- <b>Banco de Dados System:</b>
-  - Criação do modelo base do Banco de Dados System;
-  - Criação do modelo Conceitual do Banco de Dados System;
-  - Criação do modelo Lógico do Banco de Dados System;
-  - Criação do script SQL do Banco de Dados System.
-- <b>Banco de Dados Data Warehouse:</b>
-  - Extração das Bases;  
-  - Criação do modelo base do Banco de Dados Data Warehouse;
-  - Criação do modelo Conceitual do Banco de Dados Data Warehouse;
-  - Criação do modelo Lógico do Banco de Dados Data Warehouse;
-  - Criação do script SQL do Banco de Dados Data Warehouse.
+- <b>Banco de Dados:</b>
+  - Extração das Bases; 
+  - Criação do modelo base do Banco de Dados;
+  - Criação do modelo Conceitual do Banco de Dados;
+  - Criação do modelo Lógico do Banco de Dados;
+  - Criação do script SQL do Banco de Dados.
+
+   
+
 
 <!-- ### APRESENTAÇÃO (Colocar após o término da Sprint 1)-->
 
