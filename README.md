@@ -61,7 +61,7 @@ O sistema Find Data gerencia potenciais clientes para vendedores da SPC, facilit
               <tbody>
                      <tr>
                             <td align=center>Sprint 1<br> 25/03 a 14/04  </td>
-                            <td ><p align=center> Tela de Login; &nbsp Módulo de cadastro; CRUD de Empresas; &nbsp CRUD de Vendedores; &nbsp Banco de Dados.  
+                            <td ><p align=center> Tela de Login; &nbsp Módulo de cadastro; CRUD de Empresas; &nbsp CRUD de Vendedores; &nbsp Modelo Conceitual doBanco de Dados; &nbsp Script SQL do Banco de Dados.
                             <p align=center>   
                             </td>
                             <td><p><a href="https://github.com/MaXximiles/API5-SEM/blob/sprint-1/README.md">Ver mais...</a></p></td>
