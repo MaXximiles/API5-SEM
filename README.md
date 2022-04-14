@@ -9,28 +9,35 @@
 
 
 ### Detalhes da Sprint:
-Resumo de modificações:
-- Front-end:
-  - Adição do Modulo de Cadastro;
-  - Tela de cadastro de empresas;
-  - Tela de cadastro de vendedores;
-- Back-end:
-  - Adição do Modulo de Cadastro;
+<b>Resumo de modificações:
+- Front-end e Back-end:</b>
+  - Tela de login;
   - CRUD de empresas;
-  - CRUD de vendedores.
-- Banco de Dados SYS:
-  - Criação do modelo base de Banco de Dados;
-  - Criação do modelo Conceitual do Banco de Dados.
-- Banco de Dados DW:
-  - Extração das Bases;  
-  - Criação do modelo base de Banco de Dados DW;
-  - Criação do modelo Conceitual do Banco de Dados DW.
+  - CRUD de vendedores;
+  - Adição do Módulo de Cadastros:
+    - Cadastro de Clientes;
+    - Cadastro de usuários:
+      - Cadastro de usuário "Administrador";
+      - Cadastro de usuário "Inteligência";
+      - Cadastro de usuário "Vendedor".
 
-### APRESENTAÇÃO
+- <b>Banco de Dados System:</b>
+  - Criação do modelo base do Banco de Dados System;
+  - Criação do modelo Conceitual do Banco de Dados System;
+  - Criação do modelo Lógico do Banco de Dados System;
+  - Criação do script SQL do Banco de Dados System.
+- <b>Banco de Dados Data Warehouse:</b>
+  - Extração das Bases;  
+  - Criação do modelo base do Banco de Dados Data Warehouse;
+  - Criação do modelo Conceitual do Banco de Dados Data Warehouse;
+  - Criação do modelo Lógico do Banco de Dados Data Warehouse;
+  - Criação do script SQL do Banco de Dados Data Warehouse.
+
+<!-- ### APRESENTAÇÃO (Colocar após o término da Sprint 1)-->
 
 </p></br><h1></h1>
 
 ### Screenshoots:
 
 #### Proposta para próxima sprint:
-Na proxíma Sprint vamos focar no cadastro e níveis de usuários.
+<!-- Alterar -->
