@@ -69,7 +69,7 @@ O sistema Find Data gerencia potenciais clientes para vendedores da SPC, facilit
                      </tr>
                      <tr>
                             <td align=center>Sprint 2<br> 25/04 a 15/05</td>
-                            <td> <p align=center>                  
+                            <td> <p align=center>   <b>EM BREVE</b>               
                             <p align=center>                          
                             </p>
                             </td>
@@ -78,7 +78,7 @@ O sistema Find Data gerencia potenciais clientes para vendedores da SPC, facilit
                      <tr>
                             <td align=center>Sprint 3<br> 16/05 a 05/06</td>
                             <td> <p align=center>                          
-                      <p align=center>                          
+                      <p align=center>   <b>EM BREVE</b>                        
                       </p>
                       </td>
                             <td><p><a href="https://github.com/MaXximiles/API5-SEM/blob/sprint-3/README.md">Ver mais...</a></p></td>
