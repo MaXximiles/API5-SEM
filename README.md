@@ -1,6 +1,8 @@
 # API5SEM
 Repositório da API do 5º Semestre do curso de Banco de Dados na FATEC
 ## 📝Projeto:
+<p align="center"> <img src = "https://user-images.githubusercontent.com/68132461/163346757-0757c301-4226-442f-aa6b-f75321aa10fe.png"> </p>
+<p align="center"> <a href="https://finddata-frontend.web.app/#/sign-in"> <img src= "https://img.shields.io/badge/%F0%9F%9A%80-ACESSAR-blue"></a> </p>
 
 ## 💡 Tecnologias
 
@@ -14,9 +16,10 @@ As seguintes tecnologias foram utilizadas no desenvolvimento do projeto:
  - SpringBoot
  - Visual Studio Code
  - MySQL
+ - Banco de Dados AWS com MySQL
  - Firebase
  - Heroku
- <!-- - MySQL Cloud --> 
+ 
 
 
 
@@ -42,11 +45,13 @@ Contendo mais de 500 produtos em seu catálogo,  a SPC mantém relações comerc
 O sistema Find Data gerencia potenciais clientes para vendedores da SPC, facilitando a conexão entre vendedor e potencial cliente. Filtrando uma base de dados disponibilizada pela SPC a Find Data recolhe e processa esses dados para filtrar potenciais empresas com base em consumo mensal.
 
  ## Documentação:
- <!-- - Manual de intalação.
-  - Modelos dos Bancos de Dados.
-  - Backlog.
-  - User Stories. -->
-   <!-- - Wireframes. (NÃO TEMOS)--> 
+ - [Manual de intalação]() 
+ - [Backlog](https://github.com/MaXximiles/API5-SEM/tree/main/Documentação/User%20Story%20Cards)
+ - [Modelo Conceitual do Banco de Dados System]()
+ - [SQL do Banco de Dados System]()
+ - [Modelo Conceitual do Banco de Dados Data Warehouse]()
+ - [SQL do Banco de Dados Data Warehouse]()
+
   
 <h2>Sprints</h2>
        <table>
@@ -58,7 +63,7 @@ O sistema Find Data gerencia potenciais clientes para vendedores da SPC, facilit
               <tbody>
                      <tr>
                             <td align=center>Sprint 1<br> 25/03 a 14/04  </td>
-                            <td ><p align=center> Tela de Login; &nbsp Modulo de cadastro; Relatório de Empresas; &nbsp Relatório de Vendedores; &nbsp Banco de Dados SYS; &nbsp Banco de Dados DW; &nbsp <p align=center>   
+                            <td ><p align=center> Tela de Login; &nbsp Módulo de cadastro; CRUD de Empresas; &nbsp CRUD de Vendedores; &nbsp Banco de Dados System; &nbsp Banco de Dados Data Warehouse; &nbsp <p align=center>   
                             </td>
                             <td><p><a href="https://github.com/MaXximiles/API5-SEM/blob/sprint-1/README.md">Ver mais...</a></p></td>
                      </tr>
