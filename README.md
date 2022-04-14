@@ -1,9 +1,11 @@
 ## 💻 Sprint 1
 
 ### Proposta:
-**Adição do Modulo de cadastro para melhor gerenciamento de vendedores e empresas.**
+**Adição do módulo de cadastros para gerenciamento de vendedores e empresas e níveis de usuários para ter controle do sistema.**
 <p align=center>
 <img src="https://github.com/MaXximiles/API5-SEM/blob/main/Documenta%C3%A7%C3%A3o/User%20Story%20Cards/USC01.png" width="350"></br>
+<img src="https://github.com/MaXximiles/API5-SEM/blob/main/Documenta%C3%A7%C3%A3o/User%20Story%20Cards/USC02.png" width="350"></br>
+<img src="https://github.com/MaXximiles/API5-SEM/blob/main/Documenta%C3%A7%C3%A3o/User%20Story%20Cards/USC03.png" width="350"></br>
 
 </p></br><h1></h1>
 
