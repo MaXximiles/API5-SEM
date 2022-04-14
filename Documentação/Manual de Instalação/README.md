@@ -1,4 +1,4 @@
-## Manual de instalação.
+## Instruções de instalação.
 ### A seguir temos links oficiais para instruções de intalação detalhadas das tecnologias usadas no projeto:
 
 ### Spring Boot
