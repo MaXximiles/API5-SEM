@@ -40,6 +40,18 @@
 </p></br><h1></h1>
 
 ### Screenshoots:
+<p align=center> <b>Visão geral da tela de empresas</b>
+<img src="https://user-images.githubusercontent.com/68132461/163342393-2d8131a9-f805-45ec-a984-7fd57b27e788.png">
+<h1></h1>  
+<p align=center> <b>Cadastro de empresas</b>
+<img src="https://user-images.githubusercontent.com/68132461/163342768-03013d2d-b115-4812-9199-698be5e9e69d.png">  
+<h1></h1> 
+<p align=center> <b>Pesquisa de empresas</b>
+<img src="https://user-images.githubusercontent.com/68132461/163343173-aa223534-7543-4d36-af75-29497ac307b9.png">    
+<h1></h1> 
+<p align=center> <b>Tela de login</b>
+<img src="https://user-images.githubusercontent.com/68132461/163343273-3d2b38b9-1ebe-455d-b23e-4482f7de25fb.png"> 
+<h1></h1> 
 
 #### Proposta para próxima sprint:
-<!-- Alterar -->
+Para a próxima Sprint planejamos adicionar filtros inteligêntes para achar potenciais clientes.
