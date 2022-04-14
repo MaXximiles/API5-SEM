@@ -47,10 +47,8 @@ O sistema Find Data gerencia potenciais clientes para vendedores da SPC, facilit
  ## Documentação:
  - [Instruções de intalação](https://github.com/MaXximiles/API5-SEM/blob/main/Documentação/Instruções%20de%20instalação/README.md) 
  - [Backlog](https://github.com/MaXximiles/API5-SEM/tree/main/Documentação/User%20Story%20Cards)
- - [Modelo Conceitual do Banco de Dados System]()
- - [SQL do Banco de Dados System]()
- - [Modelo Conceitual do Banco de Dados Data Warehouse](https://github.com/MaXximiles/API5-SEM/blob/main/Documentação/Database/MODELO_FISICO_v2.png)
- - [SQL do Banco de Dados Data Warehouse](https://github.com/MaXximiles/API5-SEM/blob/main/Documentação/Database/BD_FIND_DATA_CREATE_v2.sql)
+ - [Modelo Conceitual do Banco de Dados](https://github.com/MaXximiles/API5-SEM/blob/main/Documentação/Database/MODELO_FISICO_v2.png)
+ - [SQL do Banco de Dados](https://github.com/MaXximiles/API5-SEM/blob/main/Documentação/Database/BD_FIND_DATA_CREATE_v2.sql)
 
   
 <h2>Sprints</h2>
@@ -63,7 +61,8 @@ O sistema Find Data gerencia potenciais clientes para vendedores da SPC, facilit
               <tbody>
                      <tr>
                             <td align=center>Sprint 1<br> 25/03 a 14/04  </td>
-                            <td ><p align=center> Tela de Login; &nbsp Módulo de cadastro; CRUD de Empresas; &nbsp CRUD de Vendedores; &nbsp Banco de Dados System; &nbsp Banco de Dados Data Warehouse; &nbsp <p align=center>   
+                            <td ><p align=center> Tela de Login; &nbsp Módulo de cadastro; CRUD de Empresas; &nbsp CRUD de Vendedores; &nbsp Banco de Dados.  
+                            <p align=center>   
                             </td>
                             <td><p><a href="https://github.com/MaXximiles/API5-SEM/blob/sprint-1/README.md">Ver mais...</a></p></td>
                      </tr>
