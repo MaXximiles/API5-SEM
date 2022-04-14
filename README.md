@@ -49,6 +49,10 @@
 <h1></h1> 
 <p align=center> <b>Tela de login</b>
 <img src="https://user-images.githubusercontent.com/68132461/163343273-3d2b38b9-1ebe-455d-b23e-4482f7de25fb.png"> 
+
+<p align=center> <b>Modelo Conceitual do Banco de Dados</b>
+<img src="https://github.com/MaXximiles/API5-SEM/blob/main/Documentação/Database/MODELO_FISICO_v2.png"> 
+     
 <h1></h1> 
 
 #### Proposta para próxima sprint:
