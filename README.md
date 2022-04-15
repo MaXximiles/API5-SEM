@@ -1,7 +1,7 @@
 ## 💻 Sprint 1
 
 ### Proposta:
-**Adição do módulo de cadastros para gerenciamento de vendedores e empresas e níveis de usuários para ter controle do sistema.**
+**Nesta primeira Sprint adicionaremos o módulo de cadastro de usuários para um melhor controle do sistema pelo administrador, além de adicionar níveis de usuários para conceder acesso a determinadas funções pelos seus respectivos usuários. Também vamos adicionar o cadastro de empresas, para que o administrador possa gerenciar as empresas cadastradas no sistema.**
 <p align=center>
 <img src="https://github.com/MaXximiles/API5-SEM/blob/main/Documenta%C3%A7%C3%A3o/User%20Story%20Cards/USC01.png" width="350">
 <img src="https://github.com/MaXximiles/API5-SEM/blob/main/Documenta%C3%A7%C3%A3o/User%20Story%20Cards/USC02.png" width="350">
@@ -15,10 +15,10 @@
 - Front-end e Back-end:</b>
   - Tela de login;
   - CRUD de empresas;
-  - CRUD de vendedores;
+  - CRUD de usuários;
   - Adição do Módulo de Cadastros:
     - Cadastro de Clientes;
-    - Cadastro de usuários:
+    - Cadastro de Usuários:
       - Cadastro de usuário "Administrador";
       - Cadastro de usuário "Inteligência";
       - Cadastro de usuário "Vendedor".
@@ -38,22 +38,29 @@
 </p></br><h1></h1>
 
 ### Screenshoots:
-<p align=center> <b>Visão geral da tela de empresas</b>
-<img src="https://user-images.githubusercontent.com/68132461/163342393-2d8131a9-f805-45ec-a984-7fd57b27e788.png">
+<p align=center> <b>Tela de empresas cadastradas</b>
+<img src="https://user-images.githubusercontent.com/68132461/163505356-3efb666f-8510-42b0-b35f-c38f44ec93ee.png">
 <h1></h1>  
-<p align=center> <b>Cadastro de empresas</b>
-<img src="https://user-images.githubusercontent.com/68132461/163342768-03013d2d-b115-4812-9199-698be5e9e69d.png">  
+<p align=center> <b>Formulário de cadastro de empresas</b>
+<img src="https://user-images.githubusercontent.com/68132461/163505495-492a30c6-c7f2-479e-8a43-0458bca3a140.png">  
 <h1></h1> 
-<p align=center> <b>Pesquisa de empresas</b>
-<img src="https://user-images.githubusercontent.com/68132461/163343173-aa223534-7543-4d36-af75-29497ac307b9.png">    
+<p align=center> <b>Tela de usuários cadastrados</b>
+<img src="https://user-images.githubusercontent.com/68132461/163505384-62f786e7-af8f-41b9-a63e-d130eb90e087.png">    
 <h1></h1> 
-<p align=center> <b>Tela de login</b>
-<img src="https://user-images.githubusercontent.com/68132461/163343273-3d2b38b9-1ebe-455d-b23e-4482f7de25fb.png"> 
-
+<p align=center> <b>Formulário de cadastro de usuários</b>
+<img src="https://user-images.githubusercontent.com/68132461/163505459-3b39f938-775d-4c49-af80-3d89ddc175c4.png"> 
+<h1></h1>
+<p align=center> <b>Tela de Login</b>
+<img src="https://user-images.githubusercontent.com/68132461/163505521-e42e07a3-ce1b-4e8f-b6ad-fc0025ca0f11.png">  
+<h1></h1>
 <p align=center> <b>Modelo Conceitual do Banco de Dados</b>
 <img src="https://github.com/MaXximiles/API5-SEM/blob/main/Documentação/Database/MODELO_FISICO_v2.png"> 
      
 <h1></h1> 
 
 #### Proposta para próxima sprint:
-Para a próxima Sprint planejamos adicionar filtros inteligêntes para achar potenciais clientes.
+<b>Para a próxima Sprint pretendemos adicionar o cadastro de empresas ao usuário inteligência, filtros dedicados para que possa analisar empresas presentes no sistema e uma ferramneta de pesquisa para melhor controle dos cadastros.</b>
+<p align=center>
+<img src="https://github.com/MaXximiles/API5-SEM/blob/main/Documenta%C3%A7%C3%A3o/User%20Story%20Cards/USC04.png" width="350">
+<img src="https://github.com/MaXximiles/API5-SEM/blob/main/Documenta%C3%A7%C3%A3o/User%20Story%20Cards/USC05.png" width="350">
+<img src="https://github.com/MaXximiles/API5-SEM/blob/main/Documenta%C3%A7%C3%A3o/User%20Story%20Cards/USC06.png" width="350">
