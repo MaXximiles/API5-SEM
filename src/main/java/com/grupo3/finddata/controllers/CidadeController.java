@@ -26,17 +26,22 @@ public class CidadeController
 	
 	public CidadeController(CidadeRepository CidadeRepository) {this.cidadeRepository = CidadeRepository; }
 	
-	
-
-	
 	// SELECT de todos//
-	@GetMapping("/")
+	@GetMapping("/all")
 	public List<CidadeRs> selectAll()
 	{
 	   var cidade = cidadeRepository.findAll();
 	   return cidade.stream().map((cid) -> CidadeRs.converter(cid)).collect(Collectors.toList());
 	}
-		  
+	
+	// SELECT de todos//
+	@GetMapping("/")
+	public List<CidadeRs> selectAllOrderBy()
+	{
+	   var cidade = cidadeRepository.SelectCidade();
+	   return cidade.stream().map((cid) -> CidadeRs.converter(cid)).collect(Collectors.toList());
+	}
+	  
 	// SELECT por ID //
 	@GetMapping("/{id}")
 	public CidadeRs selectID(@PathVariable("id") Long id) 
@@ -44,14 +49,7 @@ public class CidadeController
 	  var cid = cidadeRepository.getOne(id);
 	  return CidadeRs.converter(cid);
 	}
-		  
-	// SELECT por Nome
-	/*@GetMapping("/filtrocnpj")
-	public List<CidadeRs> findCidadeByNome(@RequestParam("cidade") String cidade)
-	{
-	    return this.cidadeRepository.findEmpresaByNomeContains(cidade).stream().map(CidadeRs::converter).collect(Collectors.toList());
-	}*/
-		
+		  	
 	// FIM DOS SELECT's **********************************************************************
 		
 		

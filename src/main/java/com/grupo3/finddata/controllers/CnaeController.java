@@ -32,10 +32,18 @@ public class CnaeController
 	public CnaeController(CnaeRepository cnaeRepository) {this.cnaeRepository = cnaeRepository; }
 	
 	// SELECT de todos//
-	@GetMapping("/")
+	@GetMapping("/all")
 	public List<CnaeRs> selectAll()
 	{
 	   var cnae = cnaeRepository.findAll();
+	   return cnae.stream().map((cid) -> CnaeRs.converter(cid)).collect(Collectors.toList());
+	}
+	
+	// SELECT de todos//
+	@GetMapping("/")
+	public List<CnaeRs> selectCnae()
+	{
+	   var cnae = cnaeRepository.SelectCnae();
 	   return cnae.stream().map((cid) -> CnaeRs.converter(cid)).collect(Collectors.toList());
 	}
 		  
