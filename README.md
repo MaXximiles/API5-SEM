@@ -13,7 +13,7 @@
 <b>Resumo de modificações:
 - Front-end e Back-end:</b>
   - Desenvolvimento da interface gráfica;
-  - Adição seção carteira/vendedor ao usuário vendedor;
+  - Adição da seção carteira/vendedor ao usuário vendedor;
   - Adição da seção prospects ao usuário vendedor; 
   - Adição da ferramenta de pesquisa de empresas ao usuário vendedor.
 - <b>Banco de Dados:</b>
