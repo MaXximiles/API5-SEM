@@ -11,8 +11,15 @@
 
 
 ### Detalhes da Sprint:
-
-Resumo de modificações:
+<b>Resumo de modificações:
+- Front-end e Back-end:</b>
+  - Desenvolvimento da interface gráfica;
+  - Adição do cadastro de empresas ao usuário inteligência;
+  - Adição de filtros dedicados ao usuário inteligência; 
+  - Adição da ferramenta de pesquisa de empresas ao usuário inteligência.
+- <b>Banco de Dados:</b>
+  - Versionamento do Banco de Dados.
+</br>
 
 <!-- ### APRESENTAÇÃO 
 
