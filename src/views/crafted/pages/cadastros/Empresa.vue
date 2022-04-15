@@ -44,84 +44,109 @@
 				<!--end::Group actions-->
 
 
-											<!--begin::Modal - Add task-->
-											<div class="modal fade" id="kt_modal_add_user" tabindex="-1" aria-hidden="true">
-												<!--begin::Modal dialog-->
-												<div class="modal-dialog modal-dialog-centered mw-650px">
-													<!--begin::Modal content-->
-													<div class="modal-content">
-														<!--begin::Modal header-->
-														<div class="modal-header" id="kt_modal_add_user_header">
-															<!--begin::Modal title-->
-															<h2 class="fw-bolder">Formulário de Empresas</h2>
-															<!--end::Modal title-->
-															<!--begin::Close-->
-															<div class="btn btn-icon btn-sm btn-active-icon-primary" data-kt-users-modal-action="close">
-																<!--begin::Svg Icon | path: icons/duotune/arrows/arr061.svg-->
-																<span class="svg-icon svg-icon-1">
-																	<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
-																		<rect opacity="0.5" x="6" y="17.3137" width="16" height="2" rx="1" transform="rotate(-45 6 17.3137)" fill="currentColor"></rect>
-																		<rect x="7.41422" y="6" width="16" height="2" rx="1" transform="rotate(45 7.41422 6)" fill="currentColor"></rect>
-																	</svg>
-																</span>
-															</div>
-														</div>
+	<!--begin::Modal - Add task-->
+	<div class="modal fade" id="kt_modal_add_user" tabindex="-1" aria-hidden="true">
+	<!--begin::Modal dialog-->
+	<div class="modal-dialog modal-dialog-centered mw-650px">
+	<!--begin::Modal content-->
+	<div class="modal-content">
+	<!--begin::Modal header-->
+	<div class="modal-header" id="kt_modal_add_user_header">
+	<!--begin::Modal title-->
+	<h2 class="fw-bolder">Formulário de Empresas</h2>
+	<!--end::Modal title-->
+	<!--begin::Close-->
 
-														<div class="modal-body scroll-y mx-5 mx-xl-15 my-7">
-															<form id="kt_modal_add_user_form" @submit.prevent="addEmpresa" class="form fv-plugins-bootstrap5 fv-plugins-framework" action="#">
-																<div class="d-flex flex-column scroll-y me-n7 pe-7" id="kt_modal_add_user_scroll" data-kt-scroll="true" data-kt-scroll-activate="{default: false, lg: true}" data-kt-scroll-max-height="auto" data-kt-scroll-dependencies="#kt_modal_add_user_header" data-kt-scroll-wrappers="#kt_modal_add_user_scroll" data-kt-scroll-offset="300px" style="">
+	<!-- BOTÃO FECHAR (X) QUE ESTA FUNCIONANDO -->
+	<div class="btn btn-sm btn-icon btn-active-color-primary" data-bs-dismiss="modal">
+	<span class="svg-icon svg-icon-1">
+	<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+	<rect opacity="0.5" x="6" y="17.3137" width="16" height="2" rx="1" transform="rotate(-45 6 17.3137)" fill="currentColor"></rect>
+	<rect x="7.41422" y="6" width="16" height="2" rx="1" transform="rotate(45 7.41422 6)" fill="currentColor"></rect>
+	</svg>
+	</span>
+	</div>
+	<!-- BOTÃO FECHAR (X) QUE ESTA FUNCIONANDO -->
 
-																	<div class="fv-row mb-7 fv-plugins-icon-container">
-																		<label class="required fw-bold fs-6 mb-2">Nome: </label>
-																		<input type="text" id="emp_nome" name="emp_nome" v-model="empnome" class="form-control form-control-solid mb-3 mb-lg-0" placeholder="Nome da Empresa">
-                                  										<div class="fv-plugins-message-container invalid-feedback"></div>
-																	</div>
+	</div>
 
-																	<div class="fv-row mb-7 fv-plugins-icon-container">
-																		<label class="required fw-bold fs-6 mb-2">CNPJ: </label>
-																		<input type="text" id="emp_cnpj" name="emp_cnpj" v-model="empcnpj" class="form-control form-control-solid mb-3 mb-lg-0" placeholder="00.000.000/0000-00" >
-																	<div class="fv-plugins-message-container invalid-feedback"></div></div>
 
-                                  <div class="fv-row mb-7 fv-plugins-icon-container">
-																		<label class="required fw-bold fs-6 mb-2">CNAE: </label>
-																		<input type="text" id="cnae_id" name="cnae_id" v-model="cnaeid" class="form-control form-control-solid mb-3 mb-lg-0" placeholder="Numero do CNAE">
-																	<div class="fv-plugins-message-container invalid-feedback"></div></div>
+	<div class="modal-body scroll-y mx-5 mx-xl-15 my-7">
+	<form id="kt_modal_add_user_form" @submit.prevent="addEmpresa" class="form fv-plugins-bootstrap5 fv-plugins-framework" action="#">
+	<div class="d-flex flex-column scroll-y me-n7 pe-7" id="kt_modal_add_user_scroll" data-kt-scroll="true" data-kt-scroll-activate="{default: false, lg: true}" data-kt-scroll-max-height="auto" data-kt-scroll-dependencies="#kt_modal_add_user_header" data-kt-scroll-wrappers="#kt_modal_add_user_scroll" data-kt-scroll-offset="300px" style="">
 
-                                  <div class="fv-row mb-7 fv-plugins-icon-container">
-																		<label class="required fw-bold fs-6 mb-2">Cidade: </label>
-																		<input type="text" id="cid_id" name="cid_id" v-model="cidid" class="form-control form-control-solid mb-3 mb-lg-0" placeholder="Ex: São Paulo">
-																	<div class="fv-plugins-message-container invalid-feedback"></div></div>
+	<div class="fv-row mb-7 fv-plugins-icon-container">
+	<label class="required fw-bold fs-6 mb-2">Nome: </label>
+	<input type="text" id="emp_nome" name="emp_nome" v-model="empnome" class="form-control form-control-solid mb-3 mb-lg-0" placeholder="Nome da Empresa">
+	<div class="fv-plugins-message-container invalid-feedback"></div>
+	</div>
 
-                                  <div class="fv-row mb-7 fv-plugins-icon-container">
-																		<label class="required fw-bold fs-6 mb-2">Origem: </label>
-																		<input type="text" id="emp_origem" name="emp_origem" v-model="emporigem" class="form-control form-control-solid mb-3 mb-lg-0" placeholder="SPC, Concorrente, Livre">
-																	<div class="fv-plugins-message-container invalid-feedback"></div></div>
-																
-														</div>
+	<div class="fv-row mb-7 fv-plugins-icon-container">
+	<label class="required fw-bold fs-6 mb-2">CNPJ: </label>
+	<input type="text" id="emp_cnpj" name="emp_cnpj" v-model="empcnpj" class="form-control form-control-solid mb-3 mb-lg-0" placeholder="00.000.000/0000-00" >
+	<div class="fv-plugins-message-container invalid-feedback"></div></div>
 
-																<div class="text-center pt-15">
-																	<button type="reset" class="btn btn-light me-3" data-kt-users-modal-action="cancel">Descartar</button>
-																	<button type="submit" class="btn btn-primary" data-kt-users-modal-action="submit">
-																		<span class="indicator-label">Salvar</span>
-																		<span class="indicator-progress">Carregando... 
-																		<span class="spinner-border spinner-border-sm align-middle ms-2"></span></span>
-																	</button>
-																</div>
-																<!--end::Actions-->
-															<div></div></form>
-															<!--end::Form-->
-														</div>
-														<!--end::Modal body-->
-													</div>
-													<!--end::Modal content-->
-												</div>
-												<!--end::Modal dialog-->
-											</div>
-											<!--end::Modal - Add task-->
-										</div>
-										<!--end::Card toolbar-->
-									</div>
-									<!--end::Fim do Formulario-->
+	<div class="row mb-7" data-select2-id="select2-data-561-nmjj">
+		<div class="col-lg-8 fv-row fv-plugins-icon-container" data-select2-id="select2-data-560-wq70">
+			<label class="required fw-bold fs-6 mb-2">CNAE: </label>
+			<select @click="carregarCnae()" id="cnaeid" name="cnaeid" v-model="cnaeid" aria-label="Selecione o Cnae da empresa" data-control="select2" data-placeholder="Selecione o CNAE da sua empresa" class="form-select form-select-solid form-select-lg fw-bold select2-hidden-accessible" data-select2-id="select2-data-10-0g0q" tabindex="-1" aria-hidden="true">
+			<option value="" data-select2-id="select2-data-12-5j0j"> -- Selecione o Cnae -- </option>
+			<option v-for="cnaes in ArrayCnaes" v-bind:key="cnaes.cnae_id" :value="cnaes.cnae_id">{{ cnaes.cnae_codigo+" - "+cnaes.cnae_descricao }}</option>
+			</select>
+			<div class="fv-plugins-message-container invalid-feedback"></div>
+		</div>
+	</div>
+
+
+	<div class="row mb-7" data-select2-id="select2-data-561-nmjj">
+		<div class="col-lg-8 fv-row fv-plugins-icon-container" data-select2-id="select2-data-560-wq70">
+			<label class="required fw-bold fs-6 mb-2">Cidade: </label>
+			<select @click="carregarCidades()" id="cidid" name="cidid" v-model="cidid" aria-label="Select a Country" data-control="select2" data-placeholder="Selecione a Cidade" class="form-select form-select-solid form-select-lg fw-bold select2-hidden-accessible" data-select2-id="select2-data-10-0g0q" tabindex="-1" aria-hidden="true">
+			<option value="" data-select2-id="select2-data-12-5j0j"> -- Selecione a Cidade -- </option>
+			<option v-for="cidade in ArrayCidades" v-bind:key="cidade.cid_id" :value="cidade.cid_id">{{ cidade.cid_estado +" - "+cidade.cid_cidade }}</option>
+			</select>
+			<div class="fv-plugins-message-container invalid-feedback"></div>
+		</div>
+	</div>
+
+	<div class="row mb-7" data-select2-id="select2-data-561-nmjj">
+		<div class="col-lg-8 fv-row fv-plugins-icon-container" data-select2-id="select2-data-560-wq70">
+			<label class="required fw-bold fs-6 mb-2">Origem: </label>
+			<select id="emp_origem" name="emp_origem" v-model="emporigem" aria-label="Select a Country" data-control="select2" data-placeholder="Selecione a Origem" class="form-select form-select-solid form-select-lg fw-bold select2-hidden-accessible" data-select2-id="select2-data-10-0g0q" tabindex="-1" aria-hidden="true">
+			<option value="" data-select2-id="select2-data-12-5j0j"> -- Selecione a Origem -- </option>
+			<option value="CONCORRENTE" data-select2-id="select2-data-12-5j0j"> Concorrente</option>
+			<option value="LIVRE" data-select2-id="select2-data-12-5j0j"> Livre </option>
+			<option value="SPC" data-select2-id="select2-data-12-5j0j"> SPC </option>
+			</select>
+			<div class="fv-plugins-message-container invalid-feedback"></div>
+		</div>
+	</div>
+
+	</div>
+
+	<div class="text-center pt-15">
+	<button type="reset" class="btn btn-light me-3" data-kt-users-modal-action="cancel">Descartar</button>
+	<button type="submit" class="btn btn-primary" data-kt-users-modal-action="submit">
+	<span class="indicator-label">Salvar</span>
+	<span class="indicator-progress">Carregando... 
+	<span class="spinner-border spinner-border-sm align-middle ms-2"></span></span>
+	</button>
+	</div>
+	<!--end::Actions-->
+	<div></div></form>
+	<!--end::Form-->
+	</div>
+	<!--end::Modal body-->
+	</div>
+	<!--end::Modal content-->
+	</div>
+	<!--end::Modal dialog-->
+	</div>
+	<!--end::Modal - Add task-->
+	</div>
+	<!--end::Card toolbar-->
+	</div>
+	<!--end::Fim do Formulario-->
 									
                   <!--begin::Card body-->
 									<div class="card-body py-4">
@@ -169,13 +194,12 @@
 						    </td>
 													
 							<td class="text-end">
-								<a href="#" class="btn btn-light btn-active-light-primary btn-sm" data-kt-menu-trigger="click" data-kt-menu-placement="bottom-end"> AÇÕES
+								<a href="" class="btn btn-light btn-active-light-primary btn-sm" data-kt-menu-trigger="click" data-kt-menu-placement="bottom-end"> AÇÕES
 								<span class="svg-icon svg-icon-5 m-0">
 									<svg xmlns="http://www.w3.org/2000/svg" width="24" viewBox="0 0 24 24" fill="none">
 									<path d="M11.4343 12.7344L7.25 8.55005C6.83579 8.13583 6.16421 8.13584 5.75 8.55005C5.33579 8.96426 5.33579 9.63583 5.75 10.05L11.2929 15.5929C11.6834 15.9835 12.3166 15.9835 12.7071 15.5929L18.25 10.05C18.6642 9.63584 18.6642 8.96426 18.25 8.55005C17.8358 8.13584 17.1642 8.13584 16.75 8.55005L12.5657 12.7344C12.2533 13.0468 11.7467 13.0468 11.4343 12.7344Z" fill="currentColor"></path>
 									</svg>
 								</span>
-								
 								</a>
 
 								<div class="menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-600 menu-state-bg-light-primary fw-bold fs-7 w-125px py-4" data-kt-menu="true">				
@@ -191,7 +215,9 @@
 									<button type="button" class="btn btn-primary" @click="deletarEmpresa(empresa)">Excluir</button>
 									</div>
 								</div>
+
 							</td>
+
 						</tr>
                         
                         
@@ -223,22 +249,23 @@ export default {
   data() {
     return {
 	  empid: '',
-      empnome: '',
+      empnome: '', 
       empcnpj: '',
       cidid: '',
       cnaeid: '',
       emporigem: '',
 	  pesqemp: '',
-      ArrayEmpresas: []
-    }
+      ArrayEmpresas: [],
+	  ArrayCidades: [],
+	  ArrayCnaes: []
+    } 
   },
   methods:
   {
     addEmpresa() //Cadastro de empresas
 	{
        axios.post('empresas/', 
-	   { 
-		    
+	   {   
             empnome: this.empnome, 
             empcnpj: this.empcnpj,
             emporigem: this.emporigem,
@@ -247,6 +274,8 @@ export default {
 		})
         .then(res => {
 			console.log(res);
+			
+			
 			// Limpando campos do formulario
 			this.empnome = '';
             this.empcnpj = '';
@@ -323,12 +352,34 @@ export default {
 		else{ this.carregarEmpresas();}
 
 		
-	}
+	},
 
-	
+	carregarCnae() // Carregar option para CNAE
+	{
+		axios.get('cnae/', 
+        { headers: { Accept: 'application/json' } })
+        .then(res => {
+          console.log(res)
+          this.ArrayCnaes = res.data
+        })
+        .catch(error => console.log(error))
+	},
+	carregarCidades() // Carregar option para Cidades
+	{
+		axios.get('cidade/', 
+        { headers: { Accept: 'application/json' } })
+        .then(res => {
+          console.log(res) // Tirar depois de funcionar
+          this.ArrayCidades = res.data
+        })
+        .catch(error => console.log(error))
+	},
 
   },
-  created () { this.carregarEmpresas(); }, // Carregando lista de empresas na tabela ao abrir pagina
+  created () 
+  { 
+	  this.carregarEmpresas();
+  }, // Carregando lista de empresas na tabela ao abrir pagina
   mutations: {  },
   setup() {
     onMounted(() => {

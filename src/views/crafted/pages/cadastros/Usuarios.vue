@@ -53,16 +53,18 @@
   <!--begin::Modal title-->
   <h2 class="fw-bolder">Formulário de Usuários</h2>
   <!--end::Modal title-->
-  <!--begin::Close-->
-  <div class="btn btn-icon btn-sm btn-active-icon-primary" data-kt-users-modal-action="close">
-  <!--begin::Svg Icon | path: icons/duotune/arrows/arr061.svg-->
-  <span class="svg-icon svg-icon-1">
-  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
-  <rect opacity="0.5" x="6" y="17.3137" width="16" height="2" rx="1" transform="rotate(-45 6 17.3137)" fill="currentColor"></rect>
-  <rect x="7.41422" y="6" width="16" height="2" rx="1" transform="rotate(45 7.41422 6)" fill="currentColor"></rect>
-  </svg>
-  </span>
-  </div>
+  
+  <!-- BOTÃO FECHAR (X) QUE ESTA FUNCIONANDO -->
+	<div class="btn btn-sm btn-icon btn-active-color-primary" data-bs-dismiss="modal">
+	<span class="svg-icon svg-icon-1">
+	<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+	<rect opacity="0.5" x="6" y="17.3137" width="16" height="2" rx="1" transform="rotate(-45 6 17.3137)" fill="currentColor"></rect>
+	<rect x="7.41422" y="6" width="16" height="2" rx="1" transform="rotate(45 7.41422 6)" fill="currentColor"></rect>
+	</svg>
+	</span>
+	</div>
+	<!-- BOTÃO FECHAR (X) QUE ESTA FUNCIONANDO -->
+  
 </div>
 
 <div class="modal-body scroll-y mx-5 mx-xl-15 my-7">
@@ -94,16 +96,18 @@
       <div class="fv-plugins-message-container invalid-feedback"></div>
     </div>
 
-
-    <div class="fv-row mb-7 fv-plugins-icon-container">
-      <label class="required fw-bold fs-6 mb-2">Nível: </label>
-      <select id="usunivel" name="usunivel" v-model="usunivel" class="form-control form-control-solid mb-3 mb-lg-0">
-        <option >Administrador</option>
-        <option >Vendedor</option>
-        <option >Inteligência de Vendas</option>
-      </select>
-      <div class="fv-plugins-message-container invalid-feedback"></div>
-    </div>
+    <div class="row mb-7" data-select2-id="select2-data-561-nmjj">
+		<div class="col-lg-8 fv-row fv-plugins-icon-container" data-select2-id="select2-data-560-wq70">
+			<label class="required fw-bold fs-6 mb-2">Origem: </label>
+			<select id="usunivel" name="usunivel" v-model="usunivel" aria-label="Select a Country" data-control="select2" data-placeholder="Selecione o Nivel do Usuario" class="form-select form-select-solid form-select-lg fw-bold select2-hidden-accessible" data-select2-id="select2-data-10-0g0q" tabindex="-1" aria-hidden="true">
+			<option value="" data-select2-id="select2-data-12-5j0j"> -- Selecione o Nivel -- </option>
+      <option value="Administrador" data-select2-id="select2-data-12-5j0j">Administrador</option>
+      <option value="Vendedor" data-select2-id="select2-data-12-5j0j">Vendedor</option>
+      <option value="Inteligência de Vendas" data-select2-id="select2-data-12-5j0j">Inteligência de Vendas</option>
+			</select>
+			<div class="fv-plugins-message-container invalid-feedback"></div>
+		</div>
+	</div>
     
     </div>
 
@@ -234,18 +238,16 @@ export default {
   },
   methods:
   {
-    
-
     addUsuario() //Cadastro de usuarios
 	  {
       if(this.ususenha == this.ususenha2) // Confirmando se senha e confirmação de senha coincidem
       {
           axios.post('usuario/', 
           {  
-                usunome: this.usunome, 
-                usuemail: this.usuemail,
-                ususenha: this.ususenha,
-                usunivel: this.usunivel
+              usunome: this.usunome, 
+              usuemail: this.usuemail,
+              ususenha: this.ususenha,
+              usunivel: this.usunivel
           })
           .then(res => {
             console.log(res);

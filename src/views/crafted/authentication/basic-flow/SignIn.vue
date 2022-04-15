@@ -4,13 +4,6 @@
 
     <Form class="form w-100" id="kt_login_signin_form" @submit="onSubmitLogin" :validation-schema="login">
      
-
-      <div class="mb-10 bg-light-info p-8 rounded">
-        <div class="text-info">
-          Utilize o email: <strong>admin@demo.com</strong> e a senha: <strong>demo</strong> para acessar.
-        </div> 
-      </div>
-
       <div class="fv-row mb-10">
         <label class="form-label fs-6 fw-bolder text-dark">Email</label>
         <Field class="form-control form-control-lg form-control-solid" type="text" name="usuemail" placeholder="Email" />
@@ -19,7 +12,7 @@
           <div class="fv-help-block">
             <ErrorMessage name="email" />
           </div>
-        </div>
+        </div> 
       </div>
 
       <div class="fv-row mb-10">
@@ -103,9 +96,10 @@ export default defineComponent({
       const [errorName] = Object.keys(store.getters.getErrors);
       const error = store.getters.getErrors[errorName];
 
-
       if (store.getters.currentUser.usuemail)
       {
+        console.log(store.getters.currentUser.usunivel);
+        //process.env.VUE_APP_USER_NIVEL = store.getters.currentUser.usunivel;
         Swal.fire({
           text: "Login realizado com sucesso!",
           icon: "success",

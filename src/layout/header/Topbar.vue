@@ -7,63 +7,6 @@
     </div>
     <!--end::Search-->
 
-    <!--begin::Activities
-    <div class="d-flex align-items-center ms-1 ms-lg-3">
-
-      <div
-        class="btn btn-icon btn-active-light-primary w-30px h-30px w-md-40px h-md-40px"
-        id="kt_activities_toggle"
-      >
-        <span class="svg-icon svg-icon-1">
-          <inline-svg src="media/icons/duotune/general/gen032.svg" />
-        </span>
-      </div>
-
-    </div>
-      
-    <div class="d-flex align-items-center ms-1 ms-lg-3">
-
-      <div class="btn btn-icon btn-active-light-primary w-30px h-30px w-md-40px h-md-40px" data-kt-menu-trigger="click" data-kt-menu-attach="parent" data-kt-menu-placement="bottom-end" data-kt-menu-flip="bottom">
-        <span class="svg-icon svg-icon-1">
-          <inline-svg src="media/icons/duotune/general/gen025.svg" />
-        </span>
-      </div>
-      <KTQuickLinksMenu></KTQuickLinksMenu>
-    </div>
-    
-    <div class="d-flex align-items-center ms-1 ms-lg-3">
-      <div
-        class="btn btn-icon btn-active-light-primary position-relative w-30px h-30px w-md-40px h-md-40px"
-        id="kt_drawer_chat_toggle"
-      >
-        <span class="svg-icon svg-icon-1">
-          <inline-svg src="media/icons/duotune/communication/com012.svg" />
-        </span>
-
-        <span class="bullet bullet-dot bg-success h-6px w-6px position-absolute translate-middle top-0 start-50 animation-blink" ></span>
-      </div>
-
-    </div>
-
-
-    <div class="d-flex align-items-center ms-1 ms-lg-3">
-
-      <div
-        class="btn btn-icon btn-active-light-primary position-relative w-30px h-30px w-md-40px h-md-40px"
-        data-kt-menu-trigger="click"
-        data-kt-menu-attach="parent"
-        data-kt-menu-placement="bottom-end"
-        data-kt-menu-flip="bottom"
-      >
-        <span class="svg-icon svg-icon-1">
-          <inline-svg src="media/icons/duotune/general/gen022.svg" />
-        </span>
-      </div>
-      <KTNotificationsMenu></KTNotificationsMenu>
-
-    </div>
-    -->
-
     <!--begin::User-->
     <div
       class="d-flex align-items-center ms-1 ms-lg-3"
@@ -77,7 +20,7 @@
         data-kt-menu-placement="bottom-end"
         data-kt-menu-flip="bottom"
       >
-        <img src="media/avatars/300-1.jpg" alt="metronic" /> <!-- COlocar foto padrão -->
+        <img src="media/avatars/blank.png" alt="Usuario" /> <!-- COlocar foto padrão -->
       </div>
       <KTUserMenu></KTUserMenu>
       <!--end::Menu-->
