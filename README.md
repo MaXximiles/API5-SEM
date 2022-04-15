@@ -16,6 +16,9 @@
   - Tela de login;
   - CRUD de empresas;
   - CRUD de usuários;
+  - Wireframes;
+  - Definição e implementação das regras de negócio;
+  - Desenvolvimento da interface gráfica do sistema;
   - Adição do Módulo de Cadastros:
     - Cadastro de Clientes;
     - Cadastro de Usuários:
