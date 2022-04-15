@@ -29,8 +29,9 @@
   - Criação do modelo Conceitual do Banco de Dados;
   - Criação do modelo Lógico do Banco de Dados;
   - Criação do script SQL do Banco de Dados.
+</br>
 
-   
+📈<b>[Burndown da Sprint](https://github.com/MaXximiles/API5-SEM/tree/main/Documentação/Burndowns)</b>
 
 
 <!-- ### APRESENTAÇÃO (Colocar após o término da Sprint 1)-->
