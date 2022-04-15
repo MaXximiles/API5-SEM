@@ -62,14 +62,15 @@ O sistema Find Data gerencia potenciais clientes para vendedores da SPC, facilit
               <tbody>
                      <tr>
                             <td align=center>Sprint 1<br> 25/03 a 14/04  </td>
-                            <td ><p align=center> Tela de Login; &nbsp Módulo de cadastro; CRUD de empresas; &nbsp CRUD de usuários; &nbsp Modelo Conceitual do Banco de Dados; &nbsp Script SQL do Banco de Dados.
+                            <td ><p align=center> Tela de Login; &nbsp Módulo de cadastro; CRUD de empresas; &nbsp CRUD de usuários; &nbsp Modelo Conceitual do Banco de Dados; &nbsp Script SQL do Banco de Dados; &nbsp Definição e implementação das regras de negócio; &nbsp Wireframes; &nbsp Desenvolvimento da interface gráfica do sistema.
                             <p align=center>   
                             </td>
                             <td><p><a href="https://github.com/MaXximiles/API5-SEM/blob/sprint-1/README.md">Ver mais...</a></p></td>
                      </tr>
                      <tr>
                             <td align=center>Sprint 2<br> 25/04 a 15/05</td>
-                            <td> <p align=center>   <b>EM BREVE</b>               
+                            <td> <p align=center>Adição do cadastro de empresas ao usuário inteligência; &nbsp Adição de filtros dedicados ao usuário inteligência; &nbsp Adição da ferramenta de pesquisa de empresas ao usuário inteligência; &nbsp Desenvolvimento da interface gráfica;
+                               Versionamento do Banco de Dados; 
                             <p align=center>                          
                             </p>
                             </td>
@@ -78,7 +79,9 @@ O sistema Find Data gerencia potenciais clientes para vendedores da SPC, facilit
                      <tr>
                             <td align=center>Sprint 3<br> 16/05 a 05/06</td>
                             <td> <p align=center>                          
-                      <p align=center>   <b>EM BREVE</b>                        
+                      <p align=center> Adição da seção carteira/vendedor ao usuário vendedor; &nbsp Adição da seção prospects ao usuário vendedor;
+                       &nbsp Adição da ferramenta de pesquisa de empresas ao usuário vendedor;
+                       &nbsp Desenvolvimento da interface gráfica; &nbsp Versionamento do Banco de Dados.                        
                       </p>
                       </td>
                             <td><p><a href="https://github.com/MaXximiles/API5-SEM/blob/sprint-3/README.md">Ver mais...</a></p></td>
