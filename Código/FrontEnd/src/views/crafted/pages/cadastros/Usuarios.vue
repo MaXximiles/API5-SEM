@@ -22,7 +22,7 @@
   <div class="card-toolbar">
     <div class="d-flex justify-content-end" data-kt-user-table-toolbar="base">
     <!--begin::Add user-->
-    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#kt_modal_add_user">
+    <button type="button" @click="limparUsuarios()" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#kt_modal_add_user">
       <!--begin::Svg Icon | path: icons/duotune/arrows/arr075.svg-->
       <span class="svg-icon svg-icon-2">
       <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
@@ -40,6 +40,7 @@
 <button type="button" class="btn btn-danger" data-kt-user-table-select="delete_selected">Delete Selected</button>
 </div>
 <!--end::Group actions-->
+
 
 
 <!--begin::Modal - Add task-->
@@ -69,6 +70,100 @@
 
 <div class="modal-body scroll-y mx-5 mx-xl-15 my-7">
   <form id="kt_modal_add_user_form" @submit.prevent="addUsuario" class="form fv-plugins-bootstrap5 fv-plugins-framework" action="#">
+    <div class="d-flex flex-column scroll-y me-n7 pe-7" id="kt_modal_add_user_scroll" data-kt-scroll="true" data-kt-scroll-activate="{default: false, lg: true}" data-kt-scroll-max-height="auto" data-kt-scroll-dependencies="#kt_modal_add_user_header" data-kt-scroll-wrappers="#kt_modal_add_user_scroll" data-kt-scroll-offset="300px" style="">
+
+    <div class="fv-row mb-7 fv-plugins-icon-container">
+      <label class="required fw-bold fs-6 mb-2">Nome: </label>
+      <input type="text" id="usunome" name="usunome" v-model="usunome" class="form-control form-control-solid mb-3 mb-lg-0" placeholder="Nome do usuário">
+      <div class="fv-plugins-message-container invalid-feedback"></div>
+    </div>
+
+    <div class="fv-row mb-7 fv-plugins-icon-container">
+      <label class="required fw-bold fs-6 mb-2">Email: </label>
+      <input type="text" id="usuemail" name="usuemail" v-model="usuemail" class="form-control form-control-solid mb-3 mb-lg-0" placeholder="Email do usuário">
+      <div class="fv-plugins-message-container invalid-feedback"></div>
+    </div>
+     
+
+    <div class="fv-row mb-7 fv-plugins-icon-container">
+      <label class="required fw-bold fs-6 mb-2">Senha: </label>
+      <input type="password" id="ususenha" name="ususenha" v-model="ususenha" class="form-control form-control-solid mb-3 mb-lg-0" placeholder="Digite a senha">
+      <div class="fv-plugins-message-container invalid-feedback"></div>
+    </div>
+
+    <div class="fv-row mb-7 fv-plugins-icon-container">
+      <label class="required fw-bold fs-6 mb-2">Confirme a senha: </label>
+      <input type="password" id="ususenha2" name="ususenha2" v-model="ususenha2" class="form-control form-control-solid mb-3 mb-lg-0" placeholder="Confirme a senha">
+      <div class="fv-plugins-message-container invalid-feedback"></div>
+    </div>
+
+    <div class="row mb-7" data-select2-id="select2-data-561-nmjj">
+		<div class="col-lg-8 fv-row fv-plugins-icon-container" data-select2-id="select2-data-560-wq70">
+			<label class="required fw-bold fs-6 mb-2">Origem: </label>
+			<select id="usunivel" name="usunivel" v-model="usunivel" aria-label="Select a Country" data-control="select2" data-placeholder="Selecione o Nivel do Usuario" class="form-select form-select-solid form-select-lg fw-bold select2-hidden-accessible" data-select2-id="select2-data-10-0g0q" tabindex="-1" aria-hidden="true">
+			<option value="" data-select2-id="select2-data-12-5j0j"> -- Selecione o Nivel -- </option>
+      <option value="Administrador" data-select2-id="select2-data-12-5j0j">Administrador</option>
+      <option value="Vendedor" data-select2-id="select2-data-12-5j0j">Vendedor</option>
+      <option value="Inteligência de Vendas" data-select2-id="select2-data-12-5j0j">Inteligência de Vendas</option>
+			</select>
+			<div class="fv-plugins-message-container invalid-feedback"></div>
+		</div>
+	</div>
+    
+    </div>
+
+    <div class="text-center pt-15">
+      <button type="reset" class="btn btn-light me-3" data-kt-users-modal-action="cancel">Descartar</button>
+      <button type="submit" class="btn btn-primary" data-kt-users-modal-action="submit">
+      <span class="indicator-label">Salvar</span>
+      <span class="indicator-progress">Carregando... 
+      <span class="spinner-border spinner-border-sm align-middle ms-2"></span></span>
+      </button>
+    </div>
+
+
+          <div>
+        </div>
+      </form>
+    </div>
+    </div>
+    </div>
+    </div>
+  </div>
+</div>
+<!--end::Fim do Formulario-->
+
+
+
+
+
+<!--begin::Modal - Add task-->
+<div class="modal fade" id="kt_modal_editar_user" tabindex="-1" aria-hidden="true">
+  <!--begin::Modal dialog-->
+  <div class="modal-dialog modal-dialog-centered mw-650px">
+  <!--begin::Modal content-->
+  <div class="modal-content">
+  <!--begin::Modal header-->
+  <div class="modal-header" id="kt_modal_add_user_header">
+  <!--begin::Modal title-->
+  <h2 class="fw-bolder">Formulário de Usuários</h2>
+  <!--end::Modal title-->
+  
+  <!-- BOTÃO FECHAR (X) QUE ESTA FUNCIONANDO -->
+	<div class="btn btn-sm btn-icon btn-active-color-primary" data-bs-dismiss="modal">
+	<span class="svg-icon svg-icon-1">
+	<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+	<rect opacity="0.5" x="6" y="17.3137" width="16" height="2" rx="1" transform="rotate(-45 6 17.3137)" fill="currentColor"></rect>
+	<rect x="7.41422" y="6" width="16" height="2" rx="1" transform="rotate(45 7.41422 6)" fill="currentColor"></rect>
+	</svg>
+	</span>
+	</div>
+	<!-- BOTÃO FECHAR (X) QUE ESTA FUNCIONANDO -->
+  
+</div>
+
+<div class="modal-body scroll-y mx-5 mx-xl-15 my-7">
+  <form id="kt_modal_add_user_form" @submit.prevent="atualizarUsuarios()" class="form fv-plugins-bootstrap5 fv-plugins-framework" action="#">
     <div class="d-flex flex-column scroll-y me-n7 pe-7" id="kt_modal_add_user_scroll" data-kt-scroll="true" data-kt-scroll-activate="{default: false, lg: true}" data-kt-scroll-max-height="auto" data-kt-scroll-dependencies="#kt_modal_add_user_header" data-kt-scroll-wrappers="#kt_modal_add_user_scroll" data-kt-scroll-offset="300px" style="">
 
     <div class="fv-row mb-7 fv-plugins-icon-container">
@@ -165,36 +260,17 @@
   </div>
   </td>
 
-  <td class="align-items-center">
-  <div class="d-flex flex-column">
-  <span>{{ usuario.usunivel }}</span>
-  </div>
-  </td>
+    <td class="align-items-center">
+    <div class="d-flex flex-column">
+    <span>{{ usuario.usunivel }}</span>
+    </div>
+    </td>
 
-  <td class="text-end">
-  <a href="#" class="btn btn-light btn-active-light-primary btn-sm" data-kt-menu-trigger="click" data-kt-menu-placement="bottom-end"> AÇÕES
-  <span class="svg-icon svg-icon-5 m-0">
-  <svg xmlns="http://www.w3.org/2000/svg" width="24" viewBox="0 0 24 24" fill="none">
-  <path d="M11.4343 12.7344L7.25 8.55005C6.83579 8.13583 6.16421 8.13584 5.75 8.55005C5.33579 8.96426 5.33579 9.63583 5.75 10.05L11.2929 15.5929C11.6834 15.9835 12.3166 15.9835 12.7071 15.5929L18.25 10.05C18.6642 9.63584 18.6642 8.96426 18.25 8.55005C17.8358 8.13584 17.1642 8.13584 16.75 8.55005L12.5657 12.7344C12.2533 13.0468 11.7467 13.0468 11.4343 12.7344Z" fill="currentColor"></path>
-  </svg>
-  </span>
+    <td class="text-center">
+      <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#kt_modal_editar_user" @click="formEditarUsuarios(usuario)" style="width: 105px">Editar</button>
+      <button type="button" class="btn btn-primary" @click="deletarUsuario(usuario)" style="width: 105px">Excluir</button>
+    </td>
 
-  </a>
-
-  <div class="menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-600 menu-state-bg-light-primary fw-bold fs-7 w-125px py-4" data-kt-menu="true">				
-  <!-- Colocar link do menu de EDITAR empresa-->
-  <div class="menu-item px-3">
-  <!--<a data-bs-target="#kt_modal_add_user"  class="menu-link px-3">Editar</a>-->
-  <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#kt_modal_add_user" @click="formEditarUsuarios(usuario)">Editar</button>
-  </div>
-
-  <!-- Colocar link do menu de DELETAR empresa-->
-  <div class="menu-item px-3">
-  <!-- <a href="#" class="menu-link px-3" data-kt-users-table-filter="delete_row">Excluir</a> -->
-  <button type="button" class="btn btn-primary" @click="deletarUsuario(usuario)">Excluir</button>
-  </div>
-  </div>
-  </td>
   </tr>
 
 
@@ -209,9 +285,7 @@
 </div>
 </div>
 </div>
-</div>								
-</div>
-</div>  
+</div>								 
 
 </template>
 
@@ -238,6 +312,14 @@ export default {
   },
   methods:
   {
+    limparUsuarios()
+    {
+        this.usunome = '';
+        this.usuemail = '';
+        this.ususenha = '';
+        this.ususenha2 = '';
+        this.usunivel = '';
+    },
     addUsuario() //Cadastro de usuarios
 	  {
       if(this.ususenha == this.ususenha2) // Confirmando se senha e confirmação de senha coincidem
@@ -250,7 +332,6 @@ export default {
               usunivel: this.usunivel
           })
           .then(res => {
-            console.log(res);
             // Limpando campos do formulario
               this.usunome = '';
               this.usuemail = '';
@@ -271,7 +352,6 @@ export default {
 		axios.get('usuario/', 
         { headers: { Accept: 'application/json' } })
         .then(res => {
-          console.log(res)
           this.ArrayUsuarios = res.data
         })
         .catch(error => console.log(error))
@@ -281,28 +361,24 @@ export default {
 		axios.get('usuario/filtronome?nome='+this.pesqusu, 
         { headers: { Accept: 'application/json' } })
         .then(res => {
-          console.log(res)
           this.ArrayUsuarios = res.data
         })
         .catch(error => console.log(error))
 	},
-	atualizarUsuarios(usuid,usuario) // Editar Usuario
+	atualizarUsuarios() // Editar Usuario
 	{
     if(this.ususenha == this.ususenha2) // Confirmando se senha e confirmação de senha coincidem
     {
       axios.put('usuario/'+this.usuid,
-      { headers: { Accept: 'application/json' }},
       { 
-              usunome: usuario.usunome, 
-              usuemail: empresa.usuemail,
-              ususenha: empresa.ususenha,
-              usunivel: empresa.usunivel
+          usunome: this.$data.usunome, 
+          usuemail: this.$data.usuemail,
+          ususenha: this.$data.ususenha,
+          usunivel: this.$data.usunivel
       })
-        .then(res => 
+      .then(res => 
       {
-        console.log(res);
         this.carregarUsuarios();
-        
       })
           .catch(error => {console.log(error);})
     }
@@ -319,8 +395,6 @@ export default {
 		this.usuemail = usuario.usuemail;
 		this.ususenha = usuario.ususenha;
 		this.usunivel = usuario.usunivel;
-
-		this.atualizarUsuarios(this.usuid, usuario);
 	},
 	deletarUsuario(usuario)
 	{
@@ -330,7 +404,6 @@ export default {
 			axios.delete('usuario/'+this.usuid)
 			.then(res => 
 			{
-				console.log(res);
 				this.carregarUsuarios();
 			})
         	.catch(error => {console.log(error);})
@@ -342,9 +415,7 @@ export default {
   mutations: {  },
   setup() 
   {
-    
-
-    onMounted(() => { setCurrentPageTitle("Usuários"); });
+        onMounted(() => { setCurrentPageTitle("Usuários"); });
   },
 };
 </script>

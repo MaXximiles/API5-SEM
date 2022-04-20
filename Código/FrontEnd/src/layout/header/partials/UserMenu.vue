@@ -3,8 +3,8 @@
   <div class="menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-600 menu-state-bg-light-primary fw-bold py-4 fs-6 w-275px" data-kt-menu="true" >
     
     <!--begin::Menu item Colocar tela para recuperação de senha-->
-    <div class="menu-item px-5" >
-      <router-link to="#" class="menu-link px-5" @click="abrirModal()">
+    <div class="menu-item px-5">
+      <router-link to="/crafted/pages/profile/usuario" class="menu-link px-5">
         Meus Dados
       </router-link>
     </div>
@@ -55,6 +55,8 @@ export default defineComponent({
     };
 
     const signOut = () => {
+
+      localStorage.clear();
       store
         .dispatch(Actions.LOGOUT)
         .then(() => router.push({ name: "sign-in" }));

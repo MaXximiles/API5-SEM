@@ -96,8 +96,16 @@ export default defineComponent({
       const [errorName] = Object.keys(store.getters.getErrors);
       const error = store.getters.getErrors[errorName];
 
+/*
+ARRUMAR NIVEL DE USUARIO PARA MENU
+*/
+
       if (store.getters.currentUser.usuemail)
       {
+        localStorage.setItem("recarregar","0")
+        localStorage.setItem("loginId",store.getters.currentUser.usuid)
+        localStorage.setItem("loginNivel",store.getters.currentUser.usunivel)
+
         Swal.fire({
           text: "Login realizado com sucesso!",
           icon: "success",
