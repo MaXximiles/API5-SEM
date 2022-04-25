@@ -40,10 +40,18 @@ public class UsuarioController
 	public UsuarioController(UsuarioRepository UsuarioRepository) {this.usuarioRepository = UsuarioRepository; }
 		
 	// SELECT de todos//
-	@GetMapping("/")
+	/*@GetMapping("/")
 	public List<UsuarioRs> selectAll()
 	{
 	   var usuario = usuarioRepository.findAll();
+	   return usuario.stream().map((cid) -> UsuarioRs.converter(cid)).collect(Collectors.toList());
+	}*/
+	
+	// SELECT de todos//
+	@GetMapping("/")
+	public List<UsuarioRs> selectAll()
+	{
+	   var usuario = usuarioRepository.selectUsuarioOrdem();
 	   return usuario.stream().map((cid) -> UsuarioRs.converter(cid)).collect(Collectors.toList());
 	}
 		  

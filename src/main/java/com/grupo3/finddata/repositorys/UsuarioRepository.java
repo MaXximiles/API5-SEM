@@ -27,4 +27,8 @@ public interface UsuarioRepository extends JpaRepository<Usuario, Long>
 	
 	//Arrumar Select por email
 	
+	@Query(value = "SELECT  usu_id, usu_senha, usu_email, usu_nome, usu_nivel "
+			+ "FROM usuarios ORDER BY usu_nivel, usu_nome ", nativeQuery = true)
+	List<Usuario> selectUsuarioOrdem();
+	
 }
