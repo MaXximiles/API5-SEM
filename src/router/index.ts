@@ -4,7 +4,7 @@ import { Mutations, Actions } from "@/store/enums/StoreEnums";
 import JwtService from "@/core/services/JwtService";
 
 const routes: Array<RouteRecordRaw> = [
-  { 
+  {
     path: "/",
     redirect: "/dashboard",
     component: () => import("@/layout/Layout.vue"),
@@ -19,11 +19,6 @@ const routes: Array<RouteRecordRaw> = [
         path: "/crafted/pages/cadastros/empresa",
         name: "empresas",
         component: () => import("@/views/crafted/pages/cadastros/Empresa.vue"),
-      },
-      {
-        path: "/crafted/pages/cadastros/meusdados",
-        name: "meusdados",
-        component: () => import("@/views/crafted/pages/cadastros/MeusDados.vue"),
       },
       {
         path: "/crafted/pages/cadastros/usuarios",
@@ -53,6 +48,12 @@ const routes: Array<RouteRecordRaw> = [
         component: () =>
           import("@/views/crafted/pages/prospeccao/GerenciarEmpresas.vue"),
       },
+      {
+        path: "/crafted/pages/profile/usuario",
+        name: "Meu Perfil",
+        component: () => import("@/views/crafted/pages/profile/Profile.vue"),
+      },
+
       //TEMPLATE
       {
         path: "/builder",
@@ -230,12 +231,14 @@ const routes: Array<RouteRecordRaw> = [
       {
         path: "/crafted/modals/forms/create-api-key",
         name: "modals-forms-create-api-key",
-        component: () => import("@/views/crafted/modals/forms/CreateApiKey.vue"),
+        component: () =>
+          import("@/views/crafted/modals/forms/CreateApiKey.vue"),
       },
       {
         path: "/crafted/modals/wizards/two-factor-auth",
         name: "modals-wizards-two-factor-auth",
-        component: () => import("@/views/crafted/modals/wizards/TwoFactorAuth.vue"),
+        component: () =>
+          import("@/views/crafted/modals/wizards/TwoFactorAuth.vue"),
       },
       {
         path: "/crafted/modals/wizards/create-app",
@@ -245,7 +248,8 @@ const routes: Array<RouteRecordRaw> = [
       {
         path: "/crafted/modals/wizards/create-account",
         name: "modals-wizards-create-account",
-        component: () => import("@/views/crafted/modals/wizards/CreateAccount.vue"),
+        component: () =>
+          import("@/views/crafted/modals/wizards/CreateAccount.vue"),
       },
       {
         path: "/crafted/widgets/lists",
@@ -287,17 +291,20 @@ const routes: Array<RouteRecordRaw> = [
       {
         path: "/sign-in",
         name: "sign-in",
-        component: () => import("@/views/crafted/authentication/basic-flow/SignIn.vue"),
+        component: () =>
+          import("@/views/crafted/authentication/basic-flow/SignIn.vue"),
       },
       {
         path: "/sign-up",
         name: "sign-up",
-        component: () => import("@/views/crafted/authentication/basic-flow/SignUp.vue"),
+        component: () =>
+          import("@/views/crafted/authentication/basic-flow/SignUp.vue"),
       },
       {
         path: "/password-reset",
         name: "password-reset",
-        component: () => import("@/views/crafted/authentication/basic-flow/PasswordReset.vue"),
+        component: () =>
+          import("@/views/crafted/authentication/basic-flow/PasswordReset.vue"),
       },
     ],
   },

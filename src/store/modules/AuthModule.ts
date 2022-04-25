@@ -109,7 +109,8 @@ export default class AuthModule extends VuexModule implements UserAuthInfo {
 
   @Action
   [Actions.FORGOT_PASSWORD](payload) {
-    return ApiService.post("forgot_password", payload)
+    
+    return ApiService.post("/usuario/recuperar/"+payload.email, payload)
       .then(() => {
         this.context.commit(Mutations.SET_ERROR, {});
       })

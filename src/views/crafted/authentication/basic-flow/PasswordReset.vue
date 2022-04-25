@@ -2,21 +2,16 @@
   <!--begin::Wrapper-->
   <div class="w-lg-500px bg-white rounded shadow-sm p-10 p-lg-15 mx-auto">
     <!--begin::Form-->
-    <Form
-      class="form w-100 fv-plugins-bootstrap5 fv-plugins-framework"
-      @submit="onSubmitForgotPassword"
-      id="kt_login_password_reset_form"
-      :validation-schema="forgotPassword"
-    >
+    <Form class="form w-100 fv-plugins-bootstrap5 fv-plugins-framework" @submit="onSubmitForgotPassword" id="kt_login_password_reset_form" :validation-schema="forgotPassword" >
       <!--begin::Heading-->
       <div class="text-center mb-10">
         <!--begin::Title-->
-        <h1 class="text-dark mb-3">Forgot Password ?</h1>
+        <h1 class="text-dark mb-3">Esqueceu a senha ?</h1>
         <!--end::Title-->
 
         <!--begin::Link-->
         <div class="text-gray-400 fw-bold fs-4">
-          Enter your email to reset your password.
+          Escreva o email que deseja recuperar a senha:
         </div>
         <!--end::Link-->
       </div>
@@ -25,13 +20,7 @@
       <!--begin::Input group-->
       <div class="fv-row mb-10">
         <label class="form-label fw-bolder text-gray-900 fs-6">Email</label>
-        <Field
-          class="form-control form-control-solid"
-          type="email"
-          placeholder=""
-          name="email"
-          autocomplete="off"
-        />
+        <Field class="form-control form-control-solid" type="emai" placeholder="" id="email" name="email" />
         <div class="fv-plugins-message-container">
           <div class="fv-help-block">
             <ErrorMessage name="email" />
@@ -42,26 +31,16 @@
 
       <!--begin::Actions-->
       <div class="d-flex flex-wrap justify-content-center pb-lg-0">
-        <button
-          type="submit"
-          ref="submitButton"
-          id="kt_password_reset_submit"
-          class="btn btn-lg btn-primary fw-bolder me-4"
-        >
-          <span class="indicator-label"> Submit </span>
+        <button type="submit" ref="submitButton" id="kt_password_reset_submit" class="btn btn-lg btn-primary fw-bolder me-4" >
+          <span class="indicator-label"> Enviar </span>
           <span class="indicator-progress">
-            Please wait...
-            <span
-              class="spinner-border spinner-border-sm align-middle ms-2"
-            ></span>
+            Enviando...
+            <span class="spinner-border spinner-border-sm align-middle ms-2" ></span>
           </span>
         </button>
 
-        <router-link
-          to="/sign-up"
-          class="btn btn-lg btn-light-primary fw-bolder"
-          >Cancel</router-link
-        >
+        <router-link to="/sign-in" class="btn btn-lg btn-light-primary fw-bolder">Voltar</router-link >
+        <!--<router-link to="/sign-up" class="btn btn-lg btn-light-primary fw-bolder">Cancelar</router-link >-->
       </div>
       <!--end::Actions-->
     </Form>
@@ -70,7 +49,7 @@
   <!--end::Wrapper-->
 </template>
 
-<script lang="ts">
+<script lang="ts" >
 import { defineComponent, ref } from "vue";
 import { ErrorMessage, Field, Form } from "vee-validate";
 import { useStore } from "vuex";
@@ -104,17 +83,17 @@ export default defineComponent({
 
       // dummy delay
       // Send login request
-      await store.dispatch(Actions.FORGOT_PASSWORD, values);
+      await store.dispatch(Actions.FORGOT_PASSWORD,  values); // Aqui mudar para chamar função da API
 
       const [errorName] = Object.keys(store.getters.getErrors);
       const error = store.getters.getErrors[errorName];
 
       if (!error) {
         Swal.fire({
-          text: "You have successfully logged in!",
+          text: "Email enviado com sucesso!",
           icon: "success",
           buttonsStyling: false,
-          confirmButtonText: "Ok, got it!",
+          confirmButtonText: "Logar novamente!",
           customClass: {
             confirmButton: "btn fw-bold btn-light-primary",
           },
@@ -124,7 +103,7 @@ export default defineComponent({
           text: error[0],
           icon: "error",
           buttonsStyling: false,
-          confirmButtonText: "Try again!",
+          confirmButtonText: "Erro - verifique o email !",
           customClass: {
             confirmButton: "btn fw-bold btn-light-danger",
           },
