@@ -1,5 +1,8 @@
 package com.grupo3.finddata.classes.dto;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import com.grupo3.finddata.classes.Cnae;
 
 public class CnaeRs 
@@ -8,7 +11,6 @@ public class CnaeRs
 	private Long cnae_id;
 	private String cnae_codigo;
 	private String cnae_descricao;
-	
 	
 	public Long getCnae_id() {
 		return cnae_id;
@@ -37,5 +39,18 @@ public class CnaeRs
 			cnae2.setCnae_descricao(cnae.getCnae_descricao());
 			cnae2.setCnae_id(cnae.getCnae_id());
 			return cnae2;
+	}
+	
+	public static List<CnaeRs> converter(List<Cnae> lstCnae) 
+	{
+		List<CnaeRs> listCnae = new ArrayList<>();
+		
+		for(Cnae td : lstCnae)
+		{
+			
+			listCnae.add(CnaeRs.converter(td));
+		}
+		
+		return listCnae;
 	}
 }

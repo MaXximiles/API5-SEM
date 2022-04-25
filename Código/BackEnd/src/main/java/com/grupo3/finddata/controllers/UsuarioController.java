@@ -5,6 +5,8 @@ import java.security.MessageDigest;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import javax.mail.internet.MimeMessage;
+
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -21,7 +23,12 @@ import com.grupo3.finddata.classes.dto.UsuarioRq;
 import com.grupo3.finddata.classes.dto.UsuarioRs;
 import com.grupo3.finddata.repositorys.UsuarioRepository;
 
-
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.mail.MailSender;
+import org.springframework.mail.SimpleMailMessage;
+import org.springframework.mail.javamail.JavaMailSender;
+import org.springframework.mail.javamail.MimeMessageHelper;
+import org.springframework.web.bind.annotation.RequestMethod;
 
 @RestController
 @RequestMapping(value = "/usuario")
@@ -33,10 +40,18 @@ public class UsuarioController
 	public UsuarioController(UsuarioRepository UsuarioRepository) {this.usuarioRepository = UsuarioRepository; }
 		
 	// SELECT de todos//
-	@GetMapping("/")
+	/*@GetMapping("/")
 	public List<UsuarioRs> selectAll()
 	{
 	   var usuario = usuarioRepository.findAll();
+	   return usuario.stream().map((cid) -> UsuarioRs.converter(cid)).collect(Collectors.toList());
+	}*/
+	
+	// SELECT de todos//
+	@GetMapping("/")
+	public List<UsuarioRs> selectAll()
+	{
+	   var usuario = usuarioRepository.selectUsuarioOrdem();
 	   return usuario.stream().map((cid) -> UsuarioRs.converter(cid)).collect(Collectors.toList());
 	}
 		  
@@ -103,21 +118,6 @@ public class UsuarioController
 	    usuarioRepository.deleteById(id);
 	}
 	
-	public static String md5(String valor) throws Exception 
-	{
-	    MessageDigest md = MessageDigest.getInstance("MD5");
-	    BigInteger hash = new BigInteger(1, md.digest(valor.getBytes()));
-	    String s = hash.toString(16);
-	    if (s.length() % 2 != 0) {
-	      s = "0" + s;
-	    }
-	    return s;
-	}
-	
-	
-
-	
-	
 	@PostMapping("/login")
 	public Usuario Logar(@RequestBody Usuario usuario) throws Exception
 	{
@@ -129,5 +129,96 @@ public class UsuarioController
 	    if(user == null) {return null;}
 	    else{return user;}
 	} 
+	
+	// UPDATE
+	public String updateSenhaUsuario(String email, String senha) throws Exception 
+	{
+	    Usuario user = usuarioRepository.selectUsuarioEmailRecuperar(email);
+	    var resultado = "";
+
+	    if (user == null) 
+	    { 
+	    	throw new Exception("ERRO - Email não encontrado");
+	    } 
+	    else 
+	    { 
+			user.setUsusenha(senha);
+			usuarioRepository.save(user);
+			resultado = "1";
+		 }
+		return resultado;
+		
+		
+		    
+	}
+	
+	
+	/////////////////////////////
+	
+	@Autowired private JavaMailSender mailSender;
+
+	@PostMapping("/recuperar/{email}")
+    public String sendMail(@PathVariable("email") String email)
+    {
+		var Senha = gerarSenha();
+		
+        try 
+        {
+            MimeMessage mail = mailSender.createMimeMessage();
+
+            MimeMessageHelper helper = new MimeMessageHelper( mail );
+            
+            helper.setTo( email );
+            helper.setSubject( "Recuperação de senha ao sistema Find Data " );
+            helper.setText("<h2>Find Data</h2>"
+            				+ "<br><br>"
+            				+ "Olá sua nova senha é: "+Senha
+            				+ "<br><br>"
+            				+ "para alterar esta senha acesse o menu Meus Dados no canto superior direito da sua aplicação."
+            				+ "<br><br>"
+            				+ "Atenciosamente, equipe Find Data.",
+            				true);
+            var resultado = updateSenhaUsuario(email, Senha); 
+            if(resultado == "1"){ mailSender.send(mail);}
+                      
+            return "OK";
+           
+        } 
+        catch (Exception e) 
+        {
+            e.printStackTrace();
+            return "Erro ao enviar e-mail";
+        }
+    }
+	
+	///////////////////////////////////////////////////////////////
+	public String gerarSenha()
+	{
+		//int qtdeMaximaCaracteres = 8;
+		int qtdeMaximaCaracteres = 8;
+	    String[] caracteres = { "0", "1", "b", "2", "4", "5", "6", "7", "8",
+	                "9", "a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k",
+	                "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w",
+	                "x", "y", "z","!","@","$","%","&"};
 	    
+		StringBuilder senha = new StringBuilder();
+
+	    for (int i = 0; i < qtdeMaximaCaracteres; i++) 
+	    {
+	        int posicao = (int) (Math.random() * caracteres.length);
+	        senha.append(caracteres[posicao]);
+	    }
+	    return senha.toString();
+	}
+	
+	public static String md5(String valor) throws Exception 
+	{
+	    MessageDigest md = MessageDigest.getInstance("MD5");
+	    BigInteger hash = new BigInteger(1, md.digest(valor.getBytes()));
+	    String s = hash.toString(16);
+	    if (s.length() % 2 != 0) {
+	      s = "0" + s;
+	    }
+	    return s;
+	}
 }

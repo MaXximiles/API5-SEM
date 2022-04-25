@@ -26,7 +26,8 @@ public class Empresa
     
     @Column(name = "emp_origem")
     private String emporigem;
-
+    
+    
 	public Long getEmpid() {
 		return empid;
 	}
@@ -74,7 +75,7 @@ public class Empresa
 	public void setEmporigem(String emporigem) {
 		this.emporigem = emporigem;
 	}
-
+		
 	
 
         

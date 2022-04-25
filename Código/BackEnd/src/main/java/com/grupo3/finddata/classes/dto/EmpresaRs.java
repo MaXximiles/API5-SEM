@@ -1,5 +1,7 @@
 package com.grupo3.finddata.classes.dto;
 
+import java.util.List;
+
 import com.grupo3.finddata.classes.*;
 
 public class EmpresaRs 
@@ -11,8 +13,9 @@ public class EmpresaRs
 	  private String cnaeid;
 	  private String emporigem;
 	  
+	  private List<CnaeRs> cnae;
 	  
-	  public static EmpresaRs converter(Empresa empresa) 
+	  public static EmpresaRs converter(Empresa empresa, List<Cnae> lstCnae) 
 	  {
 			var emp = new EmpresaRs();
 			emp.setEmpid(empresa.getEmpid());
@@ -21,7 +24,19 @@ public class EmpresaRs
 			emp.setEmpcnpj(empresa.getEmpcnpj());
 			emp.setEmpnome(empresa.getEmpnome());
 			emp.setEmporigem(empresa.getEmporigem());
+			
+			emp.setCnae(CnaeRs.converter(lstCnae));
 			return emp;
+	}
+
+
+	public List<CnaeRs> getCnae() {
+		return cnae;
+	}
+
+
+	public void setCnae(List<CnaeRs> cnae) {
+		this.cnae = cnae;
 	}
 
 

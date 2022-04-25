@@ -2,6 +2,7 @@ package com.grupo3.finddata.controllers;
 
 import java.util.List;
 import java.util.stream.Collectors;
+import java.util.ArrayList;
 import java.util.Collections;
 
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -14,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.grupo3.finddata.repositorys.CnaeRepository;
 import com.grupo3.finddata.repositorys.EmpresaRepository;
 import com.grupo3.finddata.classes.dto.*;
 import com.grupo3.finddata.classes.Empresa;
@@ -24,23 +26,55 @@ public class EmpresaController
 {
 	
 	private EmpresaRepository empresaRepository = null;
+	private CnaeRepository cnaeRepository = null;
 	
-	public EmpresaController(EmpresaRepository empresaRepository) {this.empresaRepository = empresaRepository; }
+	public EmpresaController(EmpresaRepository empresaRepository, CnaeRepository cnaeRepository) 
+	{
+		this.empresaRepository = empresaRepository;
+		this.cnaeRepository = cnaeRepository;
+	}
 	
 	 // SELECT de todos//
-	 @GetMapping("/")
+	 /*@GetMapping("/")
 	 public List<EmpresaRs> selectAll()
 	 {
 	   var empresa = empresaRepository.findAll();
 	   return empresa.stream().map((emp) -> EmpresaRs.converter(emp)).collect(Collectors.toList());
-	 }
+	 }*/
+	 
+	// SELECT de todos//
+	 /*@GetMapping("/")
+	 public List<EmpresaRs> selectAll()
+	 {
+	   var empresa = empresaRepository.SelectOrdem();
+	   return empresa.stream().map((emp) -> EmpresaRs.converter(emp)).collect(Collectors.toList());
+	 }*/
+	
+	// SELECT Bloco por ID trazendo os traÃ§os com Tags //
+	@GetMapping("/")
+	public List<EmpresaRs> selectAll() 
+	{
+				
+		 List<EmpresaRs> lstEmpresa = new ArrayList<>();
+			
+			var empresa = empresaRepository.SelectOrdem();
+			
+			for(Empresa e : empresa)
+			{
+				EmpresaRs empresaRs = EmpresaRs.converter(e, cnaeRepository.SelectCnaeId(e.getCnaeid()));
+				lstEmpresa.add(empresaRs);
+			}
+					
+			return lstEmpresa;	
+	}
 	  
 	// SELECT por ID //
 	@GetMapping("/{id}")
 	public EmpresaRs selectID(@PathVariable("id") Long id) 
 	{
 	  var emp = empresaRepository.getOne(id);
-	  return EmpresaRs.converter(emp);
+	  return EmpresaRs.converter(emp, null);
+	  
 	}
 	  
     // SELECT por nome
@@ -48,8 +82,9 @@ public class EmpresaController
 	public List<EmpresaRs> findEmpresaByempnome(@RequestParam(value = "nome", required = false) String nome)
 	{
 		var empresa = empresaRepository.SelectEmpNome(nome);
-		return empresa.stream().map(EmpresaRs::converter).collect(Collectors.toList());
-	    //return this.empresaRepository.findEmpresaByempnomeContains(nome).stream().map(EmpresaRs::converter).collect(Collectors.toList());
+		//return empresa.stream().map(EmpresaRs::converter).collect(Collectors.toList());
+		return empresa.stream().map((empList) -> EmpresaRs.converter(empList, Collections.EMPTY_LIST)).collect(Collectors.toList());
+		
 	}
 		
 	// FIM DOS SELECT's **********************************************************************

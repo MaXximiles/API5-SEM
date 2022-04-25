@@ -103,8 +103,8 @@
 			<select id="usunivel" name="usunivel" v-model="usunivel" aria-label="Select a Country" data-control="select2" data-placeholder="Selecione o Nivel do Usuario" class="form-select form-select-solid form-select-lg fw-bold select2-hidden-accessible" data-select2-id="select2-data-10-0g0q" tabindex="-1" aria-hidden="true">
 			<option value="" data-select2-id="select2-data-12-5j0j"> -- Selecione o Nivel -- </option>
       <option value="Administrador" data-select2-id="select2-data-12-5j0j">Administrador</option>
-      <option value="Vendedor" data-select2-id="select2-data-12-5j0j">Vendedor</option>
       <option value="Inteligência de Vendas" data-select2-id="select2-data-12-5j0j">Inteligência de Vendas</option>
+      <option value="Vendedor" data-select2-id="select2-data-12-5j0j">Vendedor</option>
 			</select>
 			<div class="fv-plugins-message-container invalid-feedback"></div>
 		</div>
@@ -134,7 +134,7 @@
 <!--end::Fim do Formulario-->
 
 
-
+<!-- FORMULARIO DE EDITAR -->
 
 
 <!--begin::Modal - Add task-->
@@ -197,8 +197,8 @@
 			<select id="usunivel" name="usunivel" v-model="usunivel" aria-label="Select a Country" data-control="select2" data-placeholder="Selecione o Nivel do Usuario" class="form-select form-select-solid form-select-lg fw-bold select2-hidden-accessible" data-select2-id="select2-data-10-0g0q" tabindex="-1" aria-hidden="true">
 			<option value="" data-select2-id="select2-data-12-5j0j"> -- Selecione o Nivel -- </option>
       <option value="Administrador" data-select2-id="select2-data-12-5j0j">Administrador</option>
-      <option value="Vendedor" data-select2-id="select2-data-12-5j0j">Vendedor</option>
       <option value="Inteligência de Vendas" data-select2-id="select2-data-12-5j0j">Inteligência de Vendas</option>
+      <option value="Vendedor" data-select2-id="select2-data-12-5j0j">Vendedor</option>
 			</select>
 			<div class="fv-plugins-message-container invalid-feedback"></div>
 		</div>
@@ -292,9 +292,7 @@
 <script>
 import { defineComponent, onMounted } from "vue";
 import { setCurrentPageTitle } from "@/core/helpers/breadcrumb";
-import { mapMutations, mapState } from 'vuex';
 import axios from "axios";
-import * as Yup from "yup";
 
 export default {
   name: 'usuario',
@@ -322,7 +320,8 @@ export default {
     },
     addUsuario() //Cadastro de usuarios
 	  {
-      if(this.ususenha == this.ususenha2) // Confirmando se senha e confirmação de senha coincidem
+      //if(this.ususenha == this.ususenha2) // Confirmando se senha e confirmação de senha coincidem
+      if(this.confirmarForm())
       {
           axios.post('usuario/', 
           {  
@@ -338,14 +337,12 @@ export default {
               this.ususenha = '';
               this.ususenha2 = '';
               this.usunivel = '';
+              alert("Dados inseridos com sucesso!");
             this.carregarUsuarios();
             })
               .catch(error => {console.log(error);})
       }
-      else
-      {
-        alert("Senhas não conferem !");
-      }
+     
     },
 	carregarUsuarios() // Lista usuarios na tabela
 	{
@@ -367,7 +364,7 @@ export default {
 	},
 	atualizarUsuarios() // Editar Usuario
 	{
-    if(this.ususenha == this.ususenha2) // Confirmando se senha e confirmação de senha coincidem
+    if(this.confirmarForm())
     {
       axios.put('usuario/'+this.usuid,
       { 
@@ -378,15 +375,11 @@ export default {
       })
       .then(res => 
       {
+        alert("Dados alterados com sucesso!");
         this.carregarUsuarios();
       })
           .catch(error => {console.log(error);})
-    }
-    else
-    {
-      alert("Senhas não conferem !");
-    }
-	  
+    }	  
 	},
 	formEditarUsuarios(usuario)
 	{
@@ -409,7 +402,41 @@ export default {
         	.catch(error => {console.log(error);})
 		}
 		else{ this.carregarUsuarios();}
-	}
+	},
+  confirmarForm()
+  {
+    if(this.usunome == "")
+    { 
+      alert("Preencha o nome do Usuário !");
+      document.getElementById("usunome").onfocus;
+      return false;
+    }
+    else if(this.usuemail == "")
+    { 
+      alert("Preencha o email do Usuário !");
+      document.getElementById("usuemail").onfocus;
+      return false;
+    }
+    else if(this.ususenha == "" && this.ususenha2 == "")
+    { 
+      alert("Digite uma senha e confirme !");
+      document.getElementById("ususenha").onfocus;
+      return false;
+    }
+    else if(this.ususenha != this.ususenha2)
+    {
+      alert("Senhas não conferem !");
+      document.getElementById("ususenha").onfocus;
+      return false;
+    }
+    else if(this.usunivel == "")
+    { 
+      alert("Selecione o nível do Usuário !");
+      document.getElementById("usunome").onfocus;
+      return false;
+    }
+    else{return true}
+  }
 },
   created () { this.carregarUsuarios(); }, // Carregando lista de usuarios na tabela ao abrir pagina
   mutations: {  },

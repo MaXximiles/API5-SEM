@@ -82,7 +82,7 @@
 
 	<div class="fv-row mb-7 fv-plugins-icon-container">
 	<label class="required fw-bold fs-6 mb-2">CNPJ: </label>
-	<input type="text" id="emp_cnpj" name="emp_cnpj" v-model="empcnpj" class="form-control form-control-solid mb-3 mb-lg-0" placeholder="00.000.000/0000-00" >
+	<input type="text" id="emp_cnpj" name="emp_cnpj" v-model="empcnpj"  v-mask="'##.###.###/####-##'" maxlength="18" class="form-control form-control-solid mb-3 mb-lg-0" placeholder="00.000.000/0000-00" >
 	<div class="fv-plugins-message-container invalid-feedback"></div></div>
 
 
@@ -188,7 +188,7 @@
 
 	<div class="fv-row mb-7 fv-plugins-icon-container">
 	<label class="required fw-bold fs-6 mb-2">CNPJ: </label>
-	<input type="text" id="emp_cnpj" name="emp_cnpj" v-model="empcnpj" class="form-control form-control-solid mb-3 mb-lg-0" placeholder="00.000.000/0000-00" >
+	<input type="text" id="emp_cnpj" name="emp_cnpj" v-model="empcnpj" v-mask="'##.###.###/####-##'" class="form-control form-control-solid mb-3 mb-lg-0" placeholder="00.000.000/0000-00" >
 	<div class="fv-plugins-message-container invalid-feedback"></div></div>
 
 
@@ -254,8 +254,7 @@
 	</div>
 	<!--end::Fim do Formulario-->
 
-
-									
+			
             <!--begin::Card body-->
 			<div class="card-body py-4">
 			<!--begin::Table-->
@@ -291,7 +290,8 @@
 
                            <td class="align-items-center">
 								<div class="d-flex flex-column">
-								<span>{{ empresa.cnaeid }}</span>
+								<span>{{ empresa.cnae[0].cnae_codigo + " - " + empresa.cnae[0].cnae_descricao }}</span>
+								
 								</div>
 							</td>
 
@@ -329,6 +329,7 @@ import { defineComponent, onMounted } from "vue";
 import { setCurrentPageTitle } from "@/core/helpers/breadcrumb";
 import { mapMutations, mapState } from 'vuex';
 import axios from "axios";
+import {TheMask} from 'vue-the-mask'
 
 export default {
   name: 'empresa',
@@ -340,6 +341,8 @@ export default {
       cidid: '',
       cnaeid: '',
       emporigem: '',
+	  cnaedescricao: '',
+	  cnaecodigo: '',
 	  pesqemp: '',
       ArrayEmpresas: [],
 	  ArrayCidades: [],
@@ -372,32 +375,35 @@ export default {
 	},  
 	addEmpresa() //Cadastro de empresas
 	{
-       axios.post('empresas/', 
-	   {   
-            empnome: this.empnome, 
-            empcnpj: this.empcnpj,
-            emporigem: this.emporigem,
-            cidid: this.cidid,
-            cnaeid: this.cnaeid
-		})
-        .then(res => {
-			
-			// Limpando campos do formulario
-			this.empnome = '';
-            this.empcnpj = '';
-            this.emporigem = '';
-            this.cidid = '';
-            this.cnaeid = '';
-			this.carregarEmpresas();
+		if(this.confirmarForm())
+		{
+			axios.post('empresas/', 
+			{   
+			empnome: this.empnome, 
+			empcnpj: this.empcnpj,
+			emporigem: this.emporigem,
+			cidid: this.cidid,
+			cnaeid: this.cnaeid
 			})
-        .catch(error => {console.log(error);})
+			.then(res => {
+				// Limpando campos do formulario
+				this.empnome = '';
+				this.empcnpj = '';
+				this.emporigem = '';
+				this.cidid = '';
+				this.cnaeid = '';
+				alert("Dados inseridos com sucesso!");
+				this.carregarEmpresas();
+				})
+			.catch(error => {console.log(error);})
+		}
     },
 	carregarEmpresas() // Lista empresas na tabela
 	{
+		
 		axios.get('empresas/', 
         { headers: { Accept: 'application/json' } })
         .then(res => {
-          console.log(res)
           this.ArrayEmpresas = res.data
         })
         .catch(error => console.log(error))
@@ -428,12 +434,16 @@ export default {
         cidid: this.$data.cidid,
         cnaeid: this.$data.cnaeid}
 
-	   axios.put('empresas/'+this.$data.empid,dta)
-        .then(res => 
+		if(this.confirmarForm())
 		{
-			this.carregarEmpresas();
-		})
-        .catch(error => {console.log(error);})
+		axios.put('empresas/'+this.$data.empid,dta)
+			.then(res => 
+			{
+				alert("Dados alterados com sucesso!");
+				this.carregarEmpresas();
+			})
+			.catch(error => {console.log(error);})
+		}
 	},
 	deletarEmpresa(empresa)
 	{
@@ -450,6 +460,42 @@ export default {
 		else{ this.carregarEmpresas();}
 
 		
+	},
+	confirmarForm()
+	{
+		if(this.empnome == "")
+		{ 
+			alert("Preencha o nome da empresa !")
+			document.getElementById("empnome").onfocus();
+			return false;
+		}
+		else if(this.empcnpj == "")
+		{ 
+			alert("Preencha o cnpj da empresa !")
+			document.getElementById("empcnpj").onfocus();
+			return false;
+		}
+		else if(this.cnaeid == "")
+		{ 
+			alert("Selecione o CNAE da empresa !")
+			document.getElementById("empcnaeid").onfocus();
+			return false;
+		}
+		else if(this.cidid == "")
+		{ 
+			alert("Selecione uma cidade !")
+			document.getElementById("empcidid").onfocus();
+			return false;
+		}
+		else if(this.emporigem == "")
+		{ 
+			alert("Preencha o origem da empresa !")
+			document.getElementById("emporigem").onfocus();
+			return false;
+		}
+		
+		
+		else{ return true}
 	},
 	carregarCnae() // Carregar option para CNAE
 	{
@@ -468,7 +514,7 @@ export default {
           this.ArrayCidades = res.data
         })
         .catch(error => console.log(error))
-	},
+	}
   },
   created () 
   { 

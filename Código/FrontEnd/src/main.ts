@@ -1,8 +1,6 @@
 import { createApp } from "vue";
 import App from "./App.vue";
-import axios from 'axios';
 
-//axios.defaults.baseURL = 'http://localhost:8081/' 
 
 /*
 TIP: To get started with clean router change path to @/router/clean.ts.
@@ -21,8 +19,12 @@ import { initVeeValidate } from "@/core/plugins/vee-validate";
 import "@/core/plugins/prismjs";
 import "bootstrap"; 
 
+import VueTheMask from 'vue-the-mask';
+
+
 const app = createApp(App).use(store);
 
+app.use(VueTheMask);
 app.use(store);
 app.use(router);
 app.use(ElementPlus);

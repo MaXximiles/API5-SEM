@@ -104,6 +104,8 @@ ARRUMAR NIVEL DE USUARIO PARA MENU
       {
         localStorage.setItem("recarregar","0")
         localStorage.setItem("loginId",store.getters.currentUser.usuid)
+        localStorage.setItem("loginNome",store.getters.currentUser.usunome)
+        localStorage.setItem("loginEmail",store.getters.currentUser.usuemail)
         localStorage.setItem("loginNivel",store.getters.currentUser.usunivel)
 
         Swal.fire({
