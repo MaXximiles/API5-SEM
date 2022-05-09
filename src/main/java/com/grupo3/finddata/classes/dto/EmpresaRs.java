@@ -14,8 +14,10 @@ public class EmpresaRs
 	  private String emporigem;
 	  
 	  private List<CnaeRs> cnae;
+	  private List<ConsumoRs> consumo;
+	  private List<CidadeRs> cidade;
 	  
-	  public static EmpresaRs converter(Empresa empresa, List<Cnae> lstCnae) 
+	  public static EmpresaRs converter(Empresa empresa, List<Cnae> lstCnae, List<Consumo> lstConsumo, List<Cidade> lstCidade) 
 	  {
 			var emp = new EmpresaRs();
 			emp.setEmpid(empresa.getEmpid());
@@ -26,8 +28,38 @@ public class EmpresaRs
 			emp.setEmporigem(empresa.getEmporigem());
 			
 			emp.setCnae(CnaeRs.converter(lstCnae));
+			emp.setConsumo(ConsumoRs.converter(lstConsumo));
+			emp.setCidade(CidadeRs.converter(lstCidade));
 			return emp;
 	}
+	  
+	  
+	  
+	  
+	public List<CidadeRs> getCidade() {
+		return cidade;
+	}
+
+
+
+
+	public void setCidade(List<CidadeRs> cidade) {
+		this.cidade = cidade;
+	}
+
+
+
+
+	public List<ConsumoRs> getConsumo() {
+		return consumo;
+	}
+
+
+
+	public void setConsumo(List<ConsumoRs> consumo) {
+		this.consumo = consumo;
+	}
+
 
 
 	public List<CnaeRs> getCnae() {

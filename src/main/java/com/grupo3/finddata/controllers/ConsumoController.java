@@ -48,11 +48,11 @@ public class ConsumoController
 	}
 		  
 	// SELECT por Nome
-	/*@GetMapping("/filtroempresa")
-	public List<ConsumoRs> findConsumoByEmpresaId(@RequestParam("idempresa") Long idEmpresa)
+	@GetMapping("/cnpj")
+	public List<ConsumoRs> findConsumoByEmpresaId(@RequestParam("cnpj") String cnpj)
 	{
-	    return this.consumoRepository.findConsumoByEmpresaId(idEmpresa).stream().map(ConsumoRs::converter).collect(Collectors.toList());
-	}*/
+	    return this.consumoRepository.selectConsumoCnpj(cnpj).stream().map(ConsumoRs::converter).collect(Collectors.toList());
+	}
 		
 	// FIM DOS SELECT's **********************************************************************
 		

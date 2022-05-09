@@ -54,6 +54,14 @@ public class CnaeController
 	  var cnae = cnaeRepository.getOne(id);
 	  return CnaeRs.converter(cnae);
 	}
+	
+	// SELECT por ID //
+	@GetMapping("/cod")
+	public CnaeRs selectCnpj(@RequestParam(value = "cod", required = false) String cod) 
+	{
+	  var cnae = cnaeRepository.SelectCnaeCnpj(cod);
+	  return CnaeRs.converter(cnae);
+	}
 		  
 	// SELECT por Nome
 	/*@GetMapping("/filtrocnae")
