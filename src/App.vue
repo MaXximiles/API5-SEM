@@ -7,11 +7,17 @@ import { defineComponent, nextTick, onMounted } from "vue";
 import { useStore } from "vuex";
 import { Mutations } from "@/store/enums/StoreEnums";
 import { initializeComponents } from "@/core/plugins/keenthemes";
+import { GChart } from "vue-google-charts";
+
 
 export default defineComponent({
   name: "app",
+  components: {
+    GChart
+  },
   setup() {
     const store = useStore();
+
 
     onMounted(() => {
       /**

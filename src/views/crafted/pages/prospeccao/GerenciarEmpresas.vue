@@ -1,5 +1,5 @@
 <template>
-
+ 
 </template>
 
 <script lang="ts">
@@ -9,10 +9,11 @@ import { setCurrentPageTitle } from "@/core/helpers/breadcrumb";
 export default defineComponent({
   name: "gerenciar-empresas",
   components: {
+
   },
   setup() {
     onMounted(() => {
-      setCurrentPageTitle("Gerenciar Empresas/Vendedores");
+      setCurrentPageTitle("Gerenciar Empresas");
     });
   },
 });

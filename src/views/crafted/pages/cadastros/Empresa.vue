@@ -1,10 +1,7 @@
 <template>
 
 <div id="kt_content_container" class="container-xxl">
-  <div data-kt-swapper="true" data-kt-swapper-mode="prepend" data-kt-swapper-parent="{default: '#kt_content_container', 'lg': '#kt_toolbar_container'}" class="page-title d-flex align-items-center flex-wrap me-3 mb-5 mb-lg-0">
   
-  
-</div>
 
 	<div class="card">
 		<div class="card-header border-0 pt-6">
@@ -327,9 +324,7 @@
 <script>
 import { defineComponent, onMounted } from "vue";
 import { setCurrentPageTitle } from "@/core/helpers/breadcrumb";
-import { mapMutations, mapState } from 'vuex';
 import axios from "axios";
-import {TheMask} from 'vue-the-mask'
 
 export default {
   name: 'empresa',
@@ -341,15 +336,16 @@ export default {
       cidid: '',
       cnaeid: '',
       emporigem: '',
-	  cnaedescricao: '',
-	  cnaecodigo: '',
+	  cnae_descricao: '',
+	  cnae_codigo: '',
 	  pesqemp: '',
       ArrayEmpresas: [],
 	  ArrayCidades: [],
 	  ArrayCnaes: []
     } 
   },
-  mounted(){
+  mounted()
+  {
 	axios.get('cnae/', 
     	{ headers: { Accept: 'application/json' } })
     	.then(res => {
@@ -400,7 +396,6 @@ export default {
     },
 	carregarEmpresas() // Lista empresas na tabela
 	{
-		
 		axios.get('empresas/', 
         { headers: { Accept: 'application/json' } })
         .then(res => {
@@ -413,6 +408,7 @@ export default {
 		axios.get('empresas/filtronome?nome='+this.pesqemp, 
         { headers: { Accept: 'application/json' } })
         .then(res => {
+			console.log(res)
           this.ArrayEmpresas = res.data
         })
         .catch(error => console.log(error))
