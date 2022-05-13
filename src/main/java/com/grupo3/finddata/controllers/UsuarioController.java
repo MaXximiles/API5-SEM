@@ -69,7 +69,15 @@ public class UsuarioController
 	{
 		var usuario = usuarioRepository.SelectUsuarioNome(nome);
 		return usuario.stream().map(UsuarioRs::converter).collect(Collectors.toList());
-	    
+	}
+	
+	//SELECT todos os vendedores 
+	@GetMapping("/vendedores") 
+	public List<UsuarioRs> selectVendedores(@RequestParam(value = "regiao", required = false) String regiao,
+											@RequestParam(value = "nome", required = false) String nome)
+	{
+		var usuario = usuarioRepository.SelectVendedoresRegiao(regiao, nome);
+		return usuario.stream().map(UsuarioRs::converter).collect(Collectors.toList());
 	}
 		  
 		
@@ -86,6 +94,7 @@ public class UsuarioController
 	    usu.setUsuemail(usuario.getUsuemail());
 	    usu.setUsusenha(usuario.getUsusenha());
 	    usu.setUsunivel(usuario.getUsunivel());
+	    usu.setUsucidade(usuario.getUsucidade());
 	    usuarioRepository.save(usu);
 
 	 }
@@ -105,6 +114,7 @@ public class UsuarioController
 			  usu2.setUsuemail(usuario.getUsuemail());
 			  usu2.setUsusenha(usuario.getUsusenha());
 			  usu2.setUsunivel(usuario.getUsunivel());
+			  usu2.setUsucidade(usuario.getUsucidade());
 			  usuarioRepository.save(usu2);
 
 		} else { throw new Exception("Cidade não encontrada"); }

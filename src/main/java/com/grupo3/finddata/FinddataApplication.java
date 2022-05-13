@@ -16,12 +16,12 @@ public class FinddataApplication {
 		SpringApplication.run(FinddataApplication.class, args);
 	}
 		
-	/*@Bean
+	@Bean
 	public CorsFilter corsFilter() {
 		UrlBasedCorsConfigurationSource urlBasedCorsConfigurationSource = new UrlBasedCorsConfigurationSource();
 		CorsConfiguration corsConfiguration = new CorsConfiguration();
 		corsConfiguration.setAllowCredentials(true);
-		corsConfiguration.setAllowedOrigins(asList("http://localhost:8080","https://finddata-backend.herokuapp.com/"));
+		corsConfiguration.setAllowedOrigins(asList("http://localhost:8080","\"https://finddata-frontend.herokuapp.com","https://finddata-frontend.web.app"));
 		corsConfiguration.setAllowedHeaders(asList("Origin", "Access-Control-Allow-Origin", "Content-Type",
 				"Accept", "Jwt-Token", "Authorization", "Origin, Accept", "X-Requested-With",
 				"Access-Control-Request-Method", "Access-Control-Request-Headers"));
@@ -30,5 +30,5 @@ public class FinddataApplication {
 		corsConfiguration.setAllowedMethods(asList("GET", "POST", "PUT", "DELETE", "OPTIONS"));
 		urlBasedCorsConfigurationSource.registerCorsConfiguration("/**", corsConfiguration);
 		return new CorsFilter(urlBasedCorsConfigurationSource);
-	}*/
+	}
 }

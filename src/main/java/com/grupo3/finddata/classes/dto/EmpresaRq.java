@@ -8,11 +8,21 @@ public class EmpresaRq
 {
 	
 	private Long empid;
-	  private String empnome;
-	  private String empcnpj;
-	  private String cidid;
-	  private String cnaeid;
-	  private String emporigem;
+	private String empnome;
+	private String empcnpj;
+	private String cidid;
+	private String cnaeid;
+	private String emporigem;
+	private String cartid;
+	
+	
+	  
+	public String getCartid() {
+		return cartid;
+	}
+	public void setCartid(String cartid) {
+		this.cartid = cartid;
+	}
 	public Long getEmpid() {
 		return empid;
 	}

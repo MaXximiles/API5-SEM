@@ -27,7 +27,20 @@ public class Empresa
     @Column(name = "emp_origem")
     private String emporigem;
     
+    @Column(name = "cart_id")
+    private String cartid;
     
+    
+    
+	
+	public String getCartid() {
+		return cartid;
+	}
+
+	public void setCartid(String cartid) {
+		this.cartid = cartid;
+	}
+
 	public Long getEmpid() {
 		return empid;
 	}
