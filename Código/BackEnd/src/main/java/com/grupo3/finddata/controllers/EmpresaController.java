@@ -15,7 +15,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.grupo3.finddata.repositorys.CidadeRepository;
 import com.grupo3.finddata.repositorys.CnaeRepository;
+import com.grupo3.finddata.repositorys.ConsumoRepository;
 import com.grupo3.finddata.repositorys.EmpresaRepository;
 import com.grupo3.finddata.classes.dto.*;
 import com.grupo3.finddata.classes.Empresa;
@@ -27,45 +29,72 @@ public class EmpresaController
 	
 	private EmpresaRepository empresaRepository = null;
 	private CnaeRepository cnaeRepository = null;
+	private ConsumoRepository consumoRepository = null;
+	private CidadeRepository cidadeRepository = null;
 	
-	public EmpresaController(EmpresaRepository empresaRepository, CnaeRepository cnaeRepository) 
+	public EmpresaController(EmpresaRepository empresaRepository, CnaeRepository cnaeRepository, 
+							 ConsumoRepository consumoRepository, CidadeRepository cidadeRepository) 
 	{
 		this.empresaRepository = empresaRepository;
 		this.cnaeRepository = cnaeRepository;
+		this.consumoRepository = consumoRepository;
+		this.cidadeRepository = cidadeRepository;
 	}
 	
-	 // SELECT de todos//
-	 /*@GetMapping("/")
-	 public List<EmpresaRs> selectAll()
-	 {
-	   var empresa = empresaRepository.findAll();
-	   return empresa.stream().map((emp) -> EmpresaRs.converter(emp)).collect(Collectors.toList());
-	 }*/
-	 
-	// SELECT de todos//
-	 /*@GetMapping("/")
-	 public List<EmpresaRs> selectAll()
-	 {
-	   var empresa = empresaRepository.SelectOrdem();
-	   return empresa.stream().map((emp) -> EmpresaRs.converter(emp)).collect(Collectors.toList());
-	 }*/
-	
-	// SELECT Bloco por ID trazendo os traÃ§os com Tags //
 	@GetMapping("/")
 	public List<EmpresaRs> selectAll() 
 	{
+		List<EmpresaRs> lstEmpresa = new ArrayList<>();
+			
+		var empresa = empresaRepository.SelectOrdem();
+		
+		for(Empresa e : empresa)
+		{
+			EmpresaRs empresaRs = EmpresaRs.converter(e, cnaeRepository.SelectCnaeId(e.getCnaeid()),
+					 consumoRepository.selectConsumoCnpj(e.getEmpcnpj()),
+					 cidadeRepository.SelectCidadeId(e.getCidid()));
+			lstEmpresa.add(empresaRs);
+		}
 				
-		 List<EmpresaRs> lstEmpresa = new ArrayList<>();
+		return lstEmpresa;	
+	}
+	
+	//Selecionando cnaes da empresa
+	@GetMapping("/ordem")
+	public List<EmpresaRs> selectAllOrdem() 
+	{
+		List<EmpresaRs> lstEmpresa = new ArrayList<>();
 			
-			var empresa = empresaRepository.SelectOrdem();
+		var empresa = empresaRepository.SelectOrdemAll();
+		
+		for(Empresa e : empresa)
+		{
+			EmpresaRs empresaRs = EmpresaRs.converter(e, cnaeRepository.SelectCnaeId(e.getCnaeid()),
+					 consumoRepository.selectConsumoCnpj(e.getEmpcnpj()),
+					 cidadeRepository.SelectCidadeId(e.getCidid()));
+			lstEmpresa.add(empresaRs);
+		}
+				
+		return lstEmpresa;	
+	}
+	
+	//Selecionando cidades das empresas
+	@GetMapping("/cidades")
+	public List<EmpresaRs> selectAllCidades() 
+	{
+		List<EmpresaRs> lstEmpresa = new ArrayList<>();
 			
-			for(Empresa e : empresa)
-			{
-				EmpresaRs empresaRs = EmpresaRs.converter(e, cnaeRepository.SelectCnaeId(e.getCnaeid()));
-				lstEmpresa.add(empresaRs);
-			}
-					
-			return lstEmpresa;	
+		var empresa = empresaRepository.SelectEmpCidades();
+		
+		for(Empresa e : empresa)
+		{
+			EmpresaRs empresaRs = EmpresaRs.converter(e, cnaeRepository.SelectCnaeId(e.getCnaeid()),
+														 consumoRepository.selectConsumoCnpj(e.getEmpcnpj()),
+														 cidadeRepository.SelectCidadeId(e.getCidid()));
+			lstEmpresa.add(empresaRs);
+		}
+				
+		return lstEmpresa;	
 	}
 	  
 	// SELECT por ID //
@@ -73,18 +102,96 @@ public class EmpresaController
 	public EmpresaRs selectID(@PathVariable("id") Long id) 
 	{
 	  var emp = empresaRepository.getOne(id);
-	  return EmpresaRs.converter(emp, null);
+	  return EmpresaRs.converter(emp, null, null, null);
 	  
 	}
+	
+	
 	  
     // SELECT por nome
 	@GetMapping("/filtronome") 
 	public List<EmpresaRs> findEmpresaByempnome(@RequestParam(value = "nome", required = false) String nome)
 	{
-		var empresa = empresaRepository.SelectEmpNome(nome);
-		//return empresa.stream().map(EmpresaRs::converter).collect(Collectors.toList());
-		return empresa.stream().map((empList) -> EmpresaRs.converter(empList, Collections.EMPTY_LIST)).collect(Collectors.toList());
+				
+		List<EmpresaRs> lstEmpresa = new ArrayList<>();
 		
+		var empresa = empresaRepository.SelectEmpNome(nome);
+		
+		for(Empresa e : empresa)
+		{
+			EmpresaRs empresaRs = EmpresaRs.converter(e, cnaeRepository.SelectCnaeId(e.getCnaeid()),
+					 consumoRepository.selectConsumoCnpj(e.getEmpcnpj()),
+					 cidadeRepository.SelectCidadeId(e.getCidid()));
+			lstEmpresa.add(empresaRs);
+		}
+				
+		return lstEmpresa;	
+				
+	}
+	
+	// SELECT por cnae
+	@GetMapping("/cnae") 
+	public List<EmpresaRs> findEmpresaByCnae(@RequestParam(value = "cnae", required = false) String cnae)
+	{
+				
+		List<EmpresaRs> lstEmpresa = new ArrayList<>();
+		
+		var empresa = empresaRepository.SelectEmpCnae(cnae);
+		
+		for(Empresa e : empresa)
+		{
+			EmpresaRs empresaRs = EmpresaRs.converter(e, cnaeRepository.SelectCnaeId(e.getCnaeid()),
+					 consumoRepository.selectConsumoCnpj(e.getEmpcnpj()),
+					 cidadeRepository.SelectCidadeId(e.getCidid()));
+			lstEmpresa.add(empresaRs);
+		}
+				
+		return lstEmpresa;	
+				
+	}
+	
+	// SELECT por regiao
+	@GetMapping("/regiao") 
+	public List<EmpresaRs> findEmpresaByRegiao(@RequestParam(value = "regiao", required = false) String regiao)
+	{
+				
+		List<EmpresaRs> lstEmpresa = new ArrayList<>();
+		
+		var empresa = empresaRepository.SelectEmpRegiao(regiao);
+		
+		for(Empresa e : empresa)
+		{
+			EmpresaRs empresaRs = EmpresaRs.converter(e, cnaeRepository.SelectCnaeId(e.getCnaeid()),
+					 consumoRepository.selectConsumoCnpj(e.getEmpcnpj()),
+					 cidadeRepository.SelectCidadeId(e.getCidid()));
+			lstEmpresa.add(empresaRs);
+		}
+				
+		return lstEmpresa;	
+				
+	}
+	
+	// SELECT todos os filtros
+	@GetMapping("/filtros") 
+	public List<EmpresaRs> findEmpresaFiltros(@RequestParam(value = "cnae", required = false) String cnae, 
+											  @RequestParam(value = "nome", required = false) String nome,
+											  @RequestParam(value = "regiao", required = false) String regiao)
+	{
+				
+		List<EmpresaRs> lstEmpresa = new ArrayList<>();
+		
+		var empresa = empresaRepository.SelectEmpFiltros(regiao, nome, cnae );
+		
+		for(Empresa e : empresa)
+		{
+			EmpresaRs empresaRs = EmpresaRs.converter(e, cnaeRepository.SelectCnaeId(e.getCnaeid()),
+					 consumoRepository.selectConsumoCnpj(e.getEmpcnpj()),
+					 cidadeRepository.SelectCidadeId(e.getCidid()));
+			lstEmpresa.add(empresaRs);
+		}
+				
+		return lstEmpresa;	
+				
 	}
 		
 	// FIM DOS SELECT's **********************************************************************
@@ -101,11 +208,10 @@ public class EmpresaController
 	    emp.setCidid(empresa.getCidid());
 	    emp.setEmpnome(empresa.getEmpnome());
 	    emp.setEmporigem(empresa.getEmporigem());
-
+	    emp.setCartid(empresa.getCartid());
 	    empresaRepository.save(emp);
 
-	  }
-	
+	}
 	
 	  // UPDATE
 	  @PutMapping("/{id}")
@@ -113,8 +219,8 @@ public class EmpresaController
 	  {
 	    var emp = empresaRepository.findById(id);
 
-	    if (emp.isPresent()) {
-	     
+	    if (emp.isPresent()) 
+	    { 
 	      var emp2 = emp.get();
 
 	      emp2.setCidid(empresa.getCidid());
@@ -122,6 +228,7 @@ public class EmpresaController
 	      emp2.setEmpcnpj(empresa.getEmpcnpj());
 	      emp2.setEmpnome(empresa.getEmpnome());
 	      emp2.setEmporigem(empresa.getEmporigem());
+	      emp2.setCartid(empresa.getCartid());
 	      empresaRepository.save(emp2);
 
 	    } else { throw new Exception("Empresa não encontrada"); }

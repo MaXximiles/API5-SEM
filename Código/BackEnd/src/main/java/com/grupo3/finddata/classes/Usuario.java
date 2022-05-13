@@ -27,6 +27,19 @@ public class Usuario {
 	
 	@Column(name = "usu_nivel")
 	private String usunivel;
+	
+	@Column(name = "usu_cidade")
+	private String usucidade;
+	
+	
+	
+	public String getUsucidade() {
+		return usucidade;
+	}
+
+	public void setUsucidade(String usucidade) {
+		this.usucidade = usucidade;
+	}
 
 	public Long getUsuid() {
 		return usuid;

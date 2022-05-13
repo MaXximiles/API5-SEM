@@ -1,5 +1,8 @@
 package com.grupo3.finddata.classes.dto;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import com.grupo3.finddata.classes.Cidade;
 
 public class CidadeRs 
@@ -43,5 +46,19 @@ public class CidadeRs
 			cid.setCid_regiaoibge(cidade.getCid_regiaoibge());
 			return cid;
 	}
+	
+	public static List<CidadeRs> converter(List<Cidade> lstCidade) 
+	{
+		List<CidadeRs> listCidade = new ArrayList<>();
+		
+		for(Cidade td : lstCidade)
+		{
+			
+			listCidade.add(CidadeRs.converter(td));
+		}
+		
+		return listCidade;
+	}
+
 	
 }

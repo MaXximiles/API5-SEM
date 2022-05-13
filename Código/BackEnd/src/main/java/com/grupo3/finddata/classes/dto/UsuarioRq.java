@@ -7,7 +7,16 @@ public class UsuarioRq {
 	private String usuemail;
 	private String ususenha;
 	private String usunivel;
+	private String usucidade;
 	
+	
+	
+	public String getUsucidade() {
+		return usucidade;
+	}
+	public void setUsucidade(String usucidade) {
+		this.usucidade = usucidade;
+	}
 	public Long getUsuid() {
 		return usuid;
 	}
