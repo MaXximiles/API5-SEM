@@ -39,6 +39,16 @@
       <div class="fv-plugins-message-container invalid-feedback"></div>
     </div>
      
+     <div class="row mb-7" data-select2-id="select2-data-561-nmjj">
+		<div class="col-lg-8 fv-row fv-plugins-icon-container" data-select2-id="select2-data-560-wq70">
+			<label class="required fw-bold fs-6 mb-2">Cidade: </label>
+			<select id="usucidade" name="usucidade" v-model="usucidade"  data-control="select2" data-placeholder="Selecione o a cidade do Usuario" class="form-select form-select-solid form-select-lg fw-bold select2-hidden-accessible" data-select2-id="select2-data-10-0g0q" tabindex="-1" aria-hidden="true">
+			<option value="" data-select2-id="select2-data-12-5j0j"> -- Selecione a Cidade -- </option>
+      <option v-for="cidade in ArrayCidades" v-bind:key="cidade.cid_id" :value="cidade.cid_id" data-select2-id="select2-data-12-5j0j">{{ cidade.cid_estado +" - "+cidade.cid_cidade }}</option>
+			</select>
+			<div class="fv-plugins-message-container invalid-feedback"></div>
+		</div>
+	</div>
 
     <div class="fv-row mb-7 fv-plugins-icon-container">
       <label class="required fw-bold fs-6 mb-2">Senha: </label>
@@ -55,7 +65,7 @@
 
     <div class="fv-row mb-7 fv-plugins-icon-container">
       <label class="required fw-bold fs-6 mb-2">Nível: </label>
-      <select id="usunivel" name="usunivel" v-model="usunivel" class="form-control form-control-solid mb-3 mb-lg-0">
+      <select id="usunivel" name="usunivel" v-model="usunivel" class="form-control form-control-solid mb-3 mb-lg-0" disabled>
         <option >Administrador</option>
         <option >Vendedor</option>
         <option >Inteligência de Vendas</option>

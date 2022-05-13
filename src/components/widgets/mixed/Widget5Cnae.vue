@@ -117,7 +117,7 @@ export default ({
       yaxis: 
       {
         min: 0,
-        max: 35000,
+        max: 80000,
         labels: 
         {
           show: false,

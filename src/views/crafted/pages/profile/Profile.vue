@@ -24,6 +24,15 @@
                   <div class="fv-plugins-message-container invalid-feedback" ></div>
                 </div>
 
+                <div class="fv-row mb-7 fv-plugins-icon-container" >
+                    <label class="required fw-bold fs-6 mb-2">Cidade: </label>
+                    <select id="usucidade1" name="usucidade1" v-model="usucidade1"  data-control="select2" data-placeholder="Selecione o a cidade do Usuario" class="form-select form-select-solid form-select-lg fw-bold select2-hidden-accessible" data-select2-id="select2-data-10-0g0q" tabindex="-1" aria-hidden="true">
+                    <option value="" data-select2-id="select2-data-12-5j0j"> -- Selecione a Cidade -- </option>
+                    <option v-for="cidade in ArrayCidades" v-bind:key="cidade.cid_id" :value="cidade.cid_id" data-select2-id="select2-data-12-5j0j">{{ cidade.cid_estado +" - "+cidade.cid_cidade }}</option>
+                    </select>
+                    <div class="fv-plugins-message-container invalid-feedback"></div>
+                </div>
+
                 <div class="fv-row mb-7 fv-plugins-icon-container">
                   <label class="required fw-bold fs-6 mb-2">Senha: </label>
                   <input type="password" id="ususenha1" name="ususenha1" v-model="ususenha1" @change="mudarSenha()" class="form-control form-control-solid mb-3 mb-lg-0" placeholder="Digite a senha" />
@@ -39,7 +48,7 @@
 
                 <div class="fv-row mb-7 fv-plugins-icon-container">
                   <label class="required fw-bold fs-6 mb-2">Nível: </label>
-                  <select id="usunivel1" name="usunivel1" v-model="usunivel1" class="form-control form-control-solid mb-3 mb-lg-0" >
+                  <select id="usunivel1" name="usunivel1" v-model="usunivel1" class="form-control form-control-solid mb-3 mb-lg-0" disabled>
                     <option>Administrador</option>
                     <option>Vendedor</option>
                     <option>Inteligência de Vendas</option>
@@ -84,6 +93,8 @@ export default defineComponent({
       ususenha1: '',
       ususenha21: '',
       usunivel1: '',
+      usucidade1: '',
+      ArrayCidades: [],
       mudarsenha: 0,
     }
   },
@@ -100,6 +111,7 @@ export default defineComponent({
           this.usuemail1 = res.data.usuemail;
           this.ususenha1 = res.data.ususenha;
           this.usunivel1 = res.data.usunivel;
+          this.usucidade1 = res.data.usucidade;
         })
         .catch(error => console.log(error))
     },
@@ -110,40 +122,54 @@ export default defineComponent({
       this.ususenha1 = '';
       this.ususenha21 = '';
       this.usunivel1 = '';
+      this.usucidade1 = '';
     },
-	atualizarUsuario() // Editar Usuario
-	{
-    if(this.confereFormulario())
+    atualizarUsuario() // Editar Usuario
     {
-      axios.put('usuario/'+this.usuid1,
-      { 
-        usunome: this.$data.usunome1, 
-        usuemail: this.$data.usuemail1,
-        ususenha: this.$data.ususenha1,
-        usunivel: this.$data.usunivel1
-      })
-      .then(res => {alert("Dados alterados com sucesso!");})
-      .catch(error => {console.log(error);})
-    }
-	},
-  mudarSenha(){this.mudarsenha = 1;},
-  confereFormulario()
-  {
-    if(this.mudarsenha == 1)
-    {
-      if(this.ususenha1 == this.ususenha21) { return true; }
-      else 
+      if(this.confereFormulario())
       {
-        alert("Senhas não conferem !");
-        document.getElementById("ususenha")?.focus();
-        return false;
+        axios.put('usuario/'+this.usuid1,
+        { 
+          usunome: this.$data.usunome1, 
+          usuemail: this.$data.usuemail1,
+          ususenha: this.$data.ususenha1,
+          usunivel: this.$data.usunivel1,
+          usucidade: this.$data.usucidade1,
+        })
+        .then(res => {alert("Dados alterados com sucesso!");})
+        .catch(error => {console.log(error);})
       }
+    },
+    carregarCidades() // Carregar option para Cidades
+    {
+        axios.get('cidade/', 
+            { headers: { Accept: 'application/json' } })
+            .then(res => {
+              this.ArrayCidades = res.data
+            })
+            .catch(error => console.log(error))
+    },
+    mudarSenha(){this.mudarsenha = 1;},
+    confereFormulario()
+    {
+      if(this.mudarsenha == 1)
+      {
+        if(this.ususenha1 == this.ususenha21) { return true; }
+        else 
+        {
+          alert("Senhas não conferem !");
+          document.getElementById("ususenha")?.focus();
+          return false;
+        }
+      }
+      else { return true; }
     }
-    else { return true; }
-  }
-	
 },
-  created() { this.carregarUsuario(); },
+  created() 
+  { 
+    this.carregarUsuario(); 
+    this.carregarCidades();
+  },
   setup() { onMounted(() => {setCurrentPageTitle("Meu Perfil");}); },
 });
 </script>
