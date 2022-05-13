@@ -3,8 +3,6 @@ var DocMenuConfig = [{}];
 if(localStorage.getItem("loginId") != undefined)
 {
   var nivel = localStorage.getItem("loginNivel");
-
-  console.log(nivel);
   
   if(nivel == "Administrador")
   {

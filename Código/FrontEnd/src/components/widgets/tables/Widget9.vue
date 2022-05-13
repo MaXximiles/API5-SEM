@@ -135,36 +135,24 @@
                 </td>
 
                 <td class="text-end">
-                  <a
-                    href="#"
-                    class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm me-1"
-                  >
+                  <a href="#" class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm me-1" >
                     <span class="svg-icon svg-icon-3">
-                      <inline-svg
-                        src="media/icons/duotune/general/gen019.svg"
-                      />
+                      <inline-svg src="media/icons/duotune/general/gen019.svg" />
                     </span>
                   </a>
 
-                  <a
-                    href="#"
-                    class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm me-1"
-                  >
+                  <a href="#" class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm me-1" >
                     <span class="svg-icon svg-icon-3">
                       <inline-svg src="media/icons/duotune/art/art005.svg" />
                     </span>
                   </a>
 
-                  <a
-                    href="#"
-                    class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm"
-                  >
+                  <a  href="#" class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm" >
                     <span class="svg-icon svg-icon-3">
-                      <inline-svg
-                        src="media/icons/duotune/general/gen027.svg"
-                      />
+                      <inline-svg src="media/icons/duotune/general/gen027.svg" />
                     </span>
                   </a>
+                  
                 </td>
               </tr>
             </template>

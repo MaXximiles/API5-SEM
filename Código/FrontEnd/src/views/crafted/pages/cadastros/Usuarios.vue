@@ -1,8 +1,7 @@
 <template>
 
   <div id="kt_content_container" class="container-xxl">
-  <div data-kt-swapper="true" data-kt-swapper-mode="prepend" data-kt-swapper-parent="{default: '#kt_content_container', 'lg': '#kt_toolbar_container'}" class="page-title d-flex align-items-center flex-wrap me-3 mb-5 mb-lg-0">
-  </div>
+  
 
   <div class="card">
   <div class="card-header border-0 pt-6">
@@ -83,7 +82,17 @@
       <input type="text" id="usuemail" name="usuemail" v-model="usuemail" class="form-control form-control-solid mb-3 mb-lg-0" placeholder="Email do usuário">
       <div class="fv-plugins-message-container invalid-feedback"></div>
     </div>
-     
+
+    <div class="row mb-7" data-select2-id="select2-data-561-nmjj">
+		<div class="col-lg-8 fv-row fv-plugins-icon-container" data-select2-id="select2-data-560-wq70">
+			<label class="required fw-bold fs-6 mb-2">Cidade: </label>
+			<select id="usucidade" name="usucidade" v-model="usucidade"  data-control="select2" data-placeholder="Selecione o a cidade do Usuario" class="form-select form-select-solid form-select-lg fw-bold select2-hidden-accessible" data-select2-id="select2-data-10-0g0q" tabindex="-1" aria-hidden="true">
+			<option value="" data-select2-id="select2-data-12-5j0j"> -- Selecione a Cidade -- </option>
+      <option v-for="cidade in ArrayCidades" v-bind:key="cidade.cid_id" :value="cidade.cid_id" data-select2-id="select2-data-12-5j0j">{{ cidade.cid_estado +" - "+cidade.cid_cidade }}</option>
+			</select>
+			<div class="fv-plugins-message-container invalid-feedback"></div>
+		</div>
+	</div>
 
     <div class="fv-row mb-7 fv-plugins-icon-container">
       <label class="required fw-bold fs-6 mb-2">Senha: </label>
@@ -99,7 +108,7 @@
 
     <div class="row mb-7" data-select2-id="select2-data-561-nmjj">
 		<div class="col-lg-8 fv-row fv-plugins-icon-container" data-select2-id="select2-data-560-wq70">
-			<label class="required fw-bold fs-6 mb-2">Origem: </label>
+			<label class="required fw-bold fs-6 mb-2">Nível: </label>
 			<select id="usunivel" name="usunivel" v-model="usunivel" aria-label="Select a Country" data-control="select2" data-placeholder="Selecione o Nivel do Usuario" class="form-select form-select-solid form-select-lg fw-bold select2-hidden-accessible" data-select2-id="select2-data-10-0g0q" tabindex="-1" aria-hidden="true">
 			<option value="" data-select2-id="select2-data-12-5j0j"> -- Selecione o Nivel -- </option>
       <option value="Administrador" data-select2-id="select2-data-12-5j0j">Administrador</option>
@@ -178,6 +187,16 @@
       <div class="fv-plugins-message-container invalid-feedback"></div>
     </div>
      
+    <div class="row mb-7" data-select2-id="select2-data-561-nmjj">
+		<div class="col-lg-8 fv-row fv-plugins-icon-container" data-select2-id="select2-data-560-wq70">
+			<label class="required fw-bold fs-6 mb-2">Cidade: </label>
+			<select id="usucidade" name="usucidade" v-model="usucidade"  data-control="select2" data-placeholder="Selecione o a cidade do Usuario" class="form-select form-select-solid form-select-lg fw-bold select2-hidden-accessible" data-select2-id="select2-data-10-0g0q" tabindex="-1" aria-hidden="true">
+			<option value="" data-select2-id="select2-data-12-5j0j"> -- Selecione a Cidade -- </option>
+      <option v-for="cidade in ArrayCidades" v-bind:key="cidade.cid_id" :value="cidade.cid_id" data-select2-id="select2-data-12-5j0j">{{ cidade.cid_estado +" - "+cidade.cid_cidade }}</option>
+			</select>
+			<div class="fv-plugins-message-container invalid-feedback"></div>
+		</div>
+	</div>
 
     <div class="fv-row mb-7 fv-plugins-icon-container">
       <label class="required fw-bold fs-6 mb-2">Senha: </label>
@@ -193,7 +212,7 @@
 
     <div class="row mb-7" data-select2-id="select2-data-561-nmjj">
 		<div class="col-lg-8 fv-row fv-plugins-icon-container" data-select2-id="select2-data-560-wq70">
-			<label class="required fw-bold fs-6 mb-2">Origem: </label>
+			<label class="required fw-bold fs-6 mb-2">Nível: </label>
 			<select id="usunivel" name="usunivel" v-model="usunivel" aria-label="Select a Country" data-control="select2" data-placeholder="Selecione o Nivel do Usuario" class="form-select form-select-solid form-select-lg fw-bold select2-hidden-accessible" data-select2-id="select2-data-10-0g0q" tabindex="-1" aria-hidden="true">
 			<option value="" data-select2-id="select2-data-12-5j0j"> -- Selecione o Nivel -- </option>
       <option value="Administrador" data-select2-id="select2-data-12-5j0j">Administrador</option>
@@ -273,7 +292,6 @@
 
   </tr>
 
-
   </tbody>
 
 </table>
@@ -304,8 +322,10 @@ export default {
       ususenha: '',
       ususenha2: '',
       usunivel: '',
+      usucidade: '',
 	    pesqusu: '',
-      ArrayUsuarios: []
+      ArrayUsuarios: [],
+      ArrayCidades: []
     }
   },
   methods:
@@ -317,9 +337,19 @@ export default {
         this.ususenha = '';
         this.ususenha2 = '';
         this.usunivel = '';
+        this.usucidade = '';
+    },
+    carregarCidades() // Carregar option para Cidades
+    {
+      axios.get('cidade/', 
+          { headers: { Accept: 'application/json' } })
+          .then(res => {
+            this.ArrayCidades = res.data
+          })
+          .catch(error => console.log(error))
     },
     addUsuario() //Cadastro de usuarios
-	  {
+    {
       //if(this.ususenha == this.ususenha2) // Confirmando se senha e confirmação de senha coincidem
       if(this.confirmarForm())
       {
@@ -328,7 +358,8 @@ export default {
               usunome: this.usunome, 
               usuemail: this.usuemail,
               ususenha: this.ususenha,
-              usunivel: this.usunivel
+              usunivel: this.usunivel,
+              usucidade: this.usucidade
           })
           .then(res => {
             // Limpando campos do formulario
@@ -337,108 +368,121 @@ export default {
               this.ususenha = '';
               this.ususenha2 = '';
               this.usunivel = '';
+              this.usucidade = '';
               alert("Dados inseridos com sucesso!");
             this.carregarUsuarios();
             })
               .catch(error => {console.log(error);})
       }
-     
+      
     },
-	carregarUsuarios() // Lista usuarios na tabela
-	{
-		axios.get('usuario/', 
-        { headers: { Accept: 'application/json' } })
-        .then(res => {
-          this.ArrayUsuarios = res.data
-        })
-        .catch(error => console.log(error))
-	},
-	pesquisarUsuarios() // Pesquisa de usuarios por nome
-	{
-		axios.get('usuario/filtronome?nome='+this.pesqusu, 
-        { headers: { Accept: 'application/json' } })
-        .then(res => {
-          this.ArrayUsuarios = res.data
-        })
-        .catch(error => console.log(error))
-	},
-	atualizarUsuarios() // Editar Usuario
-	{
-    if(this.confirmarForm())
+    carregarUsuarios() // Lista usuarios na tabela
     {
-      axios.put('usuario/'+this.usuid,
-      { 
-          usunome: this.$data.usunome, 
-          usuemail: this.$data.usuemail,
-          ususenha: this.$data.ususenha,
-          usunivel: this.$data.usunivel
-      })
-      .then(res => 
+      axios.get('usuario/', 
+          { headers: { Accept: 'application/json' } })
+          .then(res => {
+            this.ArrayUsuarios = res.data
+          })
+          .catch(error => console.log(error))
+    },
+    pesquisarUsuarios() // Pesquisa de usuarios por nome
+    {
+      axios.get('usuario/filtronome?nome='+this.pesqusu, 
+          { headers: { Accept: 'application/json' } })
+          .then(res => {
+            this.ArrayUsuarios = res.data
+          })
+          .catch(error => console.log(error))
+    },
+    atualizarUsuarios() // Editar Usuario
+    {
+      if(this.confirmarForm())
       {
-        alert("Dados alterados com sucesso!");
-        this.carregarUsuarios();
-      })
-          .catch(error => {console.log(error);})
-    }	  
-	},
-	formEditarUsuarios(usuario)
-	{
-		this.usuid = usuario.usuid;
-		this.usunome = usuario.usunome;
-		this.usuemail = usuario.usuemail;
-		this.ususenha = usuario.ususenha;
-		this.usunivel = usuario.usunivel;
-	},
-	deletarUsuario(usuario)
-	{
-		if(confirm("Deseja realmente excluir registro? ") == true)
-		{
-			this.usuid = usuario.usuid;
-			axios.delete('usuario/'+this.usuid)
-			.then(res => 
-			{
-				this.carregarUsuarios();
-			})
-        	.catch(error => {console.log(error);})
-		}
-		else{ this.carregarUsuarios();}
-	},
-  confirmarForm()
-  {
-    if(this.usunome == "")
-    { 
-      alert("Preencha o nome do Usuário !");
-      document.getElementById("usunome").onfocus;
-      return false;
-    }
-    else if(this.usuemail == "")
-    { 
-      alert("Preencha o email do Usuário !");
-      document.getElementById("usuemail").onfocus;
-      return false;
-    }
-    else if(this.ususenha == "" && this.ususenha2 == "")
-    { 
-      alert("Digite uma senha e confirme !");
-      document.getElementById("ususenha").onfocus;
-      return false;
-    }
-    else if(this.ususenha != this.ususenha2)
+        axios.put('usuario/'+this.usuid,
+        { 
+            usunome: this.$data.usunome, 
+            usuemail: this.$data.usuemail,
+            ususenha: this.$data.ususenha,
+            usunivel: this.$data.usunivel,
+            usucidade: this.$data.usucidade
+        })
+        .then(res => 
+        {
+          alert("Dados alterados com sucesso!");
+          this.carregarUsuarios();
+        })
+            .catch(error => {console.log(error);})
+      }	  
+    },
+    formEditarUsuarios(usuario)
     {
-      alert("Senhas não conferem !");
-      document.getElementById("ususenha").onfocus;
-      return false;
+      this.usuid = usuario.usuid;
+      this.usunome = usuario.usunome;
+      this.usuemail = usuario.usuemail;
+      this.ususenha = usuario.ususenha;
+      this.usunivel = usuario.usunivel;
+      this.usucidade = usuario.usucidade;
+    },
+    deletarUsuario(usuario)
+    {
+      if(confirm("Deseja realmente excluir registro? ") == true)
+      {
+        this.usuid = usuario.usuid;
+        axios.delete('usuario/'+this.usuid)
+        .then(res => 
+        {
+          this.carregarUsuarios();
+        })
+            .catch(error => {console.log(error);})
+      }
+      else{ this.carregarUsuarios();}
+    },
+    confirmarForm()
+    {
+      if(this.usunome == "")
+      { 
+        alert("Preencha o nome do Usuário !");
+        document.getElementById("usunome").onfocus;
+        return false;
+      }
+      else if(this.usuemail == "")
+      { 
+        alert("Preencha o email do Usuário !");
+        document.getElementById("usuemail").onfocus;
+        return false;
+      }
+      else if(this.ususenha == "" && this.ususenha2 == "")
+      { 
+        alert("Digite uma senha e confirme !");
+        document.getElementById("ususenha").onfocus;
+        return false;
+      }
+      else if(this.ususenha != this.ususenha2)
+      {
+        alert("Senhas não conferem !");
+        document.getElementById("ususenha").onfocus;
+        return false;
+      }
+      else if(this.usucidade == "")
+      { 
+        alert("Selecione uma cidade !");
+        document.getElementById("usucidade").onfocus;
+        return false;
+      }
+      else if(this.usunivel == "")
+      { 
+        alert("Selecione o nível do Usuário !");
+        document.getElementById("usunome").onfocus;
+        return false;
+      }
+      else{return true}
     }
-    else if(this.usunivel == "")
-    { 
-      alert("Selecione o nível do Usuário !");
-      document.getElementById("usunome").onfocus;
-      return false;
-    }
-    else{return true}
-  }
-},
-  created () { this.carregarUsuarios(); }, // Carregando lista de usuarios na tabela ao abrir pagina
+  },
+  created () 
+  { 
+    this.carregarUsuarios(); 
+    this.carregarCidades();
+  }, // Carregando lista de usuarios na tabela ao abrir pagina
   mutations: {  },
   setup() 
   {

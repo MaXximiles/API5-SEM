@@ -7,10 +7,10 @@
       <div class="flex-grow-1 card-p pb-0">
         <div class="d-flex flex-stack flex-wrap">
           <div class="me-2">
-            <a class="text-dark text-hover-primary fw-bolder fs-3">Gráfico de Consumo</a>
+            <a href="#" class="text-dark text-hover-primary fw-bolder fs-3">Gráfico de Consumo</a>
 
             <div class="text-muted fs-7 fw-bold">
-              Quantidade de produtos consumidos por mês.
+              Quantidade de produtos consumidos por mês
             </div>
           </div>
 
@@ -22,7 +22,7 @@
       <!--end::Stats-->
 
       <!--begin::Chart-->
-      <apexchart class="mixed-widget-7-chart card-rounded-bottom" :options="chartOptions" :series="series" type="area" :height="chartHeight" :total="consumoTotal" :meses="ArrayMeses" :consumo="ArrayConsumo"></apexchart>
+      <apexchart class="mixed-widget-7-chart card-rounded-bottom" :options="chartOptions" :series="series" type="area" :total="consumoTotal" :height="chartHeight" :meses="ArrayMeses" :consumo="ArrayConsumo"></apexchart>
       <!--end::Chart-->
     </div>
     <!--end::Body-->
@@ -90,7 +90,7 @@ export default {
       xaxis: 
       {
         //categories: ["Feb", "Mar", "Apr", "May", "Jun", "Jul"],
-        categories: props.meses,
+        categories: props.meses.value,
         axisBorder: { show: false, },
         axisTicks: { show: false, },
         labels: 

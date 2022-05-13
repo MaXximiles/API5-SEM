@@ -1,5 +1,5 @@
 <template>
-  <!--begin::Mixed Widget 7-->
+   <!--begin::Mixed Widget 7-->
   <div :class="widgetClasses" class="card">
     <!--begin::Body-->
     <div class="card-body d-flex flex-column p-0">
@@ -7,46 +7,45 @@
       <div class="flex-grow-1 card-p pb-0">
         <div class="d-flex flex-stack flex-wrap">
           <div class="me-2">
-            <a class="text-dark text-hover-primary fw-bolder fs-3">Gráfico de Consumo</a>
+            <a class="text-dark text-hover-primary fw-bolder fs-3">Gráfico de CNAES</a>
 
             <div class="text-muted fs-7 fw-bold">
-              Quantidade de produtos consumidos por mês.
+              Quantidade de produtos consumidos por CNAE.
             </div>
           </div>
 
           <div :class="`text-${chartColor}`" class="fw-bolder fs-3">
-            {{ consumoTotal }}
+            {{ consumoTotalCnae }}
           </div>
         </div>
       </div>
       <!--end::Stats-->
 
       <!--begin::Chart-->
-      <apexchart class="mixed-widget-7-chart card-rounded-bottom" :options="chartOptions" :series="series" type="area" :height="chartHeight" :total="consumoTotal" :meses="ArrayMeses" :consumo="ArrayConsumo"></apexchart>
+      <apexchart class="mixed-widget-5-chart card-rounded-top" :options="chartOptions" :series="series" type="area" :height="chartHeight" :totalCnae="consumoTotalCnae" :mesesCnae="ArrayMesesCnae" :consumoCnae="ArrayConsumoCnae"></apexchart>
       <!--end::Chart-->
     </div>
     <!--end::Body-->
   </div>
   <!--end::Mixed Widget 7-->
+      
+  <!--end::Mixed Widget 5-->
 </template>
 
 <script>
-import { defineComponent, ref } from "vue";
+import { ref } from "vue";
 import { getCSSVariableValue } from "@/assets/ts/_utils";
 
-export default {
+export default ({
   name: "widget-7",
-  props: 
-  {
+  props: {
     widgetClasses: String,
     chartColor: String,
     chartHeight: String,
-    total: String,
-    meses: [],
-    consumo: [],
-    total: '' 
+    totalCnae: String,
+    mesesCnae: [],
+    consumoCnae: []
   },
-  
   setup(props) 
   {
     const color = ref(props.chartColor);
@@ -60,7 +59,7 @@ export default {
         {
           name: "Consumo",
           //data: [15, 25, 15, 40, 20, 50],
-          data: props.consumo,
+          data: props.consumoCnae,
         },
       ],
       chart: 
@@ -90,7 +89,7 @@ export default {
       xaxis: 
       {
         //categories: ["Feb", "Mar", "Apr", "May", "Jun", "Jul"],
-        categories: props.meses,
+        categories: props.mesesCnae,
         axisBorder: { show: false, },
         axisTicks: { show: false, },
         labels: 
@@ -118,7 +117,7 @@ export default {
       yaxis: 
       {
         min: 0,
-        max: 4000,
+        max: 80000,
         labels: 
         {
           show: false,
@@ -182,7 +181,7 @@ export default {
       {
         name: "Consumo Mensal",
         //data: [15, 25, 15, 40, 20, 50],
-        data: props.consumo,
+        data: props.consumoCnae,
       },
     ];
 
@@ -191,5 +190,5 @@ export default {
       series,
     };
   },
-};
+});
 </script>
