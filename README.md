@@ -59,6 +59,10 @@
 
 <p align=center><b>Tela para gerenciar empresas/vendedor(carteiras pendentes)</b></p>
 <img src="https://user-images.githubusercontent.com/68132461/168408570-7addb1be-c4e1-497e-bde0-32ea466b9eee.PNG">
+
+
+<p align=center><b>Sistema funcionando</b></p>
+<img src="https://user-images.githubusercontent.com/68132461/168408753-0150646f-6e24-410a-9fe1-4828f53eb96c.gif" width= 1000 height=500>
 </p></br><h1></h1>
 
 #### Proposta para próxima sprint:
