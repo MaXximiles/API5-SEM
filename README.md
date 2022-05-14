@@ -59,6 +59,8 @@
 
 <p align=center><b>Tela para gerenciar empresas/vendedor(carteiras pendentes)</b></p>
 <img src="https://user-images.githubusercontent.com/68132461/168408570-7addb1be-c4e1-497e-bde0-32ea466b9eee.PNG">
+</p></br><h1></h1>
+
 #### Proposta para próxima sprint:
 <b>Para nossa última Sprint pretendemos adicionar a pesquisa de empresas ao usuário vendedor, a seção prospects onde o usuário poderá escolher empresas para adicionar a sua carteira e a carteira/vendedor onde o usuário poderá ver suas empresas.</b>
 
