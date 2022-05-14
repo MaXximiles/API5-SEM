@@ -33,12 +33,32 @@
   - Criação do script SQL do Banco de Dados Data Warehouse;
 </br>
 
-<!-- ### APRESENTAÇÃO 
+<!-- ### APRESENTAÇÃO -->
 
 </p></br><h1></h1>
 
-### Screenshoots:-->
+### Screenshoots:
+<p align=center><b>Modal de envio para carteira/vendedor</b></p>
+<img src="https://user-images.githubusercontent.com/68132461/168408400-a9df808a-cff8-4cc5-b514-30f13c78c9f5.PNG">
 
+<p align=center><b>Modal para visualizar carteira/vendedor</b></p>
+<img src="https://user-images.githubusercontent.com/68132461/168408449-03009ccb-b958-4f7d-bf97-79176acfd04d.PNG">
+
+<p align=center><b>Tela de busca de clientes aplicando filtros e gráficos</b></p>
+<img src="https://user-images.githubusercontent.com/68132461/168408481-013191a0-a56e-4a7d-aad2-a978317e7c81.PNG">
+
+<p align=center><b>Tela de busca de clientes</b></p>
+<img src="https://user-images.githubusercontent.com/68132461/168408506-a90d8958-0eb0-40d4-b51f-727734961972.PNG">
+
+
+<p align=center><b>Tela inicial "Inteligência"</b></p>
+<img src="https://user-images.githubusercontent.com/68132461/168408534-f8a20911-1dbb-4651-86a9-6f3e2903f912.PNG">
+
+<p align=center><b>Tela para gerenciar empresas/vendedor(carteiras concluídas)</b></p>
+<img src="https://user-images.githubusercontent.com/68132461/168408561-36bfbdae-ac2b-4f0a-9c19-23a81b979706.PNG">
+
+<p align=center><b>Tela para gerenciar empresas/vendedor(carteiras pendentes)</b></p>
+<img src="https://user-images.githubusercontent.com/68132461/168408570-7addb1be-c4e1-497e-bde0-32ea466b9eee.PNG">
 #### Proposta para próxima sprint:
 <b>Para nossa última Sprint pretendemos adicionar a pesquisa de empresas ao usuário vendedor, a seção prospects onde o usuário poderá escolher empresas para adicionar a sua carteira e a carteira/vendedor onde o usuário poderá ver suas empresas.</b>
 
