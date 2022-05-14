@@ -13,12 +13,24 @@
 ### Detalhes da Sprint:
 <b>Resumo de modificações:
 - Front-end e Back-end:</b>
-  - Desenvolvimento da interface gráfica;
-  - Adição do cadastro de empresas ao usuário inteligência;
-  - Adição de filtros dedicados ao usuário inteligência; 
-  - Adição da ferramenta de pesquisa de empresas ao usuário inteligência.
+  - Adição da tela cliente/vendedor;
+  - Adição da ferramenta de pesquisa ao "Vendedor";
+  - Endereço adicionado a tela de usuários;
+  - Adição do botão "Limpar Filtros";
+  - Atualização dos campos;
+  - Adição da ferramenta de pesquisa por "CNAE";
+  - Adição da ferramenta de pesquisa por "Região";
+  - Adição da ferramenta de pesquisa por "nome da empresa";
+  - Adição da ferramenta de prospecção;
+  - Adição dos filtros básicos de prospecção;
+  - Adição do módulo de cadastros ao usuário inteligência;
+  - Polimento da interface gráfica;
+  - Adição de gráficos a ferramenta de prospecção.
+
 - <b>Banco de Dados:</b>
-  - Versionamento do Banco de Dados.
+  - Versionamento do Banco de Dados;
+  - Criação do modelo conceitual do Banco de Dados Data Warehouse;
+  - Criação do script SQL do Banco de Dados Data Warehouse;
 </br>
 
 <!-- ### APRESENTAÇÃO 
