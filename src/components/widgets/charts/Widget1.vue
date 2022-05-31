@@ -5,30 +5,11 @@
     <div class="card-header border-0 pt-5">
       <!--begin::Title-->
       <h3 class="card-title align-items-start flex-column">
-        <span class="card-label fw-bolder fs-3 mb-1">Recent Statistics</span>
+        <span class="card-label fw-bolder fs-3 mb-1">Estastisticas de Minhas Empresas</span>
 
-        <span class="text-muted fw-bold fs-7">More than 400 new members</span>
+        <span class="text-muted fw-bold fs-7">Consumo de empresas em minha carteira</span>
       </h3>
       <!--end::Title-->
-
-      <!--begin::Toolbar-->
-      <div class="card-toolbar">
-        <!--begin::Menu-->
-        <button
-          type="button"
-          class="btn btn-sm btn-icon btn-color-primary btn-active-light-primary"
-          data-kt-menu-trigger="click"
-          data-kt-menu-placement="bottom-end"
-          data-kt-menu-flip="top-end"
-        >
-          <span class="svg-icon svg-icon-2">
-            <inline-svg src="media/icons/duotune/general/gen024.svg" />
-          </span>
-        </button>
-        <Dropdown1></Dropdown1>
-        <!--end::Menu-->
-      </div>
-      <!--end::Toolbar-->
     </div>
     <!--end::Header-->
 
@@ -43,24 +24,31 @@
   <!--end::Charts Widget 1-->
 </template>
 
-<script lang="ts">
-import { defineComponent } from "vue";
+<script>
 import { getCSSVariableValue } from "@/assets/ts/_utils";
 import Dropdown1 from "@/components/dropdown/Dropdown1.vue";
 
-export default defineComponent({
+export default({
   name: "widget-1",
   props: {
     widgetClasses: String,
+    empresa1consumovend: [],
+    empresa2consumovend: [],
+    empresa3consumovend: [],
+    empresa1empresavend: [],
+    empresa2empresavend: [],
+    empresa3empresavend: [],
+    empresatopmesvend: [],
   },
   components: {
     Dropdown1,
   },
-  setup() {
+  setup(props) {
     const labelColor = getCSSVariableValue("--bs-gray-500");
     const borderColor = getCSSVariableValue("--bs-gray-200");
     const baseColor = getCSSVariableValue("--bs-primary");
-    const secondaryColor = getCSSVariableValue("--bs-gray-300");
+    const secondaryColor = getCSSVariableValue("--bs-success");
+    const terciaryColor = getCSSVariableValue("--bs-danger");
 
     const options = {
       chart: {
@@ -93,78 +81,87 @@ export default defineComponent({
         axisBorder: {
           show: false,
         },
-        axisTicks: {
-          show: false,
-        },
-        labels: {
-          style: {
+        axisTicks: { show: false, },
+        labels: 
+        {
+          style: 
+          {
             colors: labelColor,
             fontSize: "12px",
           },
         },
       },
-      yaxis: {
-        labels: {
-          style: {
+      yaxis: 
+      {
+        labels: 
+        {
+          style: 
+          {
             colors: labelColor,
             fontSize: "12px",
           },
         },
       },
-      fill: {
-        opacity: 1,
-      },
+      fill: { opacity: 1, },
       states: {
-        normal: {
-          filter: {
+
+        normal: 
+        {
+          filter: 
+          {
             type: "none",
             value: 0,
           },
         },
-        hover: {
-          filter: {
+        hover: 
+        {
+          filter: 
+          {
             type: "none",
             value: 0,
           },
         },
-        active: {
+        active: 
+        {
           allowMultipleDataPointsSelection: false,
-          filter: {
+          filter: 
+          {
             type: "none",
             value: 0,
           },
         },
       },
-      tooltip: {
-        style: {
-          fontSize: "12px",
-        },
+      tooltip:
+       {
+        style: { fontSize: "12px", },
         y: {
-          formatter: function (val) {
-            return "$" + val + " thousands";
-          },
+          formatter: function (val) {  return val + " produtos consumidos"; },
         },
       },
-      colors: [baseColor, secondaryColor],
-      grid: {
+      colors: [baseColor, secondaryColor, terciaryColor],
+      grid: 
+      {
         borderColor: borderColor,
         strokeDashArray: 4,
-        yaxis: {
-          lines: {
-            show: true,
-          },
+        yaxis:
+        {
+          lines: { show: true, },
         },
       },
     };
 
     const series = [
       {
-        name: "Net Profit",
-        data: [44, 55, 57, 56, 61, 58],
+        name: props.empresa1empresavend,
+        data: props.empresa1consumovend,
       },
       {
-        name: "Revenue",
-        data: [76, 85, 101, 98, 87, 105],
+        name: props.empresa2empresavend,
+        data: props.empresa2consumovend,
+      },
+     {
+        name: props.empresa3empresavend,
+        data: props.empresa3consumovend,
       },
     ];
 
