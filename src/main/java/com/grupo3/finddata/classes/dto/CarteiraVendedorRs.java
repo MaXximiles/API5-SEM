@@ -21,9 +21,13 @@ public class CarteiraVendedorRs
 	  
     private List<EmpresaRs> empresa;
     private List<UsuarioRs> usuario;
+    private List<CnaeRs> cnae;
+	private List<ConsumoRs> consumo;
+	private List<CidadeRs> cidade;
 	
  	
-	public static CarteiraVendedorRs converter(CarteiraVendedor carteira, List<Empresa> lstEmpresa, List<Usuario> lstUsuario) 
+	public static CarteiraVendedorRs converter(CarteiraVendedor carteira, List<Empresa> lstEmpresa, List<Usuario> lstUsuario,
+											   List<Cnae> lstCnae, List<Consumo> lstConsumo, List<Cidade> lstCidade) 
 	{
 			var cart = new CarteiraVendedorRs();
 			cart.setCartid(carteira.getCartid());
@@ -34,11 +38,50 @@ public class CarteiraVendedorRs
 			
 			cart.setEmpresa(EmpresaRs.converter(lstEmpresa));
 			cart.setUsuario(UsuarioRs.converter(lstUsuario));
+			cart.setCnae(CnaeRs.converter(lstCnae));
+			cart.setConsumo(ConsumoRs.converter(lstConsumo));
+			cart.setCidade(CidadeRs.converter(lstCidade));
 			return cart;
 	}
 	
 	
 	
+	public List<CnaeRs> getCnae() {
+		return cnae;
+	}
+
+
+
+	public void setCnae(List<CnaeRs> cnae) {
+		this.cnae = cnae;
+	}
+
+
+
+	public List<ConsumoRs> getConsumo() {
+		return consumo;
+	}
+
+
+
+	public void setConsumo(List<ConsumoRs> consumo) {
+		this.consumo = consumo;
+	}
+
+
+
+	public List<CidadeRs> getCidade() {
+		return cidade;
+	}
+
+
+
+	public void setCidade(List<CidadeRs> cidade) {
+		this.cidade = cidade;
+	}
+
+
+
 	public List<EmpresaRs> getEmpresa() {
 		return empresa;
 	}

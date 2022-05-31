@@ -7,7 +7,9 @@ import java.util.stream.Collectors;
 
 import javax.mail.internet.MimeMessage;
 
-import org.springframework.http.ResponseEntity;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.mail.javamail.JavaMailSender;
+import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -22,23 +24,20 @@ import com.grupo3.finddata.classes.Usuario;
 import com.grupo3.finddata.classes.dto.UsuarioRq;
 import com.grupo3.finddata.classes.dto.UsuarioRs;
 import com.grupo3.finddata.repositorys.UsuarioRepository;
-
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.mail.MailSender;
-import org.springframework.mail.SimpleMailMessage;
-import org.springframework.mail.javamail.JavaMailSender;
-import org.springframework.mail.javamail.MimeMessageHelper;
-import org.springframework.web.bind.annotation.RequestMethod;
+import com.grupo3.finddata.service.UsuarioService;
 
 @RestController
 @RequestMapping(value = "/usuario")
 public class UsuarioController 
 {
 	
-	private UsuarioRepository usuarioRepository = null;
+	@Autowired
+	private UsuarioRepository usuarioRepository;
+	@Autowired
+	private UsuarioService service;
+	@Autowired 
+	private JavaMailSender mailSender;
 	
-	public UsuarioController(UsuarioRepository UsuarioRepository) {this.usuarioRepository = UsuarioRepository; }
-		
 	// SELECT de todos//
 	/*@GetMapping("/")
 	public List<UsuarioRs> selectAll()
@@ -133,11 +132,8 @@ public class UsuarioController
 	{
 		String email = usuario.getUsuemail();
 		String senha = usuario.getUsusenha();
-			
-	    Usuario user = usuarioRepository.SelectUsuarioEmail(email, senha);
-			    
-	    if(user == null) {return null;}
-	    else{return user;}
+	    
+	    return service.procurarPorEmailSenha(email, senha);
 	} 
 	
 	// UPDATE
@@ -157,15 +153,12 @@ public class UsuarioController
 			resultado = "1";
 		 }
 		return resultado;
-		
-		
-		    
+
 	}
 	
 	
 	/////////////////////////////
 	
-	@Autowired private JavaMailSender mailSender;
 
 	@PostMapping("/recuperar/{email}")
     public String sendMail(@PathVariable("email") String email)

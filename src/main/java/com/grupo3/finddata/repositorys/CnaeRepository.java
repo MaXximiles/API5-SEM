@@ -11,7 +11,7 @@ public interface CnaeRepository extends JpaRepository<Cnae, Long>
 {
 	//List<Cnae> findCnaeByDescContains(String cnae);
 	
-	@Query(value = "SELECT  cnae_id, cnae_codigo, cnae_descricao "
+	@Query(value = "SELECT cnae_id, cnae_codigo, cnae_descricao "
 			+ "FROM cnae ORDER BY cnae_codigo ", nativeQuery = true)
 	List<Cnae> SelectCnae();
 	
