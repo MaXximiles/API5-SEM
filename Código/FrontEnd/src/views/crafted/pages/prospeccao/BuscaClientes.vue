@@ -55,11 +55,7 @@
           </button>
 
            <button type="button" class="btn btn-light-primary me-3" data-kt-menu-trigger="click" data-kt-menu-placement="bottom-end" @click="limpaFiltros()">
-              <span class="svg-icon svg-icon-2">
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
-                  <path d="M19.0759 3H4.72777C3.95892 3 3.47768 3.83148 3.86067 4.49814L8.56967 12.6949C9.17923 13.7559 9.5 14.9582 9.5 16.1819V19.5072C9.5 20.2189 10.2223 20.7028 10.8805 20.432L13.8805 19.1977C14.2553 19.0435 14.5 18.6783 14.5 18.273V13.8372C14.5 12.8089 14.8171 11.8056 15.408 10.964L19.8943 4.57465C20.3596 3.912 19.8856 3 19.0759 3Z" fill="currentColor"></path>
-                </svg>
-              </span>
+              <span class="bi bi-eraser-fill"></span>
               Limpar
           </button>
         </div>
@@ -202,7 +198,7 @@
       </svg>
       </span>
 
-      <input type="text" v-model="pesqvend" @keyup="carregarVendedores()" data-kt-user-table-filter="search"  class="form-control form-control-solid ps-14" placeholder="Pesquisar Vendedor">
+      <input type="text" v-model="pesqvend" @keyup="carregarVendedores(this.empid)" data-kt-user-table-filter="search"  class="form-control form-control-solid ps-14" placeholder="Pesquisar Vendedor">
     </div>
 
   <div class="text-center mb-13">
@@ -514,10 +510,8 @@ export default defineComponent({
                 });
                 counter = 0 
              });
-
             test.forEach(cont3 => {this.ArrayConsumoRegiao.push(cont3);})
             tmes.forEach(cont4 => {this.ArrayMesesRegiao.push(cont4);})
-
       })
       .catch(error => console.log(error))
     },
@@ -585,15 +579,15 @@ export default defineComponent({
         for(let i = 0; i < 6; i++){this.ArrayMeses.push(0);}
      
         //Grafico de consumo por cnae
-        this.ArrayConsumoCnae.length = [];
+        this.ArrayConsumoCnae.length = 0;
         for(let i = 0; i < 6; i++){this.ArrayConsumoCnae.push(0);}
-        this.ArrayMesesCnae.length = [];
+        this.ArrayMesesCnae.length = 0;
         for(let i = 0; i < 6; i++){this.ArrayMesesCnae.push(0);}
 
         //Grafico de consumo por regiao 
-        this.ArrayConsumoRegiao.length = [];
+        this.ArrayConsumoRegiao.length = 0;
         for(let i = 0; i < 6; i++){this.ArrayConsumoRegiao.push(0);}
-        this.ArrayMesesRegiao.length = [];
+        this.ArrayMesesRegiao.length = 0;
         for(let i = 0; i < 6; i++){this.ArrayMesesRegiao.push(0);}
 
         
@@ -602,7 +596,6 @@ export default defineComponent({
         this.cidid= '';
 
         this.carregaFiltros();
-
     },
     pesquisarEmpresas() // Pesquisa de empresas por nome
     {
@@ -634,28 +627,27 @@ export default defineComponent({
       var data = now.getDate () + "/" + monName [now.getMonth() ] +"/" + now.getFullYear () ;
       return data;
     },
-    async verificaCarteira(usuid) //Verificando se ja existe carteira
+    verificaCarteira(usuid) //Verificando se ja existe carteira
     {
-      await axios.get('carteira/carteira?usuid='+usuid+"&empid="+this.empid, 
+      axios.get('carteira/carteira?usuid='+usuid+"&empid="+this.empid, 
       { headers: { Accept: 'application/json' } })
       .then(res => {
-        
         if(res.data != "")
         {
           alert("Ja foi enviado para este vendedor !")
           return false
         }
-        else{this.addCarteira(usuid)}
+        else{this.addCarteira(usuid,this.empid)}
       })
       .catch(error => console.log(error))     
     },
-    addCarteira(idusu)
+    addCarteira(idusu, idemp)
     {
           var data = this.pegaData();
           axios.post('carteira/', 
           {
               usuid: idusu,
-              empid: this.empid,
+              empid: idemp,
               cartstatus: "Aguardando",
               cartdataini: data,          
           })

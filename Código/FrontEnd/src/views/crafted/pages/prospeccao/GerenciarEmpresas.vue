@@ -96,7 +96,7 @@
             <td class="text-center">
               <div class='col ' >
                 <button  type="button" class="btn btn-secondary" @click="verCarteira(carteira)" data-bs-toggle="modal" data-bs-target="#kt_modal_vercarteira">
-                <span class="fa fa-clipboard fs-1x text-gray-700" ></span>
+                <span class="bi bi-info-circle fs-1x text-gray-700" ></span>
                 </button>            
 
                 <button  type="button" class="btn btn-secondary" @click="excluirCarteiraPendente(carteira)">
@@ -217,7 +217,7 @@
             <td class="text-center">
               <div class='col ' >
                 <button  type="button" class="btn btn-secondary" @click="verCarteira(carteira)" data-bs-toggle="modal" data-bs-target="#kt_modal_vercarteira">
-                <span class="fa fa-clipboard fs-1x text-gray-700" ></span>
+                <span class="bi bi-info-circle fs-1x text-gray-700" ></span>
                 </button>            
 
                 <!-- Verificar Opção de excluir carteira existente

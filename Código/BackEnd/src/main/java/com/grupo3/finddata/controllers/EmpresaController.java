@@ -223,12 +223,12 @@ public class EmpresaController
 	    { 
 	      var emp2 = emp.get();
 
-	      emp2.setCidid(empresa.getCidid());
-	      emp2.setCnaeid(empresa.getCnaeid());
-	      emp2.setEmpcnpj(empresa.getEmpcnpj());
-	      emp2.setEmpnome(empresa.getEmpnome());
+	      //emp2.setCidid(empresa.getCidid());
+	      //emp2.setCnaeid(empresa.getCnaeid());
+	      //emp2.setEmpcnpj(empresa.getEmpcnpj());
+	      //emp2.setEmpnome(empresa.getEmpnome());
 	      emp2.setEmporigem(empresa.getEmporigem());
-	      emp2.setCartid(empresa.getCartid());
+	      //emp2.setCartid(empresa.getCartid());
 	      empresaRepository.save(emp2);
 
 	    } else { throw new Exception("Empresa não encontrada"); }

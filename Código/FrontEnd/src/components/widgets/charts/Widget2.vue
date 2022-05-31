@@ -4,39 +4,18 @@
     <!--begin::Header-->
     <div class="card-header border-0 pt-5">
       <h3 class="card-title align-items-start flex-column">
-        <span class="card-label fw-bolder fs-3 mb-1">Recent Orders</span>
+        <span class="card-label fw-bolder fs-3 mb-1">Desempenho do top 3 Melhores Vendedores</span>
 
-        <span class="text-muted fw-bold fs-7">More than 500 new orders</span>
+        <span class="text-muted fw-bold fs-7">Grafico de desempenho do top 3 melhores vendedores.</span>
       </h3>
 
-      <!--begin::Toolbar-->
-      <div class="card-toolbar" data-kt-buttons="true">
-        <a
-          class="btn btn-sm btn-color-muted btn-active btn-active-primary active px-4 me-1"
-          id="kt_charts_widget_2_year_btn"
-          >Year</a
-        >
-
-        <a
-          class="btn btn-sm btn-color-muted btn-active btn-active-primary px-4 me-1"
-          id="kt_charts_widget_2_month_btn"
-          >Month</a
-        >
-
-        <a
-          class="btn btn-sm btn-color-muted btn-active btn-active-primary px-4"
-          id="kt_charts_widget_2_week_btn"
-          >Week</a
-        >
-      </div>
-      <!--end::Toolbar-->
     </div>
     <!--end::Header-->
 
     <!--begin::Body-->
     <div class="card-body">
       <!--begin::Chart-->
-      <apexchart type="bar" :options="options" :series="series"></apexchart>
+      <apexchart type="bar" :options="options" :series="series"  :consumovendedor1="ArrayTopConsumo1" :mesesvendedor1="ArrayTopMesVendedor1" :consumovendedor2="ArrayTopConsumo2" :mesesvendedor2="ArrayTopMesVendedor2" :consumovendedor3="ArrayTopConsumo3" :mesesvendedor3="ArrayTopMesVendedor3"></apexchart>
       <!--end::Chart-->
     </div>
     <!--end::Body-->
@@ -44,125 +23,136 @@
   <!--end::Charts Widget 2-->
 </template>
 
-<script lang="ts">
-import { defineComponent } from "vue";
+<script>
 import { getCSSVariableValue } from "@/assets/ts/_utils";
 
-export default defineComponent({
+export default ({
   name: "widget-1",
   props: {
     widgetClasses: String,
+    topvendedor1: '',
+    topvendedor2: '',
+    topvendedor3: '',
+    consumovendedor1: [],
+    mesesvendedor1: [],
+    consumovendedor2: [],
+    mesesvendedor2: [],
+    consumovendedor3: [],
+    mesesvendedor3: [],
   },
   components: {},
-  setup() {
+  setup(props) {
     const labelColor = getCSSVariableValue("--bs-gray-500");
     const borderColor = getCSSVariableValue("--bs-gray-200");
-    const baseColor = getCSSVariableValue("--bs-warning");
-    const secondaryColor = getCSSVariableValue("--bs-gray-300");
+    const baseColor = getCSSVariableValue("--bs-danger");
+    const secondaryColor = getCSSVariableValue("--bs-primary");
+    const terciaryColor = getCSSVariableValue("--bs-gray-900");
 
     const options = {
-      chart: {
+      chart: 
+      {
         fontFamily: "inherit",
         type: "bar",
-        toolbar: {
-          show: false,
-        },
+        toolbar: { show: false, },
       },
-      plotOptions: {
+      plotOptions: 
+      {
         bar: {
-          horizontal: false,
+          horizontal: true, //mudar para vertical colocar false
           columnWidth: ["30%"],
           endingShape: "rounded",
         },
       },
-      legend: {
-        show: false,
-      },
-      dataLabels: {
-        enabled: false,
-      },
-      stroke: {
+      legend: { show: true, }, //Legenda do grafico
+      dataLabels: { enabled: false, },
+      stroke: 
+      {
         show: true,
         width: 2,
         colors: ["transparent"],
       },
       xaxis: {
-        categories: ["Feb", "Mar", "Apr", "May", "Jun", "Jul"],
-        axisBorder: {
-          show: false,
-        },
-        axisTicks: {
-          show: false,
-        },
-        labels: {
-          style: {
+        categories: ["Set", "Out", "Nov", "Dez", "Jan", "Fev"],
+        axisBorder: { show: false, },
+        axisTicks: { show: true, },
+        labels: 
+        {
+          style: 
+          {
             colors: labelColor,
             fontSize: "12px",
           },
         },
       },
       yaxis: {
-        labels: {
-          style: {
+        labels: 
+        {
+          style: 
+          {
             colors: labelColor,
             fontSize: "12px",
           },
         },
       },
-      fill: {
-        opacity: 1,
-      },
-      states: {
-        normal: {
-          filter: {
+      fill: { opacity: 1, },
+      states: 
+      {
+        normal: 
+        {
+          filter: 
+          {
             type: "none",
             value: 0,
           },
         },
-        hover: {
-          filter: {
+        hover: 
+        {
+          filter: 
+          {
             type: "none",
             value: 0,
           },
         },
-        active: {
+        active: 
+        {
           allowMultipleDataPointsSelection: false,
-          filter: {
+          filter: 
+          {
             type: "none",
             value: 0,
           },
         },
       },
       tooltip: {
-        style: {
-          fontSize: "12px",
-        },
+        style: { fontSize: "12px", },
         y: {
-          formatter: function (val) {
-            return "$" + val + " thousands";
+          formatter: function (val) 
+          { 
+            return val +" Vendas realizadas"; 
           },
         },
       },
-      colors: [baseColor, secondaryColor],
-      grid: {
+      colors: [secondaryColor, baseColor, terciaryColor],
+      grid: 
+      {
         borderColor: borderColor,
         strokeDashArray: 4,
-        yaxis: {
-          lines: {
-            show: true,
-          },
-        },
+        yaxis: { lines: { show: true, }, },
       },
     };
 
     const series = [
       {
-        name: "Net Profit",
-        data: [44, 55, 57, 56, 61, 58],
+        name: props.topvendedor1,
+        data: props.consumovendedor1,
       },
       {
-        name: "Revenue",
-        data: [76, 85, 101, 98, 87, 105],
+        name: props.topvendedor2,
+        data: props.consumovendedor2,
+      },
+      {
+        name: props.topvendedor3,
+        data: props.consumovendedor3,
       },
     ];
 
