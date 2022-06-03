@@ -34,6 +34,25 @@
 
 ### Screenshoots:-->
 <p align=center><b>Dashboard Administrador</b></p>
-<img src="[https://raw.githubusercontent.com/MaXximiles/API5-SEM/main/Documenta%C3%A7%C3%A3o/src/3Sprint_dashboard_admin.PNG]">
+<img src="https://raw.githubusercontent.com/MaXximiles/API5-SEM/main/Documenta%C3%A7%C3%A3o/src/3Sprint_dashboard_admin.PNG">
+
+<p align=center><b>Dashboard Inteligência</b></p>
+<img src="https://raw.githubusercontent.com/MaXximiles/API5-SEM/main/Documenta%C3%A7%C3%A3o/src/3Sprint_dashboard_inteligencia.PNG">
+
+<p align=center><b>Dashboard Vendedor</b></p>
+<img src="https://raw.githubusercontent.com/MaXximiles/API5-SEM/main/Documenta%C3%A7%C3%A3o/src/3Sprint_dashboard_vendedor.PNG">
+
+<p align=center><b>Tela de Carteiras Pendentes</b></p>
+<img src="https://raw.githubusercontent.com/MaXximiles/API5-SEM/main/Documenta%C3%A7%C3%A3o/src/3Sprint_carteiras_pendentes.PNG">
+
+<p align=center><b>Modal para aceitar as carteiras</b></p>
+<img src="https://raw.githubusercontent.com/MaXximiles/API5-SEM/main/Documenta%C3%A7%C3%A3o/src/3Sprint_Modal_aceita_carteira.PNG">
+
+<p align=center><b>Tela de minhas empresas</b></p>
+<img src="https://raw.githubusercontent.com/MaXximiles/API5-SEM/main/Documenta%C3%A7%C3%A3o/src/3Sprint_minhas_empresas.PNG">
+
+
+
+
 
 
