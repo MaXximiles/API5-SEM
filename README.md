@@ -52,6 +52,8 @@
 <img src="https://raw.githubusercontent.com/MaXximiles/API5-SEM/main/Documenta%C3%A7%C3%A3o/src/3Sprint_minhas_empresas.PNG">
 
 
+### Projeto:
+Ao final desta Sprint podemos entregar o fluxo do sistema, onde cada nivel de usuario tem seu papel, seja o administrador gerenciando os usuarios, o Inteligência fazendo a prospecção de clientes e adicionando a carteira de vendedor e por fim o vendedor podendo fazer sua prospecção da empresa baseado em sua carteira possibilitando assim ele aceitar ou não em sua carteira.
 
 
 
