@@ -1,7 +1,7 @@
 ## 💻 Sprint 3
 
 ### Proposta:
-<b>Nesta última Sprint pretendemos adicionar a pesquisa de empresas ao usuário vendedor, a seção prospects onde o usuário poderá escolher empresas para adicionar a sua carteira e a carteira/vendedor onde o usuário poderá ver as empresas adicionadas.</b>
+<b>Nesta última Sprint implementamos o modulo de vendedores, onde é possivel o vendedor visualizar as empresas que á Inteligência mandou para sua carteira e decidir aceitar ou rejeitar a proposta.</b>
 
 <p align=center>
 <img src="https://github.com/MaXximiles/API5-SEM/blob/main/Documentação/User%20Story%20Cards/USC07.png" width=350> 
@@ -11,12 +11,20 @@
 
 ### Detalhes da Sprint:
 <b>Resumo de modificações:
-- Front-end e Back-end:</b>
-  - Desenvolvimento da interface gráfica;
-  - Adição da seção carteira/vendedor ao usuário vendedor;
-  - Adição da seção prospects ao usuário vendedor; 
-  - Adição da ferramenta de pesquisa de empresas ao usuário vendedor.
+- Front-end: </b>
+  - Tela de Dashboards para Administrador, Inteligência e Vendedor;
+  - Módulo de vendedor;
+  - Telas de aprovação de carteira;
+  - Correção de erros no front;
+
+- <b>Back-end:</b>
+  - Métodos de inserir, atualizar e excluir da carteira;
+  - Criação das classes de carteira vendedor;
+  - Metódos de pesquisa para geração dos dados para os graficos;
+  - Correção de código;
 - <b>Banco de Dados:</b>
+  - Criação da tabela carteira_vendedor;
+  - inserção dos dados de exemplo;
   - Versionamento do Banco de Dados.
 </br>
 
