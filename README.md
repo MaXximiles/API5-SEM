@@ -33,5 +33,7 @@
 </p></br><h1></h1>
 
 ### Screenshoots:-->
+<p align=center><b>Dashboard Administrador</b></p>
+<img src="[https://raw.githubusercontent.com/MaXximiles/API5-SEM/main/Documenta%C3%A7%C3%A3o/src/3Sprint_dashboard_admin.PNG]">
 
 
