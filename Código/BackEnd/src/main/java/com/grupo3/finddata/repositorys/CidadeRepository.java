@@ -7,7 +7,6 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
 import com.grupo3.finddata.classes.Cidade;
-import com.grupo3.finddata.classes.Usuario;
 
 @Repository
 public interface CidadeRepository extends JpaRepository<Cidade, Long> 

@@ -79,36 +79,15 @@ public class UsuarioController
 	@PostMapping("/")
 	public void insertUsuario(@RequestBody UsuarioRq usuario) throws Exception
 	{
-	    var usu = new Usuario();
+	    service.insertUsuarioService(usuario);
 
-	    usu.setUsunome(usuario.getUsunome());
-	    usu.setUsuemail(usuario.getUsuemail());
-	    usu.setUsusenha(usuario.getUsusenha());
-	    usu.setUsunivel(usuario.getUsunivel());
-	    usu.setUsucidade(usuario.getUsucidade());
-	    usuarioRepository.save(usu);
-
-	 }
+	}
 		
 	// UPDATE
 	@PutMapping("/{id}")
 	public void updateUsuario(@PathVariable Long id, @RequestBody UsuarioRq usuario) throws Exception 
 	{
-	    var usu = usuarioRepository.findById(id);
-	    
-	    if (usu.isPresent()) 
-	    {     
-		      var usu2 = usu.get();
-
-		      usu2.setUsunome(usuario.getUsunome());
-			  usu2.setUsuemail(usuario.getUsuemail());
-			  usu2.setUsusenha(usuario.getUsusenha());
-			  usu2.setUsunivel(usuario.getUsunivel());
-			  usu2.setUsucidade(usuario.getUsucidade());
-			  usuarioRepository.save(usu2);
-
-		} else { throw new Exception("Cidade não encontrada"); }
-		    
+		service.updateUsuarioService(usuario, id);
 	}
 
 	// DELETE
@@ -123,9 +102,11 @@ public class UsuarioController
 	{
 		String email = usuario.getUsuemail();
 		String senha = usuario.getUsusenha();
-	    
-	    return service.procurarPorEmailSenha(email, senha);
+		
+		return service.procurarPorEmailSenha(email, senha);
 	}
+	
+	
 	
 	// UPDATE
 	public String updateSenhaUsuario(String email, String senha) throws Exception 

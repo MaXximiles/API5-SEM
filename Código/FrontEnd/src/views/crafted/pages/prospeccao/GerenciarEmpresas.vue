@@ -392,7 +392,7 @@ export default {
     carregarCarteirasPendentes() 
     {
       axios.get('carteira/carteirasPendentes/', 
-      { headers: { Accept: 'application/json' } })
+      { headers: { Authorization: `Bearer ${localStorage.getItem("id_token")}`, Accept: 'application/json' } })
       .then(res => {
         this.ArrayCarteirasPendentes = res.data
       })
@@ -401,7 +401,7 @@ export default {
     carregarCarteirasConcluidas() 
     {
       axios.get('carteira/carteira/concluida/nome?usunome='+this.pesqConcvendedor+'&empnome='+this.pesqConcempresa,
-      { headers: { Accept: 'application/json' } })
+     { headers: { Authorization: `Bearer ${localStorage.getItem("id_token")}`, Accept: 'application/json' } })
       .then(res => {
         this.ArrayCarteirasConcluidas = res.data
       })
@@ -422,7 +422,8 @@ export default {
       if(confirm("Deseja realmente excluir essa carteira? ") == true)
       {
         this.cartid = carteira.cartid;
-        axios.delete('carteira/'+this.cartid)
+        axios.delete('carteira/'+this.cartid,
+        { headers: { Authorization: `Bearer ${localStorage.getItem("id_token")}`, Accept: 'application/json' } })
         .then(res => 
         {
           this.carregarCarteirasPendentes();
@@ -435,7 +436,7 @@ export default {
     pesquisaCarteira()
     {
         axios.get('carteira/carteira/nome?usunome='+this.pesqvendedor+'&empnome='+this.pesqempresa, 
-        { headers: { Accept: 'application/json' } })
+        { headers: { Authorization: `Bearer ${localStorage.getItem("id_token")}`, Accept: 'application/json' } })
         .then(res => {
           this.ArrayCarteirasPendentes = res.data
         })
@@ -444,7 +445,7 @@ export default {
     pesquisaCarteiraExistente()
     {
         axios.get('carteira/carteira/concluida/nome?usunome='+this.pesqConcvendedor+'&empnome='+this.pesqConcempresa, 
-        { headers: { Accept: 'application/json' } })
+        { headers: { Authorization: `Bearer ${localStorage.getItem("id_token")}`, Accept: 'application/json' } })
         .then(res => {
           this.ArrayCarteirasConcluidas = res.data
         })

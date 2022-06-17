@@ -7,7 +7,6 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
 import com.grupo3.finddata.classes.Consumo;
-import com.grupo3.finddata.classes.Empresa;
 
 @Repository
 public interface ConsumoRepository extends JpaRepository<Consumo, Long>

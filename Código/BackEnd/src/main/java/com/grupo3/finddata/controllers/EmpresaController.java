@@ -5,6 +5,7 @@ import java.util.stream.Collectors;
 import java.util.ArrayList;
 import java.util.Collections;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -19,6 +20,7 @@ import com.grupo3.finddata.repositorys.CidadeRepository;
 import com.grupo3.finddata.repositorys.CnaeRepository;
 import com.grupo3.finddata.repositorys.ConsumoRepository;
 import com.grupo3.finddata.repositorys.EmpresaRepository;
+import com.grupo3.finddata.service.EmpresaService;
 import com.grupo3.finddata.classes.dto.*;
 import com.grupo3.finddata.classes.Empresa;
 
@@ -27,74 +29,35 @@ import com.grupo3.finddata.classes.Empresa;
 public class EmpresaController 
 {
 	
-	private EmpresaRepository empresaRepository = null;
-	private CnaeRepository cnaeRepository = null;
-	private ConsumoRepository consumoRepository = null;
-	private CidadeRepository cidadeRepository = null;
-	
-	public EmpresaController(EmpresaRepository empresaRepository, CnaeRepository cnaeRepository, 
-							 ConsumoRepository consumoRepository, CidadeRepository cidadeRepository) 
-	{
-		this.empresaRepository = empresaRepository;
-		this.cnaeRepository = cnaeRepository;
-		this.consumoRepository = consumoRepository;
-		this.cidadeRepository = cidadeRepository;
-	}
+	@Autowired
+	private EmpresaRepository empresaRepository;
+	@Autowired
+	private CnaeRepository cnaeRepository;
+	@Autowired
+	private ConsumoRepository consumoRepository;
+	@Autowired
+	private CidadeRepository cidadeRepository;
+	@Autowired
+	private EmpresaService service;
 	
 	@GetMapping("/")
 	public List<EmpresaRs> selectAll() 
 	{
-		List<EmpresaRs> lstEmpresa = new ArrayList<>();
-			
-		var empresa = empresaRepository.SelectOrdem();
-		
-		for(Empresa e : empresa)
-		{
-			EmpresaRs empresaRs = EmpresaRs.converter(e, cnaeRepository.SelectCnaeId(e.getCnaeid()),
-					 consumoRepository.selectConsumoCnpj(e.getEmpcnpj()),
-					 cidadeRepository.SelectCidadeId(e.getCidid()));
-			lstEmpresa.add(empresaRs);
-		}
-				
-		return lstEmpresa;	
+		return service.listaTodas();
 	}
 	
 	//Selecionando cnaes da empresa
 	@GetMapping("/ordem")
 	public List<EmpresaRs> selectAllOrdem() 
 	{
-		List<EmpresaRs> lstEmpresa = new ArrayList<>();
-			
-		var empresa = empresaRepository.SelectOrdemAll();
-		
-		for(Empresa e : empresa)
-		{
-			EmpresaRs empresaRs = EmpresaRs.converter(e, cnaeRepository.SelectCnaeId(e.getCnaeid()),
-					 consumoRepository.selectConsumoCnpj(e.getEmpcnpj()),
-					 cidadeRepository.SelectCidadeId(e.getCidid()));
-			lstEmpresa.add(empresaRs);
-		}
-				
-		return lstEmpresa;	
+		return service.listaTodasOrdem();
 	}
 	
 	//Selecionando cidades das empresas
 	@GetMapping("/cidades")
 	public List<EmpresaRs> selectAllCidades() 
 	{
-		List<EmpresaRs> lstEmpresa = new ArrayList<>();
-			
-		var empresa = empresaRepository.SelectEmpCidades();
-		
-		for(Empresa e : empresa)
-		{
-			EmpresaRs empresaRs = EmpresaRs.converter(e, cnaeRepository.SelectCnaeId(e.getCnaeid()),
-														 consumoRepository.selectConsumoCnpj(e.getEmpcnpj()),
-														 cidadeRepository.SelectCidadeId(e.getCidid()));
-			lstEmpresa.add(empresaRs);
-		}
-				
-		return lstEmpresa;	
+		return service.listaTodasCidades();
 	}
 	  
 	// SELECT por ID //
@@ -112,63 +75,21 @@ public class EmpresaController
 	@GetMapping("/filtronome") 
 	public List<EmpresaRs> findEmpresaByempnome(@RequestParam(value = "nome", required = false) String nome)
 	{
-				
-		List<EmpresaRs> lstEmpresa = new ArrayList<>();
-		
-		var empresa = empresaRepository.SelectEmpNome(nome);
-		
-		for(Empresa e : empresa)
-		{
-			EmpresaRs empresaRs = EmpresaRs.converter(e, cnaeRepository.SelectCnaeId(e.getCnaeid()),
-					 consumoRepository.selectConsumoCnpj(e.getEmpcnpj()),
-					 cidadeRepository.SelectCidadeId(e.getCidid()));
-			lstEmpresa.add(empresaRs);
-		}
-				
-		return lstEmpresa;	
-				
+		return service.selectEmpresaNome(nome);
 	}
 	
 	// SELECT por cnae
 	@GetMapping("/cnae") 
 	public List<EmpresaRs> findEmpresaByCnae(@RequestParam(value = "cnae", required = false) String cnae)
 	{
-				
-		List<EmpresaRs> lstEmpresa = new ArrayList<>();
-		
-		var empresa = empresaRepository.SelectEmpCnae(cnae);
-		
-		for(Empresa e : empresa)
-		{
-			EmpresaRs empresaRs = EmpresaRs.converter(e, cnaeRepository.SelectCnaeId(e.getCnaeid()),
-					 consumoRepository.selectConsumoCnpj(e.getEmpcnpj()),
-					 cidadeRepository.SelectCidadeId(e.getCidid()));
-			lstEmpresa.add(empresaRs);
-		}
-				
-		return lstEmpresa;	
-				
+		return service.selectEmpresaCnae(cnae);
 	}
 	
 	// SELECT por regiao
 	@GetMapping("/regiao") 
 	public List<EmpresaRs> findEmpresaByRegiao(@RequestParam(value = "regiao", required = false) String regiao)
 	{
-				
-		List<EmpresaRs> lstEmpresa = new ArrayList<>();
-		
-		var empresa = empresaRepository.SelectEmpRegiao(regiao);
-		
-		for(Empresa e : empresa)
-		{
-			EmpresaRs empresaRs = EmpresaRs.converter(e, cnaeRepository.SelectCnaeId(e.getCnaeid()),
-					 consumoRepository.selectConsumoCnpj(e.getEmpcnpj()),
-					 cidadeRepository.SelectCidadeId(e.getCidid()));
-			lstEmpresa.add(empresaRs);
-		}
-				
-		return lstEmpresa;	
-				
+		return service.selectEmpresaRegiao(regiao);
 	}
 	
 	// SELECT todos os filtros
@@ -178,19 +99,7 @@ public class EmpresaController
 											  @RequestParam(value = "regiao", required = false) String regiao)
 	{
 				
-		List<EmpresaRs> lstEmpresa = new ArrayList<>();
-		
-		var empresa = empresaRepository.SelectEmpFiltros(regiao, nome, cnae );
-		
-		for(Empresa e : empresa)
-		{
-			EmpresaRs empresaRs = EmpresaRs.converter(e, cnaeRepository.SelectCnaeId(e.getCnaeid()),
-					 consumoRepository.selectConsumoCnpj(e.getEmpcnpj()),
-					 cidadeRepository.SelectCidadeId(e.getCidid()));
-			lstEmpresa.add(empresaRs);
-		}
-				
-		return lstEmpresa;	
+		return service.selectEmpresaFiltros(cnae, nome, regiao);
 				
 	}
 		
@@ -201,38 +110,14 @@ public class EmpresaController
 	@PostMapping("/")
     public void insertEmpresa(@RequestBody EmpresaRq empresa) throws Exception
 	{ 
-	    var emp = new Empresa();
-
-	    emp.setCnaeid(empresa.getCnaeid());
-	    emp.setEmpcnpj(empresa.getEmpcnpj());
-	    emp.setCidid(empresa.getCidid());
-	    emp.setEmpnome(empresa.getEmpnome());
-	    emp.setEmporigem(empresa.getEmporigem());
-	    emp.setCartid(empresa.getCartid());
-	    empresaRepository.save(emp);
-
+	    service.insertEmpresa(empresa);
 	}
 	
 	  // UPDATE
 	  @PutMapping("/{id}")
 	  public void updateEmpresa(@PathVariable Long id, @RequestBody EmpresaRq empresa) throws Exception 
 	  {
-	    var emp = empresaRepository.findById(id);
-
-	    if (emp.isPresent()) 
-	    { 
-	      var emp2 = emp.get();
-
-	      //emp2.setCidid(empresa.getCidid());
-	      //emp2.setCnaeid(empresa.getCnaeid());
-	      //emp2.setEmpcnpj(empresa.getEmpcnpj());
-	      //emp2.setEmpnome(empresa.getEmpnome());
-	      emp2.setEmporigem(empresa.getEmporigem());
-	      //emp2.setCartid(empresa.getCartid());
-	      empresaRepository.save(emp2);
-
-	    } else { throw new Exception("Empresa não encontrada"); }
-	    
+	    service.updateEmpresa(id, empresa);
 	  }
 
 	  // DELETE

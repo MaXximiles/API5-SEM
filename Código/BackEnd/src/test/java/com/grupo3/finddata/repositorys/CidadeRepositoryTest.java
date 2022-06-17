@@ -1,7 +1,6 @@
 package com.grupo3.finddata.repositorys;
 
 import static org.junit.jupiter.api.Assertions.assertTrue;
-import static org.junit.jupiter.api.Assertions.fail;
 
 import java.util.Optional;
 
@@ -15,7 +14,8 @@ import com.grupo3.finddata.classes.Cidade;
 
 @SpringBootTest
 @Transactional
-class CidadeRepositoryTest {
+class CidadeRepositoryTest 
+{
 	
 	@Autowired
 	CidadeRepository repo;
@@ -28,15 +28,4 @@ class CidadeRepositoryTest {
 		assertTrue(cid.get() != null);
 	}
 	
-	/*
-		@Test
-		@Rollback
-		void testSelectCidadeCnpj() 
-		{	
-			Optional<Cidade> cid = repo.findById(1L);
-			assertTrue(cid.get() != null);
-		}
-	*/
-	
-
 }

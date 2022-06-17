@@ -12,6 +12,8 @@ import com.grupo3.finddata.classes.CarteiraVendedor;
 public interface CarteiraVendedorRepository extends JpaRepository<CarteiraVendedor, Long> {
 
 	List<CarteiraVendedor> findByUsuidAndEmpid(String usuid, String empid);
+	
+	List<CarteiraVendedor> findAll();
 
 	@Query(value = "SELECT carteira_vendedor.cart_id, carteira_vendedor.usu_id, carteira_vendedor.emp_id, cart_status, cart_data_ini "
 			+ " FROM carteira_vendedor " 

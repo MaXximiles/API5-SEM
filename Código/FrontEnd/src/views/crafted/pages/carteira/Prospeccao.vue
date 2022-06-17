@@ -289,7 +289,7 @@ export default {
       var idvende = localStorage.getItem("loginId");
 
       axios.get('carteira/carteira/vendedor/prospec?idvende='+idvende,
-      { headers: { Accept: 'application/json' } })
+      { headers: { Authorization: `Bearer ${localStorage.getItem("id_token")}`, Accept: 'application/json' } })
       .then(res => {
         this.ArrayCarteira = res.data
       })
@@ -300,7 +300,7 @@ export default {
       var idvende = localStorage.getItem("loginId");
 
       axios.get('carteira/carteira/vendedor/prospec/filtro?idvende='+idvende+'&empresa='+this.pesqempresa,
-      { headers: { Accept: 'application/json' } })
+      { headers: { Authorization: `Bearer ${localStorage.getItem("id_token")}`, Accept: 'application/json' } })
       .then(res => {
         this.ArrayCarteira = res.data
       })
@@ -332,7 +332,7 @@ export default {
       this.ArrayMesesCnae.splice(0, this.ArrayMesesCnae.length);
 
       axios.get('empresas/cnae?cnae='+cnaecod, 
-      { headers: { Accept: 'application/json' } })
+      { headers: { Authorization: `Bearer ${localStorage.getItem("id_token")}`, Accept: 'application/json' } })
       .then(res => {
         let test = [0, 0, 0, 0, 0, 0];
         let tmes = [0, 0, 0, 0, 0, 0];
@@ -364,7 +364,7 @@ export default {
       this.ArrayMesesRegiao.splice(0,this.ArrayMesesRegiao.length);
 
       axios.get('empresas/regiao?regiao='+regiao, 
-      { headers: { Accept: 'application/json' } })
+      { headers: { Authorization: `Bearer ${localStorage.getItem("id_token")}`, Accept: 'application/json' } })
       .then(res => {
         let test = [0, 0, 0, 0, 0, 0];
         let tmes = [0, 0, 0, 0, 0, 0];
@@ -399,7 +399,7 @@ export default {
             empid: this.verempid,
             cartstatus: "Concluido",
             cartdataini: data,
-        })
+        },{ headers: { Authorization: `Bearer ${localStorage.getItem("id_token")}`, Accept: 'application/json' } })
         .then(res => { alert("Empresa adicionada a sua carteira!");})
         .catch(error => {console.log(error);})
 
@@ -413,7 +413,8 @@ export default {
     {
       if(confirm("Deseja realmente rejeitar essa carteira? ") == true)
       {
-        axios.delete('carteira/'+this.vercartid)
+        axios.delete('carteira/'+this.vercartid,
+        { headers: { Authorization: `Bearer ${localStorage.getItem("id_token")}`, Accept: 'application/json' } })
         .then(res => 
         {
           this.carregarCarteiras();

@@ -379,7 +379,7 @@ export default defineComponent({
     carregarEmpresas() // Lista empresas na tabela
     {
       axios.get('empresas/', 
-          { headers: { Accept: 'application/json' } })
+          { headers: { Authorization: `Bearer ${localStorage.getItem("id_token")}`, Accept: 'application/json' } })
           .then(res => {
             this.ArrayEmpresas = res.data
           })
@@ -388,7 +388,7 @@ export default defineComponent({
     carregarCnae() // Carregando select somente com cnaes que possuem empresas
     {
       axios.get('empresas/ordem', 
-          { headers: { Accept: 'application/json' } })
+          { headers: { Authorization: `Bearer ${localStorage.getItem("id_token")}`, Accept: 'application/json' } })
           .then(res => {
             this.CnaeArray = res.data;
             this.CnaeSelect = this.CnaeArray;
@@ -398,7 +398,7 @@ export default defineComponent({
     carregarCidades() // Carregando select somente cpm cidades que possuem empresas
     {
       axios.get('empresas/cidades', 
-          { headers: { Accept: 'application/json' } })
+          { headers: { Authorization: `Bearer ${localStorage.getItem("id_token")}`, Accept: 'application/json' } })
           .then(res => {
             this.CidadesArray = res.data
             this.CidadesSelect = this.CidadesArray;
@@ -419,7 +419,7 @@ export default defineComponent({
     carregarConsumo(empresa)//Carregando grafico de consumo por empresa
     {
       axios.get('consumo/cnpj?cnpj='+empresa.empcnpj, 
-          { headers: { Accept: 'application/json' } })
+         { headers: { Authorization: `Bearer ${localStorage.getItem("id_token")}`, Accept: 'application/json' } })
           .then(res => {
             this.ArrayConsumo.splice(0, this.ArrayConsumo.length);
             this.ArrayMeses.splice(0, this.ArrayMeses.length);
@@ -451,7 +451,7 @@ export default defineComponent({
       this.ArrayMesesCnae.splice(0, this.ArrayMesesCnae.length);
 
       axios.get('empresas/cnae?cnae='+cod, 
-      { headers: { Accept: 'application/json' } })
+      { headers: { Authorization: `Bearer ${localStorage.getItem("id_token")}`, Accept: 'application/json' } })
       .then(res => {
         let test = [0, 0, 0, 0, 0, 0];
         let tmes = [0, 0, 0, 0, 0, 0];
@@ -492,7 +492,7 @@ export default defineComponent({
       this.ArrayMesesRegiao.splice(0,this.ArrayMesesRegiao.length);
 
       axios.get('empresas/regiao?regiao='+regiao, 
-      { headers: { Accept: 'application/json' } })
+      { headers: { Authorization: `Bearer ${localStorage.getItem("id_token")}`, Accept: 'application/json' } })
       .then(res => {
         let test = [0, 0, 0, 0, 0, 0];
         let tmes = [0, 0, 0, 0, 0, 0];
@@ -526,7 +526,7 @@ export default defineComponent({
       var nome = this.pesqemp;
       
       axios.get('empresas/filtros?regiao='+regiao+'&nome='+nome+'&cnae='+cnae, 
-      { headers: { Accept: 'application/json' } })
+      { headers: { Authorization: `Bearer ${localStorage.getItem("id_token")}`, Accept: 'application/json' } })
       .then(res => {
         this.ArrayEmpresas = res.data
       })
@@ -600,7 +600,7 @@ export default defineComponent({
     pesquisarEmpresas() // Pesquisa de empresas por nome
     {
       axios.get('empresas/filtronome?nome='+this.pesqemp, 
-          { headers: { Accept: 'application/json' } })
+          { headers: { Authorization: `Bearer ${localStorage.getItem("id_token")}`, Accept: 'application/json' } })
           .then(res => {
             this.ArrayEmpresas = res.data
           })
@@ -613,7 +613,7 @@ export default defineComponent({
       this.empid = id;
 
       axios.get('usuario/vendedores?regiao='+regiao+'&nome='+this.pesqvend, 
-      { headers: { Accept: 'application/json' } })
+      { headers: { Authorization: `Bearer ${localStorage.getItem("id_token")}`, Accept: 'application/json' } })
       .then(res => {
         this.ArrayVendedores = res.data
       })
@@ -630,7 +630,7 @@ export default defineComponent({
     verificaCarteira(usuid) //Verificando se ja existe carteira
     {
       axios.get('carteira/carteira?usuid='+usuid+"&empid="+this.empid, 
-      { headers: { Accept: 'application/json' } })
+      { headers: { Authorization: `Bearer ${localStorage.getItem("id_token")}`, Accept: 'application/json' } })
       .then(res => {
         if(res.data != "")
         {
@@ -650,7 +650,7 @@ export default defineComponent({
               empid: idemp,
               cartstatus: "Aguardando",
               cartdataini: data,          
-          })
+          },{ headers: { Authorization: `Bearer ${localStorage.getItem("id_token")}`, Accept: 'application/json' } })
           .then(res => {
           alert("Dados inseridos com sucesso!");
           })
@@ -667,7 +667,7 @@ export default defineComponent({
         emporigem: this.emporigem,
         cidid: this.cidid,
         cnaeid: this.cnaeid
-        })
+        },{ headers: { Authorization: `Bearer ${localStorage.getItem("id_token")}`, Accept: 'application/json' } })
         .then(res => {
           // Limpando campos do formulario
           this.empnome = '';

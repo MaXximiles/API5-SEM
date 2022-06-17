@@ -55,6 +55,7 @@ import { useRouter } from "vue-router";
 import Swal from "sweetalert2/dist/sweetalert2.min.js";
 import * as Yup from "yup";
 import axios from "axios";
+import JwtService from "@/core/services/JwtService";
 
 export default defineComponent({
   name: "sign-in",
@@ -99,6 +100,8 @@ export default defineComponent({
       if (store.getters.currentUser.usuemail)
       {
         localStorage.setItem("recarregar","0")
+        JwtService.saveToken(store.getters.currentUser.token);
+        
         localStorage.setItem("loginId",store.getters.currentUser.usuid)
         localStorage.setItem("loginNome",store.getters.currentUser.usunome)
         localStorage.setItem("loginEmail",store.getters.currentUser.usuemail)

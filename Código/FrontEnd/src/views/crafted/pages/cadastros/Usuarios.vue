@@ -342,7 +342,7 @@ export default {
     carregarCidades() // Carregar option para Cidades
     {
       axios.get('cidade/', 
-          { headers: { Accept: 'application/json' } })
+         { headers: { Authorization: `Bearer ${localStorage.getItem("id_token")}`, Accept: 'application/json' } })
           .then(res => {
             this.ArrayCidades = res.data
           })
@@ -360,7 +360,8 @@ export default {
               ususenha: this.ususenha,
               usunivel: this.usunivel,
               usucidade: this.usucidade
-          })
+          },
+          { headers: { Authorization: `Bearer ${localStorage.getItem("id_token")}`, Accept: 'application/json' } })
           .then(res => {
             // Limpando campos do formulario
               this.usunome = '';
@@ -379,7 +380,7 @@ export default {
     carregarUsuarios() // Lista usuarios na tabela
     {
       axios.get('usuario/', 
-          { headers: { Accept: 'application/json' } })
+         { headers: { Authorization: `Bearer ${localStorage.getItem("id_token")}`, Accept: 'application/json' } })
           .then(res => {
             this.ArrayUsuarios = res.data
           })
@@ -388,7 +389,7 @@ export default {
     pesquisarUsuarios() // Pesquisa de usuarios por nome
     {
       axios.get('usuario/filtronome?nome='+this.pesqusu, 
-          { headers: { Accept: 'application/json' } })
+          { headers: { Authorization: `Bearer ${localStorage.getItem("id_token")}`, Accept: 'application/json' } })
           .then(res => {
             this.ArrayUsuarios = res.data
           })
@@ -405,7 +406,8 @@ export default {
             ususenha: this.$data.ususenha,
             usunivel: this.$data.usunivel,
             usucidade: this.$data.usucidade
-        })
+        },
+        { headers: { Authorization: `Bearer ${localStorage.getItem("id_token")}`, Accept: 'application/json' } })
         .then(res => 
         {
           alert("Dados alterados com sucesso!");
@@ -428,7 +430,8 @@ export default {
       if(confirm("Deseja realmente excluir registro? ") == true)
       {
         this.usuid = usuario.usuid;
-        axios.delete('usuario/'+this.usuid)
+        axios.delete('usuario/'+this.usuid,
+        { headers: { Authorization: `Bearer ${localStorage.getItem("id_token")}`, Accept: 'application/json' } })
         .then(res => 
         {
           this.carregarUsuarios();
