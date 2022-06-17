@@ -380,7 +380,8 @@ export default {
 			emporigem: this.emporigem,
 			cidid: this.cidid,
 			cnaeid: this.cnaeid
-			})
+			},
+			{ headers: { Authorization: `Bearer ${localStorage.getItem("id_token")}`, Accept: 'application/json' } })
 			.then(res => {
 				// Limpando campos do formulario
 				this.empnome = '';
@@ -397,7 +398,7 @@ export default {
 	carregarEmpresas() // Lista empresas na tabela
 	{
 		axios.get('empresas/', 
-        { headers: { Accept: 'application/json' } })
+        { headers: { Authorization: `Bearer ${localStorage.getItem("id_token")}`, Accept: 'application/json' } })
         .then(res => {
           this.ArrayEmpresas = res.data
         })
@@ -406,7 +407,7 @@ export default {
 	pesquisarEmpresas() // Pesquisa de empresas por nome
 	{
 		axios.get('empresas/filtronome?nome='+this.pesqemp, 
-        { headers: { Accept: 'application/json' } })
+        { headers: { Authorization: `Bearer ${localStorage.getItem("id_token")}`, Accept: 'application/json' } })
         .then(res => {
 			console.log(res)
           this.ArrayEmpresas = res.data
@@ -432,7 +433,8 @@ export default {
 
 		if(this.confirmarForm())
 		{
-		axios.put('empresas/'+this.$data.empid,dta)
+		axios.put('empresas/'+this.$data.empid,dta,
+		{ headers: { Authorization: `Bearer ${localStorage.getItem("id_token")}`, Accept: 'application/json' } })
 			.then(res => 
 			{
 				alert("Dados alterados com sucesso!");
@@ -446,7 +448,7 @@ export default {
 		if(confirm("Deseja realmente excluir registro? ") == true)
 		{
 			this.empid = empresa.empid;
-			axios.delete('empresas/'+this.empid)
+			axios.delete('empresas/'+this.empid,{ headers: { Authorization: `Bearer ${localStorage.getItem("id_token")}`, Accept: 'application/json' } })
 			.then(res => 
 			{
 				this.carregarEmpresas();
@@ -496,7 +498,7 @@ export default {
 	carregarCnae() // Carregar option para CNAE
 	{
 		axios.get('cnae/', 
-        { headers: { Accept: 'application/json' } })
+        { headers: { Authorization: `Bearer ${localStorage.getItem("id_token")}`, Accept: 'application/json' } })
         .then(res => {
           this.ArrayCnaes = res.data
         })
@@ -505,7 +507,7 @@ export default {
 	carregarCidades() // Carregar option para Cidades
 	{
 		axios.get('cidade/', 
-        { headers: { Accept: 'application/json' } })
+		{ headers: { Authorization: `Bearer ${localStorage.getItem("id_token")}`, Accept: 'application/json' } })
         .then(res => {
           this.ArrayCidades = res.data
         })

@@ -212,7 +212,7 @@ export default {
       this.ArrayTopMesVendedor3.splice(0, this.ArrayTopMesVendedor3.length);
               
       await axios.get('/carteira/top/vendedor', 
-      { headers: { Accept: 'application/json' } })
+      { headers: { Authorization: `Bearer ${localStorage.getItem("id_token")}`, Accept: 'application/json' } })
       .then(res => {
         let cons1 = [0, 0, 0, 0, 0, 0];
         let mes1 = [0, 0, 0, 0, 0, 0];
@@ -274,7 +274,7 @@ export default {
     async carregarGraficoTop8Vendedor() 
     {   
       await axios.get('/carteira/top/vendedores', 
-      { headers: { Accept: 'application/json' } })
+      { headers: { Authorization: `Bearer ${localStorage.getItem("id_token")}`, Accept: 'application/json' } })
       .then(res => {
        let top = 0;
         res.data.forEach(carteira => {
@@ -339,7 +339,7 @@ export default {
       this.empresaTopMes.splice(0,this.empresaTopMes);
 
       await axios.get('/carteira/top/vendedores', 
-      { headers: { Accept: 'application/json' } })
+      { headers: { Authorization: `Bearer ${localStorage.getItem("id_token")}`, Accept: 'application/json' } })
       .then(res => {
 
         let cons1 = [0, 0, 0, 0, 0, 0];
@@ -404,7 +404,7 @@ export default {
       this.regiaoTop1Consumo.splice(0, this.regiaoTop1Consumo.length);
      
       await axios.get('/carteira/top/regiao', 
-      { headers: { Accept: 'application/json' } })
+      { headers: { Authorization: `Bearer ${localStorage.getItem("id_token")}`, Accept: 'application/json' } })
       .then(res => {
       
         res.data.forEach(carteira => {
@@ -428,7 +428,7 @@ export default {
       this.empresasTotal.splice(0, this.empresasTotal.length);
 
       await axios.get('/empresas/', 
-      { headers: { Accept: 'application/json' } })
+      { headers: { Authorization: `Bearer ${localStorage.getItem("id_token")}`, Accept: 'application/json' } })
       .then(res => {
         var spc = 0;
         var livre = 0;
@@ -469,7 +469,7 @@ export default {
       var idUsu = localStorage.getItem("loginId");
 
       await axios.get('carteira/carteira/vendedor?idvende='+idUsu, 
-      { headers: { Accept: 'application/json' } })
+      { headers: { Authorization: `Bearer ${localStorage.getItem("id_token")}`, Accept: 'application/json' } })
       .then(res => {
 
         let cons1 = [0, 0, 0, 0, 0, 0];

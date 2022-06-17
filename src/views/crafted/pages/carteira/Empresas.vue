@@ -262,7 +262,7 @@ export default {
       var idvende = localStorage.getItem("loginId");
 
       axios.get('carteira/carteira/vendedor?idvende='+idvende,
-      { headers: { Accept: 'application/json' } })
+      { headers: { Authorization: `Bearer ${localStorage.getItem("id_token")}`, Accept: 'application/json' } })
       .then(res => {
         this.ArrayCarteira = res.data
       })
@@ -273,7 +273,7 @@ export default {
       var idvende = localStorage.getItem("loginId");
 
       axios.get('carteira/carteira/vendedor/filtro?idvende='+idvende+'&empresa='+this.pesqempresa,
-      { headers: { Accept: 'application/json' } })
+      { headers: { Authorization: `Bearer ${localStorage.getItem("id_token")}`, Accept: 'application/json' } })
       .then(res => {
         this.ArrayCarteira = res.data
       })
@@ -293,7 +293,7 @@ export default {
     carregarGrafico(cnpjemp)
     {
        axios.get('consumo/cnpj?cnpj='+cnpjemp, 
-          { headers: { Accept: 'application/json' } })
+          { headers: { Authorization: `Bearer ${localStorage.getItem("id_token")}`, Accept: 'application/json' } })
           .then(res => {
             this.ArrayConsumo.splice(0, this.ArrayConsumo.length);
             this.ArrayMeses.splice(0, this.ArrayMeses.length);
