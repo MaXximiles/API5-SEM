@@ -3,6 +3,7 @@ package com.grupo3.finddata.controllers;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -21,54 +22,46 @@ import com.grupo3.finddata.classes.dto.CnaeRq;
 import com.grupo3.finddata.classes.dto.CnaeRs;
 import com.grupo3.finddata.repositorys.CidadeRepository;
 import com.grupo3.finddata.repositorys.CnaeRepository;
+import com.grupo3.finddata.service.CnaeService;
 
 @RestController
 @RequestMapping(value = "/cnae")
 public class CnaeController 
 {
 	
-	private CnaeRepository cnaeRepository = null;
-	
-	public CnaeController(CnaeRepository cnaeRepository) {this.cnaeRepository = cnaeRepository; }
+	@Autowired
+	private CnaeRepository cnaeRepository;
+	@Autowired
+	private CnaeService service;
 	
 	// SELECT de todos//
 	@GetMapping("/all")
 	public List<CnaeRs> selectAll()
 	{
-	   var cnae = cnaeRepository.findAll();
-	   return cnae.stream().map((cid) -> CnaeRs.converter(cid)).collect(Collectors.toList());
+	   return service.selectAll();
 	}
 	
 	// SELECT de todos//
 	@GetMapping("/")
 	public List<CnaeRs> selectCnae()
 	{
-	   var cnae = cnaeRepository.SelectCnae();
-	   return cnae.stream().map((cid) -> CnaeRs.converter(cid)).collect(Collectors.toList());
+	  return service.selectCnae();
 	}
 		  
 	// SELECT por ID //
 	@GetMapping("/{id}")
 	public CnaeRs selectID(@PathVariable("id") Long id) 
 	{
-	  var cnae = cnaeRepository.getOne(id);
-	  return CnaeRs.converter(cnae);
+	  return service.selectID(id);
 	}
 	
 	// SELECT por ID //
 	@GetMapping("/cod")
 	public CnaeRs selectCnpj(@RequestParam(value = "cod", required = false) String cod) 
 	{
-	  var cnae = cnaeRepository.SelectCnaeCnpj(cod);
-	  return CnaeRs.converter(cnae);
+	  return service.selectCnpj(cod);
 	}
 		  
-	// SELECT por Nome
-	/*@GetMapping("/filtrocnae")
-	public List<CnaeRs> findCnaeByDesc(@RequestParam("cnae") String cnae)
-	{
-	    return this.cnaeRepository.findCnaeByDescContains(cnae).stream().map(CnaeRs::converter).collect(Collectors.toList());
-	}*/
 		
 	// FIM DOS SELECT's **********************************************************************
 		
@@ -77,13 +70,7 @@ public class CnaeController
 	@PostMapping("/")
 	public void insertCnae(@RequestBody CnaeRq cnae) throws Exception
 	{
-	    var cnae2 = new Cnae();
-
-	    cnae2.setCnae_codigo(cnae.getCnae_codigo());
-	    cnae2.setCnae_descricao(cnae.getCnae_descricao());
-	        
-	    cnaeRepository.save(cnae2);
-
+	    service.insertCnae(cnae);
 	 }
 		
 		
@@ -91,25 +78,14 @@ public class CnaeController
 	@PutMapping("/{id}")
 	public void updateCnae(@PathVariable Long id, @RequestBody CnaeRq cnae) throws Exception 
 	{
-	    var cnae2 = cnaeRepository.findById(id);
-	    
-	    if (cnae2.isPresent()) 
-	    {     
-		      var cnae3 = cnae2.get();
-
-		      cnae3.setCnae_codigo(cnae.getCnae_codigo());
-		      cnae3.setCnae_descricao(cnae.getCnae_descricao());
-		      cnaeRepository.save(cnae3);
-
-		} else { throw new Exception("CNAE não encontrado"); }
-		    
+	    service.updateCnae(id, cnae);		    
 	}
 
 	// DELETE
 	@DeleteMapping("/{id}")
 	public void deleteCnae(@PathVariable Long id) 
 	{
-	    cnaeRepository.deleteById(id);
+	    service.deleteCnae(id);
 	}
 
 }

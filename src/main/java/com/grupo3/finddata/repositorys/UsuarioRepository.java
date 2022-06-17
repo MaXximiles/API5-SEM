@@ -6,9 +6,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
-import com.grupo3.finddata.classes.Empresa;
 import com.grupo3.finddata.classes.Usuario;
-import com.grupo3.finddata.classes.dto.UsuarioRs;
 
 @Repository
 public interface UsuarioRepository extends JpaRepository<Usuario, Long>  

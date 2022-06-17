@@ -12,6 +12,8 @@ import com.grupo3.finddata.classes.CarteiraVendedor;
 public interface CarteiraVendedorRepository extends JpaRepository<CarteiraVendedor, Long> {
 
 	List<CarteiraVendedor> findByUsuidAndEmpid(String usuid, String empid);
+	
+	List<CarteiraVendedor> findAll();
 
 	@Query(value = "SELECT carteira_vendedor.cart_id, carteira_vendedor.usu_id, carteira_vendedor.emp_id, cart_status, cart_data_ini "
 			+ " FROM carteira_vendedor " 
@@ -94,7 +96,8 @@ public interface CarteiraVendedorRepository extends JpaRepository<CarteiraVended
 
 	@Query(value = "SELECT carteira_vendedor.cart_id, carteira_vendedor.usu_id, carteira_vendedor.emp_id, cart_status, cart_data_ini, "
 			+ " cons_mes, (SELECT SUM(cons_qtdconsumo) FROM consumo WHERE emp_id = empresas.emp_cnpj) AS Consumo_Regiao, emp_nome, cid_regiaoibge"
-			+ " FROM carteira_vendedor " + " INNER JOIN empresas ON empresas.emp_id = carteira_vendedor.emp_id "
+			+ " FROM carteira_vendedor " 
+			+ " INNER JOIN empresas ON empresas.emp_id = carteira_vendedor.emp_id "
 			+ " INNER JOIN cidade ON cidade.cid_id = empresas.cid_id "
 			+ " INNER JOIN usuarios ON usuarios.usu_id = carteira_vendedor.usu_id "
 			+ " LEFT JOIN consumo ON consumo.emp_id = empresas.emp_cnpj "
