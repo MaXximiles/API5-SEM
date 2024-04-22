@@ -1,5 +1,5 @@
 ## Instruções de instalação.
-### A seguir temos links oficiais para instruções de intalação detalhadas das tecnologias usadas no projeto:
+### A seguir temos links oficiais para instruções de instalação detalhadas das tecnologias usadas no projeto:
 
 ### Spring Boot
  - [Instalando o Spring Boot](https://docs.spring.io/spring-boot/docs/current/reference/html/getting-started.html)
